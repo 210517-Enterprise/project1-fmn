@@ -11,7 +11,7 @@ import com.revature.annotations.JoinColumn;
 @Entity(tableName = "orders")
 public class Order {
 	
-	@Id(columnName = "id")
+	@Id(columnName = "id", constraint = {Constraint.PRIMARY_KEY, Constraint.SERIAL})
 	private int id;
 	
 	@JoinColumn(columnName = "user_id")
