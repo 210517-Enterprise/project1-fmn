@@ -7,7 +7,7 @@ import com.revature.annotations.Id;
 @Entity(tableName = "users")
 public class User {
 	
-	@Id(columnName = "id", constraint = {Constraint.PRIMARY_KEY, Constraint.SERIAL})
+	@Id(columnName = "id", constraints = {Constraint.PRIMARY_KEY, Constraint.SERIAL})
 	private int id;
 	
 	@Column(columnName = "first_name")
