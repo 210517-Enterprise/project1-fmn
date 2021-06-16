@@ -8,6 +8,7 @@ import com.revature.annotations.Column;
 import com.revature.annotations.Entity;
 import com.revature.annotations.Id;
 import com.revature.annotations.JoinColumn;
+import com.revature.models.Product;
 
 public class Metamodel<T> {
 
@@ -55,7 +56,8 @@ public class Metamodel<T> {
 
 				}
 			}
-			throw new RuntimeException("No field annotated with @Id in " + this.clazz.getName());
+			if(this.primaryKey == null)
+				throw new RuntimeException("No field annotated with @Id in " + this.clazz.getName());
 		}
 
 		return this.primaryKey;
@@ -79,7 +81,7 @@ public class Metamodel<T> {
 	}
 
 	public List<ForeignKeyField> getForeignKeys() {
-		Field[] fields = this.clazz.getFields();
+		Field[] fields = this.clazz.getDeclaredFields();
 
 		for (Field field : fields) {
 			JoinColumn fk = field.getAnnotation(JoinColumn.class);
@@ -90,6 +92,23 @@ public class Metamodel<T> {
 		}
 
 		return this.foreignKeys;
+	}
+	
+	public static void main(String[] args) {
+		//User user = new User(1, "mollie", "morrow", "mfmorrow", "password", Role.ADMIN);
+		Metamodel<Product> mm = Metamodel.of(Product.class);
+		
+		System.out.println(mm.getSimpleClass());
+
+		System.out.println("Primary Key: " + mm.getPrimaryKey().getName());
+		
+		System.out.println("Foreign Keys:");
+		for(ForeignKeyField f: mm.getForeignKeys())
+			System.out.println(f.getName());
+		
+		System.out.println("Attributes:");
+		for(ColumnField c: mm.getAttributes())
+			System.out.println(c.getName());
 	}
 
 }
