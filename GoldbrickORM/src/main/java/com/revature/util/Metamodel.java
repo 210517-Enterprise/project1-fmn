@@ -36,6 +36,10 @@ public class Metamodel<T> {
 		this.attributes = new ArrayList<>();
 		this.foreignKeys = new ArrayList<>();
 	}
+	
+	public Class<T> getClazz(){
+		return this.clazz;
+	}
 
 	public String getClassName() {
 		return this.clazz.getName();
