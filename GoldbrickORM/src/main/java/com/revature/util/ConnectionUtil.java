@@ -13,7 +13,7 @@ public class ConnectionUtil {
 	 * JDBC Driver name and Database Credentials
 	 */
 	static final String JDBC_DRIVER = "org.postgresql.Driver";
-	static final String JDBC_URL = System.getenv("DB_URL");
+	static final String JDBC_URL = System.getenv("jdbc:postgresql://nick-rdbms.cvpo3qhbh5qs.us-east-2.rds.amazonaws.com:5432/postgres?currentSchema=public");
 	static final String JDBC_USERNAME = System.getenv("DB_USERNAME");
 	static final String JDBC_PASSWORD = System.getenv("DB_PASSWORD");
 	
@@ -43,6 +43,7 @@ public class ConnectionUtil {
 	 * @return
 	 */
 	public GenericObjectPool getConnectionPool() {
+			System.out.println("Connection to Pool Established");
 			return gPool;
 	}
 	
@@ -54,6 +55,8 @@ public class ConnectionUtil {
 				+ "; Idle: " + getConnectionPool().getNumIdle());
 	}
 
-	
+	public static void main(String[] args) {
+		ConnectionUtil conn = new ConnectionUtil();
+		conn.getConnectionPool();
+ }
 }
-
