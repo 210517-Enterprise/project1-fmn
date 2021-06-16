@@ -11,13 +11,13 @@ import com.revature.annotations.JoinColumn;
 @Entity(tableName = "orders")
 public class Order {
 	
-	@Id(columnName = "id", constraint = {Constraint.PRIMARY_KEY, Constraint.SERIAL})
+	@Id(columnName = "id", constraints = {Constraint.PRIMARY_KEY, Constraint.SERIAL})
 	private int id;
 	
-	@JoinColumn(columnName = "user_id")
+	@JoinColumn(columnName = "user_id", constraints = {Constraint.FOREIGN_KEY})
 	private int userID;
 	
-	@JoinColumn(columnName = "product_id")
+	@JoinColumn(columnName = "product_id", constraints = {Constraint.FOREIGN_KEY})
 	private int productID;
 	
 	@Column(columnName = "order_date")

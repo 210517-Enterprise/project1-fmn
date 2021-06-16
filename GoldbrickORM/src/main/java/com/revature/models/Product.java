@@ -8,10 +8,10 @@ import com.revature.annotations.JoinColumn;
 @Entity(tableName = "products")
 public class Product {
 	
-	@Id(columnName = "id", constraint = {Constraint.PRIMARY_KEY, Constraint.SERIAL})
+	@Id(columnName = "id", constraints = {Constraint.PRIMARY_KEY, Constraint.SERIAL})
 	private int id;
 	
-	@JoinColumn(columnName = "category_id")
+	@JoinColumn(columnName = "category_id", constraints = {Constraint.FOREIGN_KEY})
 	private int categoryID;
 	
 	@Column(columnName = "product_name")
