@@ -13,9 +13,15 @@ public class ConnectionUtil {
 	 * JDBC Driver name and Database Credentials
 	 */
 	static final String JDBC_DRIVER = "org.postgresql.Driver";
+<<<<<<< HEAD
 	static final String JDBC_URL = System.getenv("jdbc:postgresql://nick-rdbms.cvpo3qhbh5qs.us-east-2.rds.amazonaws.com:5432/postgres?currentSchema=public");
 	static final String JDBC_USERNAME = System.getenv("DB_USERNAME");
 	static final String JDBC_PASSWORD = System.getenv("DB_PASSWORD");
+=======
+	static final String JDBC_URL = "jdbc:postgresql://nick-rdbms.cvpo3qhbh5qs.us-east-2.rds.amazonaws.com:5432/?currentSchema=public";
+	static final String JDBC_USERNAME = "postgres";
+	static final String JDBC_PASSWORD = "postgres";
+>>>>>>> 38821233cbee0bf8ac345e78a1783a0ec3fe85bf
 	
 	//no we will create the pool for connecitons
 	private static GenericObjectPool gPool = null;
