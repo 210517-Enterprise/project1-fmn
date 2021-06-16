@@ -20,16 +20,16 @@ public class Order {
 	@JoinColumn(columnName = "product_id", constraints = {Constraint.FOREIGN_KEY})
 	private int productID;
 	
-	@Column(columnName = "order_date")
+	@Column(columnName = "order_date", constraints = {Constraint.NOT_NULL})
 	private LocalDateTime orderDate;
 	
-	@Column(columnName = "totalPrice")
+	@Column(columnName = "totalPrice", constraints = {Constraint.NOT_NULL})
 	private double totalPrice;
 	
-	@Column(columnName = "fullfilled")
+	@Column(columnName = "fullfilled", constraints = {Constraint.NOT_NULL})
 	private boolean fulfilled;
 	
-	@Column(columnName = "quantity")
+	@Column(columnName = "quantity", constraints = {Constraint.NOT_NULL})
 	private int quantity;
 	
 	public Order(int id, int userID, int productID, LocalDateTime orderDate, double totalPrice, boolean fulfilled, int quantity) {

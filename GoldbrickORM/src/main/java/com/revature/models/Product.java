@@ -14,19 +14,19 @@ public class Product {
 	@JoinColumn(columnName = "category_id", constraints = {Constraint.FOREIGN_KEY})
 	private int categoryID;
 	
-	@Column(columnName = "product_name")
+	@Column(columnName = "product_name", constraints = {Constraint.NOT_NULL})
 	private String productName;
 	
-	@Column(columnName = "product_description")
+	@Column(columnName = "product_description", constraints = {Constraint.NOT_NULL})
 	private String productDescription;
 	
-	@Column(columnName = "price")	
+	@Column(columnName = "price", constraints = {Constraint.NOT_NULL})	
 	private double price;
 	
-	@Column(columnName = "quantity")
+	@Column(columnName = "quantity", constraints = {Constraint.NOT_NULL})
 	private int quantity;
 	
-	@Column(columnName = "in_stock")
+	@Column(columnName = "in_stock", constraints = {Constraint.NOT_NULL})
 	private boolean inStock;
 	
 	public Product(int id, String productName, String productDescription, double price, int quantity, boolean inStock) {

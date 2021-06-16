@@ -10,19 +10,19 @@ public class User {
 	@Id(columnName = "id", constraints = {Constraint.PRIMARY_KEY, Constraint.SERIAL})
 	private int id;
 	
-	@Column(columnName = "first_name")
+	@Column(columnName = "first_name", constraints = {Constraint.NOT_NULL})
 	private String firstName;
 	
-	@Column(columnName = "last_name")
+	@Column(columnName = "last_name", constraints = {Constraint.NOT_NULL})
 	private String lastName;
 	
-	@Column(columnName = "email")
+	@Column(columnName = "email", constraints = {Constraint.NOT_NULL, Constraint.UNIQUE})
 	private String email;
 	
-	@Column(columnName = "pwd")
+	@Column(columnName = "pwd", constraints = {Constraint.NOT_NULL})
 	private String password; //encrypt this
 	
-	@Column(columnName = "role")
+	@Column(columnName = "role", constraints = {Constraint.NOT_NULL})
 	private Role role;
 	
 	public User(String email, String password) {
