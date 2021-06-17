@@ -13,4 +13,5 @@ public @interface JoinColumn {
 	String columnName();
 	Constraint[] constraints();
 	String dataType();
+	String reference();
 }

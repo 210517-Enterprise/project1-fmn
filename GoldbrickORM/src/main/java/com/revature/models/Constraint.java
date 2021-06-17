@@ -8,7 +8,7 @@ public enum Constraint {
 		case PRIMARY_KEY:
 			return "PRIMARY KEY";
 		case FOREIGN_KEY:
-			return "FOREIGN KEY";
+			return "";
 		case SERIAL:
 			return "SERIAL";
 		case NOT_NULL:

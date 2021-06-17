@@ -37,6 +37,10 @@ public class ForeignKeyField {
 	public Constraint[] getConstraints() {
 		return field.getAnnotation(JoinColumn.class).constraints();
 	}
+	
+	public String getReference() {
+		return field.getAnnotation(JoinColumn.class).reference();
+	}
 
 	@Override
 	public int hashCode() {

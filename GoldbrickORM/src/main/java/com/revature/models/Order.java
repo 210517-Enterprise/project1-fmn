@@ -13,13 +13,13 @@ public class Order {
 	@Id(columnName = "id", constraints = { Constraint.PRIMARY_KEY }, dataType = "SERIAL")
 	private int id;
 
-	@JoinColumn(columnName = "user_id", constraints = { Constraint.FOREIGN_KEY }, dataType = "INT")
+	@JoinColumn(columnName = "user_id", constraints = { Constraint.FOREIGN_KEY }, dataType = "INT", reference = "REFERENCES users(id)")
 	private int userID;
 
-	@JoinColumn(columnName = "product_id", constraints = { Constraint.FOREIGN_KEY }, dataType = "INT")
+	@JoinColumn(columnName = "product_id", constraints = { Constraint.FOREIGN_KEY }, dataType = "INT", reference = "REFERENCES products(id)")
 	private int productID;
 
-	@Column(columnName = "order_date", constraints = { Constraint.NOT_NULL }, dataType = "DATETIME")
+	@Column(columnName = "order_date", constraints = { Constraint.NOT_NULL }, dataType = "DATE")
 	private LocalDateTime orderDate;
 
 	@Column(columnName = "totalPrice", constraints = { Constraint.NOT_NULL }, dataType = "NUMERIC")

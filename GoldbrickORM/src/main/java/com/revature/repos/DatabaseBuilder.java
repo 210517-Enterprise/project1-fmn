@@ -61,7 +61,7 @@ public class DatabaseBuilder {
 			try {
 				PreparedStatement ps = conn.prepareStatement(str.toString());
 				
-				ResultSet rs = ps.executeQuery();
+				ps.executeQuery();
 				
 				
 				
@@ -110,6 +110,7 @@ public class DatabaseBuilder {
 			for (Constraint cons : fks.get(i).getConstraints()) {
 				namesAndConstraints[i] += " " + Constraint.stringRepresentation(cons);
 			}
+			namesAndConstraints[i] += " " + fks.get(i).getReference();
 		}
 
 		return namesAndConstraints;
@@ -150,13 +151,14 @@ public class DatabaseBuilder {
 			
 			Configuration cfg = new Configuration();
 			cfg.addAnnotatedClass(User.class)
-			.addAnnotatedClass(Order.class)
+			.addAnnotatedClass(Category.class)
 			.addAnnotatedClass(Product.class)
-			.addAnnotatedClass(Category.class);
+			.addAnnotatedClass(Order.class);
+			
 			
 			DatabaseBuilder dbb = new DatabaseBuilder(cfg);
-			
 			dbb.createTables(connObj);
+			
 		} catch(SQLException e) {
 			e.printStackTrace();
 		} catch (NoSuchFieldException e) {

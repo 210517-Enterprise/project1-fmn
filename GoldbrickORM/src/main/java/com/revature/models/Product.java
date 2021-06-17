@@ -11,7 +11,7 @@ public class Product {
 	@Id(columnName = "id", constraints = {Constraint.PRIMARY_KEY}, dataType = "SERIAL")
 	private int id;
 	
-	@JoinColumn(columnName = "category_id", constraints = {Constraint.FOREIGN_KEY}, dataType = "INT")
+	@JoinColumn(columnName = "category_id", constraints = {Constraint.FOREIGN_KEY}, dataType = "INT", reference = "REFERENCES categories(id)")
 	private int categoryID;
 	
 	@Column(columnName = "product_name", constraints = {Constraint.NOT_NULL}, dataType = "VARCHAR(50)")
