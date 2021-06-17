@@ -4,6 +4,11 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import com.revature.models.Category;
+import com.revature.models.Order;
+import com.revature.models.Product;
+import com.revature.models.User;
+
 public class Configuration {
 	
 	private String dbUrl;

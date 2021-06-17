@@ -3,6 +3,7 @@ package com.revature.util;
 import java.lang.reflect.Field;
 
 import com.revature.annotations.JoinColumn;
+import com.revature.models.Constraint;
 
 public class ForeignKeyField {
 
@@ -26,5 +27,9 @@ public class ForeignKeyField {
 	
 	public String getColumnName() {
 		return this.field.getAnnotation(JoinColumn.class).columnName();
+	}
+	
+	public Constraint[] getConstraints() {
+		return field.getAnnotation(JoinColumn.class).constraints();
 	}
 }

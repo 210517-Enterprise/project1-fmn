@@ -7,9 +7,9 @@ import com.revature.annotations.Id;
 @Entity(tableName = "categories")
 public class Category {
 	
-	@Id(columnName = "id")
+	@Id(columnName = "id", constraints = {Constraint.PRIMARY_KEY, Constraint.SERIAL})
 	private int id;
-	@Column(columnName = "category_name")
+	@Column(columnName = "category_name", constraints = {Constraint.NOT_NULL})
 	private String categoryName;
 	
 	public Category(int id, String categoryName) {

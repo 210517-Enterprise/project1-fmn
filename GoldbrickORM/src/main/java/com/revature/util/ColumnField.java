@@ -3,6 +3,7 @@ package com.revature.util;
 import java.lang.reflect.Field;
 
 import com.revature.annotations.Column;
+import com.revature.models.Constraint;
 
 public class ColumnField {
 
@@ -25,6 +26,10 @@ public class ColumnField {
 	
 	public String getColumnName() {
 		return this.field.getAnnotation(Column.class).columnName();
+	}
+	
+	public Constraint[] getConstraints() {
+		return field.getAnnotation(Column.class).constraints();
 	}
 
 }

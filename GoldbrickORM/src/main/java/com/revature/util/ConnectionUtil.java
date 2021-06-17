@@ -23,6 +23,7 @@ public class ConnectionUtil {
 	/**
 	 * Holder for JDBC Credentials
 	 */
+
 	static String JDBC_DRIVER = "org.postgresql.Driver";
 	static String JDBC_URL = "";
 	static String JDBC_USERNAME = "";
@@ -30,6 +31,7 @@ public class ConnectionUtil {
 	
 	Properties props = new Properties();
 	ClassLoader loader = Thread.currentThread().getContextClassLoader();
+
 	
 
 	//now we will create the pool for connecitons

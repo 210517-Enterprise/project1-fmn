@@ -11,25 +11,25 @@ import com.revature.annotations.JoinColumn;
 @Entity(tableName = "orders")
 public class Order {
 	
-	@Id(columnName = "id")
+	@Id(columnName = "id", constraints = {Constraint.PRIMARY_KEY, Constraint.SERIAL})
 	private int id;
 	
-	@JoinColumn(columnName = "user_id")
+	@JoinColumn(columnName = "user_id", constraints = {Constraint.FOREIGN_KEY})
 	private int userID;
 	
-	@JoinColumn(columnName = "product_id")
+	@JoinColumn(columnName = "product_id", constraints = {Constraint.FOREIGN_KEY})
 	private int productID;
 	
-	@Column(columnName = "order_date")
+	@Column(columnName = "order_date", constraints = {Constraint.NOT_NULL})
 	private LocalDateTime orderDate;
 	
-	@Column(columnName = "totalPrice")
+	@Column(columnName = "totalPrice", constraints = {Constraint.NOT_NULL})
 	private double totalPrice;
 	
-	@Column(columnName = "fullfilled")
+	@Column(columnName = "fullfilled", constraints = {Constraint.NOT_NULL})
 	private boolean fulfilled;
 	
-	@Column(columnName = "quantity")
+	@Column(columnName = "quantity", constraints = {Constraint.NOT_NULL})
 	private int quantity;
 	
 	public Order(int id, int userID, int productID, LocalDateTime orderDate, double totalPrice, boolean fulfilled, int quantity) {
