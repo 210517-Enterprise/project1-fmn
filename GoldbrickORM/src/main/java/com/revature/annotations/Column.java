@@ -13,4 +13,5 @@ import java.lang.annotation.RetentionPolicy;
 public @interface Column {
 	String columnName();
 	Constraint[] constraints();
+	String dataType();
 }

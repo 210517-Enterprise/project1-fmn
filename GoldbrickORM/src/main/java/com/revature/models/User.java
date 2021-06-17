@@ -7,22 +7,22 @@ import com.revature.annotations.Id;
 @Entity(tableName = "users")
 public class User {
 	
-	@Id(columnName = "id", constraints = {Constraint.PRIMARY_KEY, Constraint.SERIAL})
+	@Id(columnName = "id", constraints = {Constraint.PRIMARY_KEY}, dataType = "SERIAL")
 	private int id;
 	
-	@Column(columnName = "first_name", constraints = {Constraint.NOT_NULL})
+	@Column(columnName = "first_name", constraints = {Constraint.NOT_NULL}, dataType = "VARCHAR(50)")
 	private String firstName;
 	
-	@Column(columnName = "last_name", constraints = {Constraint.NOT_NULL})
+	@Column(columnName = "last_name", constraints = {Constraint.NOT_NULL}, dataType = "VARCHAR(50)")
 	private String lastName;
 	
-	@Column(columnName = "email", constraints = {Constraint.NOT_NULL, Constraint.UNIQUE})
+	@Column(columnName = "email", constraints = {Constraint.NOT_NULL, Constraint.UNIQUE}, dataType = "VARCHAR(50)")
 	private String email;
 	
-	@Column(columnName = "pwd", constraints = {Constraint.NOT_NULL})
+	@Column(columnName = "pwd", constraints = {Constraint.NOT_NULL}, dataType = "VARCHAR(50)")
 	private String password; //encrypt this
 	
-	@Column(columnName = "role", constraints = {Constraint.NOT_NULL})
+	@Column(columnName = "user_role", constraints = {Constraint.NOT_NULL}, dataType = "VARCHAR(50)")
 	private Role role;
 	
 	public User(String email, String password) {

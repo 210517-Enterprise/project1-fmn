@@ -26,6 +26,10 @@ public class IdField {
 		return field.getType();
 	}
 	
+	public String getSQLDataType() {
+		return field.getAnnotation(Id.class).dataType();
+	}
+	
 	public String getColumnName() {
 		return field.getAnnotation(Id.class).columnName();
 	}

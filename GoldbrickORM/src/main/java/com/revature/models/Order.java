@@ -1,6 +1,5 @@
 package com.revature.models;
 
-
 import java.time.LocalDateTime;
 
 import com.revature.annotations.Column;
@@ -10,29 +9,30 @@ import com.revature.annotations.JoinColumn;
 
 @Entity(tableName = "orders")
 public class Order {
-	
-	@Id(columnName = "id", constraints = {Constraint.PRIMARY_KEY, Constraint.SERIAL})
+
+	@Id(columnName = "id", constraints = { Constraint.PRIMARY_KEY }, dataType = "SERIAL")
 	private int id;
-	
-	@JoinColumn(columnName = "user_id", constraints = {Constraint.FOREIGN_KEY})
+
+	@JoinColumn(columnName = "user_id", constraints = { Constraint.FOREIGN_KEY }, dataType = "INT")
 	private int userID;
-	
-	@JoinColumn(columnName = "product_id", constraints = {Constraint.FOREIGN_KEY})
+
+	@JoinColumn(columnName = "product_id", constraints = { Constraint.FOREIGN_KEY }, dataType = "INT")
 	private int productID;
-	
-	@Column(columnName = "order_date", constraints = {Constraint.NOT_NULL})
+
+	@Column(columnName = "order_date", constraints = { Constraint.NOT_NULL }, dataType = "DATETIME")
 	private LocalDateTime orderDate;
-	
-	@Column(columnName = "totalPrice", constraints = {Constraint.NOT_NULL})
+
+	@Column(columnName = "totalPrice", constraints = { Constraint.NOT_NULL }, dataType = "NUMERIC")
 	private double totalPrice;
-	
-	@Column(columnName = "fullfilled", constraints = {Constraint.NOT_NULL})
+
+	@Column(columnName = "fullfilled", constraints = { Constraint.NOT_NULL }, dataType = "BOOLEAN")
 	private boolean fulfilled;
-	
-	@Column(columnName = "quantity", constraints = {Constraint.NOT_NULL})
+
+	@Column(columnName = "quantity", constraints = { Constraint.NOT_NULL }, dataType = "INT")
 	private int quantity;
-	
-	public Order(int id, int userID, int productID, LocalDateTime orderDate, double totalPrice, boolean fulfilled, int quantity) {
+
+	public Order(int id, int userID, int productID, LocalDateTime orderDate, double totalPrice, boolean fulfilled,
+			int quantity) {
 		super();
 		this.id = id;
 		this.userID = userID;
@@ -149,7 +149,5 @@ public class Order {
 		return "Order [id=" + id + ", userID=" + userID + ", productID=" + productID + ", orderDate=" + orderDate
 				+ ", totalPrice=" + totalPrice + ", fulfilled=" + fulfilled + ", quantity=" + quantity + "]";
 	}
-
-	
 
 }

@@ -70,16 +70,17 @@ public class Metamodel<T> {
 	public List<ColumnField> getAttributes() {
 
 		Field[] fields = clazz.getDeclaredFields();
+		
 		for (Field field : fields) {
 			// check that the field is a ColumnField
 			Column column = field.getAnnotation(Column.class);
-			if (column != null) {
+			if (column != null && !this.attributes.contains(new ColumnField(field))) {
 				this.attributes.add(new ColumnField(field));
 			}
 		}
 
-		if (this.attributes.isEmpty())
-			throw new RuntimeException("No attributes found in " + this.clazz.getName());
+//		if (this.attributes.isEmpty())
+//			throw new RuntimeException("No attributes found in " + this.clazz.getName());
 
 		return this.attributes;
 	}
@@ -90,7 +91,7 @@ public class Metamodel<T> {
 		for (Field field : fields) {
 			JoinColumn fk = field.getAnnotation(JoinColumn.class);
 
-			if (fk != null) {
+			if (fk != null && !this.foreignKeys.contains(new ForeignKeyField(field))) {
 				this.foreignKeys.add(new ForeignKeyField(field));
 			}
 		}

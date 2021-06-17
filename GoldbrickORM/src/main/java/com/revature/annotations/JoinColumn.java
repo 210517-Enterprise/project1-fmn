@@ -12,4 +12,5 @@ import com.revature.models.Constraint;
 public @interface JoinColumn {
 	String columnName();
 	Constraint[] constraints();
+	String dataType();
 }

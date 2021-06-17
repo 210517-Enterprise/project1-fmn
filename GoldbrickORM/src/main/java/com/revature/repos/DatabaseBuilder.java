@@ -56,7 +56,6 @@ public class DatabaseBuilder {
 	}
 
 	private String getTableName(Class<?> clazz) {
-		System.out.println("Getting table name from class " + clazz.getName());
 		try {
 			return clazz.getAnnotation(Entity.class).tableName();
 		} catch (SecurityException e) {
@@ -68,6 +67,7 @@ public class DatabaseBuilder {
 	private String getPrimaryKey(Metamodel<Class<?>> model) {
 		// need to figure out how to add constraints
 		String nameAndConstraints = model.getPrimaryKey().getColumnName();
+		nameAndConstraints += " " + model.getPrimaryKey().getSQLDataType();
 
 		for (Constraint cons : model.getPrimaryKey().getConstraints()) {
 			nameAndConstraints += " " + Constraint.stringRepresentation(cons);
@@ -85,6 +85,7 @@ public class DatabaseBuilder {
 		for (int i = 0; i < fks.size(); i++) {
 			// need to figure out how to add constraints
 			namesAndConstraints[i] = fks.get(i).getColumnName();
+			namesAndConstraints[i] += " " + fks.get(i).getSQLDataType();
 			for (Constraint cons : fks.get(i).getConstraints()) {
 				namesAndConstraints[i] += " " + Constraint.stringRepresentation(cons);
 			}
@@ -101,6 +102,7 @@ public class DatabaseBuilder {
 		for (int i = 0; i < atts.size(); i++) {
 			// need to figure out how to add constraints
 			columns[i] = atts.get(i).getColumnName();
+			columns[i] += " " + atts.get(i).getSQLDataType();
 			for (Constraint cons : atts.get(i).getConstraints()) {
 				columns[i] += " " + Constraint.stringRepresentation(cons);
 			}
