@@ -1,6 +1,12 @@
 package com.revature.repos;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
+
+import javax.sql.DataSource;
 
 import com.revature.annotations.Entity;
 import com.revature.models.Category;
@@ -10,6 +16,7 @@ import com.revature.models.Product;
 import com.revature.models.User;
 import com.revature.util.ColumnField;
 import com.revature.util.Configuration;
+import com.revature.util.ConnectionUtil;
 import com.revature.util.ForeignKeyField;
 import com.revature.util.IdField;
 import com.revature.util.Metamodel;
@@ -22,7 +29,7 @@ public class DatabaseBuilder {
 		this.config = cfg;
 	}
 
-	public boolean createTables() throws NoSuchFieldException {
+	public boolean createTables(Connection conn) throws NoSuchFieldException {
 		// check if tables exist in db
 		for (Metamodel<Class<?>> mm : this.config.getMetamodels()) {
 
@@ -50,7 +57,21 @@ public class DatabaseBuilder {
 			str.append(");");
 			
 			System.out.println(str);
+			
+			try {
+				PreparedStatement ps = conn.prepareStatement(str.toString());
+				
+				ResultSet rs = ps.executeQuery();
+				
+				
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+
 		}
+		
+		
 
 		return false;
 	}
@@ -111,19 +132,40 @@ public class DatabaseBuilder {
 		return columns;
 	}
 	
+	
+	
 	public static void main(String[] args) {
-		Configuration cfg = new Configuration();
-		cfg.addAnnotatedClass(User.class)
-		.addAnnotatedClass(Order.class)
-		.addAnnotatedClass(Product.class)
-		.addAnnotatedClass(Category.class);
 		
-		DatabaseBuilder dbb = new DatabaseBuilder(cfg);
+		ConnectionUtil jdbcObj = new ConnectionUtil();
+		ResultSet rs = null;
+		PreparedStatement ps = null;
+		Connection connObj = null;
+		
 		try {
-			dbb.createTables();
+			DataSource datasource = jdbcObj.setUpPool();
+			jdbcObj.printDBStatus();
+			
+			System.out.println("weeeeeee");
+			connObj = datasource.getConnection();
+			
+			Configuration cfg = new Configuration();
+			cfg.addAnnotatedClass(User.class)
+			.addAnnotatedClass(Order.class)
+			.addAnnotatedClass(Product.class)
+			.addAnnotatedClass(Category.class);
+			
+			DatabaseBuilder dbb = new DatabaseBuilder(cfg);
+			
+			dbb.createTables(connObj);
+		} catch(SQLException e) {
+			e.printStackTrace();
 		} catch (NoSuchFieldException e) {
 			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
+		
+		
 	}
 
 }
