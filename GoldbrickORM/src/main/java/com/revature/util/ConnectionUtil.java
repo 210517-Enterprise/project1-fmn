@@ -29,8 +29,8 @@ public class ConnectionUtil {
 	static String JDBC_USERNAME = "";
 	static String JDBC_PASSWORD = "";
 	
-	Properties props = new Properties();
-	ClassLoader loader = Thread.currentThread().getContextClassLoader();
+	static Properties props = new Properties();
+	static ClassLoader loader = Thread.currentThread().getContextClassLoader();
 
 	
 
@@ -42,7 +42,7 @@ public class ConnectionUtil {
 	 * @return
 	 * @throws Exception
 	 */
-	public DataSource setUpPool() throws Exception {
+	public static DataSource setUpPool() throws Exception {
 		
 		try { //pull data from connection.properties file
 			Class.forName(JDBC_DRIVER);
@@ -84,7 +84,7 @@ public class ConnectionUtil {
 	}
 
 	/**
-	 * Method will return the GOP to called method, allowing for CRUD operations to be preformed
+	 * Method will return the GOP to called method, allowing for CRUD operations to be performed
 	 * @return
 	 */
 	public static GenericObjectPool getConnectionPool() {
