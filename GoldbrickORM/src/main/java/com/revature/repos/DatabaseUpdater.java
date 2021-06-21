@@ -37,6 +37,8 @@ public class DatabaseUpdater {
 	 * @param mm   The meta-model of the Category class
 	 * @param cat  The Category object that needs to be updated in the database
 	 * @param conn A connection from the connection pool
+	 * 
+	 * @return true if database is updated successful, false if nothing is updated
 	 */
 	public static boolean updateCategory(Metamodel<Category> mm, Category cat, Connection conn) {
 		IdField pk = mm.getPrimaryKey();
@@ -66,6 +68,9 @@ public class DatabaseUpdater {
 	 * @param mm    The meta-model of the Order class
 	 * @param order The Order object that needs to be updated in the database
 	 * @param conn  A connection from the connection pool
+	 * 
+	 * @return true if database is updated successful, false if nothing is updated
+	 * 
 	 * @throws IllegalAccessException
 	 * @throws IllegalArgumentException
 	 * @throws InvocationTargetException
@@ -110,6 +115,9 @@ public class DatabaseUpdater {
 	 * @param mm    The meta-model of the Product class
 	 * @param order The Product object that needs to be updated in the database
 	 * @param conn  A connection from the connection pool
+	 * 
+	 * @return true if database is updated successful, false if nothing is updated
+	 * 
 	 * @throws IllegalAccessException
 	 * @throws IllegalArgumentException
 	 * @throws InvocationTargetException
@@ -162,6 +170,9 @@ public class DatabaseUpdater {
 	 * @param mm    The meta-model of the User class
 	 * @param order The User object that needs to be updated in the database
 	 * @param conn  A connection from the connection pool
+	 * 
+	 * @return true if database is updated successful, false if nothing is updated
+	 * 
 	 * @throws IllegalAccessException
 	 * @throws IllegalArgumentException
 	 * @throws InvocationTargetException
