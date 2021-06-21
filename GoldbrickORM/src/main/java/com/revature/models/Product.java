@@ -2,6 +2,7 @@ package com.revature.models;
 
 import com.revature.annotations.Column;
 import com.revature.annotations.Entity;
+import com.revature.annotations.Getter;
 import com.revature.annotations.Id;
 import com.revature.annotations.JoinColumn;
 
@@ -29,9 +30,10 @@ public class Product {
 	@Column(columnName = "in_stock", constraints = {Constraint.NOT_NULL}, dataType = "BOOLEAN")
 	private boolean inStock;
 	
-	public Product(int id, String productName, String productDescription, double price, int quantity, boolean inStock) {
+	public Product(int id, int catId, String productName, String productDescription, double price, int quantity, boolean inStock) {
 		super();
 		this.id = id;
+		this.categoryID = catId;
 		this.productName = productName;
 		this.productDescription = productDescription;
 		this.price = price;
@@ -39,6 +41,7 @@ public class Product {
 		this.inStock = inStock;
 	}
 
+	@Getter(name = "id")
 	public int getId() {
 		return id;
 	}
@@ -47,6 +50,16 @@ public class Product {
 		this.id = id;
 	}
 
+	@Getter(name = "category_id")
+	public int getCategoryID() {
+		return categoryID;
+	}
+
+	public void setCategoryID(int categoryID) {
+		this.categoryID = categoryID;
+	}
+
+	@Getter(name = "product_name")
 	public String getProductName() {
 		return productName;
 	}
@@ -55,6 +68,7 @@ public class Product {
 		this.productName = productName;
 	}
 
+	@Getter(name = "product_description")
 	public String getProductDescription() {
 		return productDescription;
 	}
@@ -63,6 +77,7 @@ public class Product {
 		this.productDescription = productDescription;
 	}
 
+	@Getter(name = "price")
 	public double getPrice() {
 		return price;
 	}
@@ -71,6 +86,7 @@ public class Product {
 		this.price = price;
 	}
 
+	@Getter(name = "quantity")
 	public int getQuantity() {
 		return quantity;
 	}
@@ -79,6 +95,7 @@ public class Product {
 		this.quantity = quantity;
 	}
 
+	@Getter(name = "in_stock")
 	public boolean isInStock() {
 		if(this.getQuantity() > 0)
 			return true;
