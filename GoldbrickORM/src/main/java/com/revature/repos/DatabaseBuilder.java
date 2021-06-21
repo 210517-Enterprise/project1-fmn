@@ -135,18 +135,23 @@ public class DatabaseBuilder {
 			DataSource datasource = jdbcObj.setUpPool();
 			jdbcObj.printDBStatus();
 			
-			System.out.println("weeeeeee");
+			System.out.println("\n");
 			connObj = datasource.getConnection();
 			
-			Configuration cfg = new Configuration();
-			cfg.addAnnotatedClass(User.class)
-			.addAnnotatedClass(Category.class)
-			.addAnnotatedClass(Product.class)
-			.addAnnotatedClass(Order.class);
+//			Configuration cfg = new Configuration();
+//			cfg.addAnnotatedClass(User.class)
+//			.addAnnotatedClass(Category.class)
+//			.addAnnotatedClass(Product.class)
+//			.addAnnotatedClass(Order.class);
+//			
+//			
+//			DatabaseBuilder dbb = new DatabaseBuilder(cfg);
+//			dbb.createTables(connObj);
+//			
+			GetDB db = new GetDB();
+			db.getAll(connObj);
 			
-			
-			DatabaseBuilder dbb = new DatabaseBuilder(cfg);
-			dbb.createTables(connObj);
+			db.getByUsername(connObj, "MOLLIE", "MOLLIE");
 			
 		} catch(SQLException e) {
 			e.printStackTrace();
