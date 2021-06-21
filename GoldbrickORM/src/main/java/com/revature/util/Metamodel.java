@@ -49,9 +49,9 @@ public class Metamodel<T> {
 		return this.clazz.getSimpleName();
 	}
 	
-	public String getTableName(Class<?> clazz) {
+	public String getTableName() {
 		try {
-			return clazz.getAnnotation(Entity.class).tableName();
+			return this.clazz.getAnnotation(Entity.class).tableName();
 		} catch (SecurityException e) {
 			e.printStackTrace();
 			return null;

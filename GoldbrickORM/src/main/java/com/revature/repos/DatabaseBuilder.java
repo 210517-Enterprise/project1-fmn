@@ -37,7 +37,7 @@ public class DatabaseBuilder {
 			if (pk == null)
 				throw new NoSuchFieldException("Class " + mm.getClassName() + " has no primary key");
 
-			StringBuilder str = new StringBuilder("CREATE TABLE " + mm.getTableName(mm.getClazz()) + "(");
+			StringBuilder str = new StringBuilder("CREATE TABLE " + mm.getTableName() + "(");
 			// append PK+constraints
 			str.append(getPrimaryKey(mm) + ", ");
 
