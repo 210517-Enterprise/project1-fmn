@@ -1,5 +1,6 @@
 package com.revature.models;
 
+import java.sql.Date;
 import java.time.LocalDateTime;
 
 import com.revature.annotations.Column;
@@ -21,7 +22,7 @@ public class Order {
 	private int productID;
 
 	@Column(columnName = "order_date", constraints = { Constraint.NOT_NULL }, dataType = "DATE")
-	private LocalDateTime orderDate;
+	private Date orderDate;
 
 	@Column(columnName = "total_price", constraints = { Constraint.NOT_NULL }, dataType = "NUMERIC")
 	private double totalPrice;
@@ -32,7 +33,7 @@ public class Order {
 	@Column(columnName = "quantity", constraints = { Constraint.NOT_NULL }, dataType = "INT")
 	private int quantity;
 
-	public Order(int id, int userID, int productID, LocalDateTime orderDate, double totalPrice, boolean fulfilled,
+	public Order(int id, int userID, int productID, Date orderDate, double totalPrice, boolean fulfilled,
 			int quantity) {
 		super();
 		this.id = id;
@@ -72,11 +73,11 @@ public class Order {
 	}
 
 	@Getter(name="order_date")
-	public LocalDateTime getOrderDate() {
+	public Date getOrderDate() {
 		return orderDate;
 	}
 
-	public void setOrderDate(LocalDateTime orderDate) {
+	public void setOrderDate(Date orderDate) {
 		this.orderDate = orderDate;
 	}
 

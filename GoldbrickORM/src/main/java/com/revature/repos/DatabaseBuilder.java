@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.sql.DataSource;
@@ -151,8 +152,13 @@ public class DatabaseBuilder {
 			GetDB db = new GetDB();
 			db.getAll(connObj);
 			
-			db.getByUsername(connObj, "MOLLIE", "MOLLIE");
-			
+			User u = db.getByUsername(connObj, "MOLLIE", "MOLLIE");
+			System.out.println(u.toString());
+			ArrayList<Order> o = new ArrayList<Order>();
+			o = db.getAllOrders(connObj, u);
+			if(o.size() == 0) {
+				System.out.println("No orders");
+			}
 		} catch(SQLException e) {
 			e.printStackTrace();
 		} catch (NoSuchFieldException e) {

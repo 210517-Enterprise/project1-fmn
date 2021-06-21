@@ -1,15 +1,18 @@
 package com.revature.repos;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 
 
 import org.apache.log4j.Logger;
 
+import com.revature.models.Order;
 import com.revature.models.Role;
 import com.revature.models.User;
 
@@ -17,6 +20,13 @@ import com.revature.models.User;
 public class GetDB {
 	//private static Logger log = Logger.getLogger(GetDB.class);
 	
+	
+	/** Method aims to retrieve all users from the databse
+	 * 
+	 * @param conn
+	 * @return
+	 * @throws SQLException
+	 */
 	public ArrayList<User> getAll(Connection conn) throws SQLException{
 		ArrayList<User> allUsers = new ArrayList<User>();
 		
@@ -101,18 +111,58 @@ public class GetDB {
 				//if they do match, return the user
 				User u = new User(id, firstName, lastName, email, pwd, role);
 				System.out.println(u.toString());
+				return u;
 				
 			} else {
 		//		log.error("USER " + email + " HAS FAILED LOGIN, EXITING APPLICATION");
-				System.exit(0);
+				System.out.println("User's passwords do not match, try again.");
+				return null;
 			}
 		
 	}
 		return null;
-	}
-	
+		
+	}		
+		public ArrayList<Order> getAllOrders(Connection conn, User u) throws SQLException{
+			ArrayList<Order> orders = new ArrayList<Order>();
 			
+			String sql = "SELECT * FROM orders";
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				System.out.println("INSIDE ORDERS");
+				int id = rs.getInt(1);
+				int userID = rs.getInt(2);
+				int productID = rs.getInt(3);
+				Date date = rs.getDate(4);
+				int priceTotal = rs.getInt(5);
+				boolean isFulfilled = rs.getBoolean(6);
+				int quantity = rs.getInt(7);
+				
+				
+				
+				
+				Order o = new Order(id, userID, productID, date, priceTotal, isFulfilled, quantity);
+				System.out.println("Printing Orders: \n");
+				System.out.println(o.toString());
+				orders.add(o);
+				
+				return orders;
+				
+			}
+			
+			
+			return null;
+		}
+
+		
+		
+		
 }
+	
+	
+	
 
 
 
