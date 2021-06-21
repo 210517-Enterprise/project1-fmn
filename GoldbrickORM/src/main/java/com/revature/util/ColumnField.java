@@ -36,6 +36,7 @@ public class ColumnField {
 	public Constraint[] getConstraints() {
 		return field.getAnnotation(Column.class).constraints();
 	}
+	
 
 	@Override
 	public int hashCode() {

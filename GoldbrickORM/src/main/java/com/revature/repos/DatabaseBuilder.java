@@ -37,10 +37,7 @@ public class DatabaseBuilder {
 			if (pk == null)
 				throw new NoSuchFieldException("Class " + mm.getClassName() + " has no primary key");
 
-			List<ColumnField> attributes = mm.getAttributes();
-			List<ForeignKeyField> foreignKeys = mm.getForeignKeys();
-
-			StringBuilder str = new StringBuilder("CREATE TABLE " + getTableName(mm.getClazz()) + "(");
+			StringBuilder str = new StringBuilder("CREATE TABLE " + mm.getTableName() + "(");
 			// append PK+constraints
 			str.append(getPrimaryKey(mm) + ", ");
 
@@ -76,14 +73,6 @@ public class DatabaseBuilder {
 		return false;
 	}
 
-	private String getTableName(Class<?> clazz) {
-		try {
-			return clazz.getAnnotation(Entity.class).tableName();
-		} catch (SecurityException e) {
-			e.printStackTrace();
-			return null;
-		}
-	}
 
 	private String getPrimaryKey(Metamodel<Class<?>> model) {
 		// need to figure out how to add constraints

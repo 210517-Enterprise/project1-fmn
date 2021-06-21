@@ -1,14 +1,17 @@
 package com.revature.util;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.revature.annotations.Column;
 import com.revature.annotations.Entity;
+import com.revature.annotations.Getter;
 import com.revature.annotations.Id;
 import com.revature.annotations.JoinColumn;
-import com.revature.models.Product;
 
 public class Metamodel<T> {
 
@@ -47,6 +50,15 @@ public class Metamodel<T> {
 
 	public String getSimpleClass() {
 		return this.clazz.getSimpleName();
+	}
+	
+	public String getTableName() {
+		try {
+			return this.clazz.getAnnotation(Entity.class).tableName();
+		} catch (SecurityException e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 
 	public IdField getPrimaryKey() {
@@ -99,21 +111,17 @@ public class Metamodel<T> {
 		return this.foreignKeys;
 	}
 	
-	public static void main(String[] args) {
-		//User user = new User(1, "mollie", "morrow", "mfmorrow", "password", Role.ADMIN);
-		Metamodel<Product> mm = Metamodel.of(Product.class);
-		
-		System.out.println(mm.getSimpleClass());
 
-		System.out.println("Primary Key: " + mm.getPrimaryKey().getName());
+	public Map<String, Method> getGetters(){
+		HashMap<String, Method> getterMap = new HashMap<>();
 		
-		System.out.println("Foreign Keys:");
-		for(ForeignKeyField f: mm.getForeignKeys())
-			System.out.println(f.getName());
+		Method [] allMethods = this.clazz.getDeclaredMethods();
+		for(Method method : allMethods) {
+			if(method.getDeclaredAnnotation(Getter.class) != null) {
+				getterMap.put(method.getDeclaredAnnotation(Getter.class).name(), method);
+			}
+		}
 		
-		System.out.println("Attributes:");
-		for(ColumnField c: mm.getAttributes())
-			System.out.println(c.getName());
+		return getterMap;
 	}
-
 }
