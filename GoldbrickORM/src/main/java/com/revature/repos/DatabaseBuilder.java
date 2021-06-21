@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.sql.DataSource;
@@ -135,19 +136,29 @@ public class DatabaseBuilder {
 			DataSource datasource = jdbcObj.setUpPool();
 			jdbcObj.printDBStatus();
 			
-			System.out.println("weeeeeee");
+			System.out.println("\n");
 			connObj = datasource.getConnection();
 			
-			Configuration cfg = new Configuration();
-			cfg.addAnnotatedClass(User.class)
-			.addAnnotatedClass(Category.class)
-			.addAnnotatedClass(Product.class)
-			.addAnnotatedClass(Order.class);
+//			Configuration cfg = new Configuration();
+//			cfg.addAnnotatedClass(User.class)
+//			.addAnnotatedClass(Category.class)
+//			.addAnnotatedClass(Product.class)
+//			.addAnnotatedClass(Order.class);
+//			
+//			
+//			DatabaseBuilder dbb = new DatabaseBuilder(cfg);
+//			dbb.createTables(connObj);
+//			
+			GetDB db = new GetDB();
+			db.getAll(connObj);
 			
-			
-			DatabaseBuilder dbb = new DatabaseBuilder(cfg);
-			dbb.createTables(connObj);
-			
+			User u = db.getByUsername(connObj, "MOLLIE", "MOLLIE");
+			System.out.println(u.toString());
+			ArrayList<Order> o = new ArrayList<Order>();
+			o = db.getAllOrders(connObj);
+			if(o.size() == 0) {
+				System.out.println("No orders");
+			}
 		} catch(SQLException e) {
 			e.printStackTrace();
 		} catch (NoSuchFieldException e) {
