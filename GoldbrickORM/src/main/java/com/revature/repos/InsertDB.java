@@ -12,6 +12,7 @@ import java.util.Map;
 import javax.sql.DataSource;
 
 import com.revature.annotations.Entity;
+import com.revature.models.Role;
 import com.revature.models.User;
 import com.revature.util.ColumnField;
 import com.revature.util.Configuration;
@@ -59,6 +60,13 @@ public class InsertDB {
 		// for(String columnName : a) {
 		// sql += columnName;
 		// }
+		
+		try {
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.execute();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		
 		System.out.println(sql);
 	}
@@ -148,7 +156,7 @@ public static void main(String[] args) {
 			System.out.println("weeeeeee");
 			connObj = datasource.getConnection();
 			
-			User user = new User(0, "frank", null, null, null, null);	
+			User user = new User(0, "Frank", "Aurori", "faurori@gmail.com", "pass", null);
 			Metamodel<User> um = new Metamodel<>(User.class);
 			
 			insertUser(um, user, connObj);
