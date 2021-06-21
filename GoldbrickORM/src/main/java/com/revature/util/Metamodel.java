@@ -48,6 +48,15 @@ public class Metamodel<T> {
 	public String getSimpleClass() {
 		return this.clazz.getSimpleName();
 	}
+	
+	public String getTableName(Class<?> clazz) {
+		try {
+			return clazz.getAnnotation(Entity.class).tableName();
+		} catch (SecurityException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
 
 	public IdField getPrimaryKey() {
 		if (this.primaryKey == null) {
@@ -99,21 +108,5 @@ public class Metamodel<T> {
 		return this.foreignKeys;
 	}
 	
-	public static void main(String[] args) {
-		//User user = new User(1, "mollie", "morrow", "mfmorrow", "password", Role.ADMIN);
-		Metamodel<Product> mm = Metamodel.of(Product.class);
-		
-		System.out.println(mm.getSimpleClass());
-
-		System.out.println("Primary Key: " + mm.getPrimaryKey().getName());
-		
-		System.out.println("Foreign Keys:");
-		for(ForeignKeyField f: mm.getForeignKeys())
-			System.out.println(f.getName());
-		
-		System.out.println("Attributes:");
-		for(ColumnField c: mm.getAttributes())
-			System.out.println(c.getName());
-	}
 
 }
