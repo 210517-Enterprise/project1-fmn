@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 
 import com.revature.annotations.Column;
 import com.revature.annotations.Entity;
+import com.revature.annotations.Getter;
 import com.revature.annotations.Id;
 import com.revature.annotations.JoinColumn;
 
@@ -22,7 +23,7 @@ public class Order {
 	@Column(columnName = "order_date", constraints = { Constraint.NOT_NULL }, dataType = "DATE")
 	private LocalDateTime orderDate;
 
-	@Column(columnName = "totalPrice", constraints = { Constraint.NOT_NULL }, dataType = "NUMERIC")
+	@Column(columnName = "total_price", constraints = { Constraint.NOT_NULL }, dataType = "NUMERIC")
 	private double totalPrice;
 
 	@Column(columnName = "fullfilled", constraints = { Constraint.NOT_NULL }, dataType = "BOOLEAN")
@@ -43,6 +44,7 @@ public class Order {
 		this.quantity = quantity;
 	}
 
+	@Getter(name="id")
 	public int getId() {
 		return id;
 	}
@@ -51,6 +53,7 @@ public class Order {
 		this.id = id;
 	}
 
+	@Getter(name="user_id")
 	public int getUserID() {
 		return userID;
 	}
@@ -59,6 +62,7 @@ public class Order {
 		this.userID = userID;
 	}
 
+	@Getter(name="product_id")
 	public int getProductID() {
 		return productID;
 	}
@@ -67,6 +71,7 @@ public class Order {
 		this.productID = productID;
 	}
 
+	@Getter(name="order_date")
 	public LocalDateTime getOrderDate() {
 		return orderDate;
 	}
@@ -75,6 +80,7 @@ public class Order {
 		this.orderDate = orderDate;
 	}
 
+	@Getter(name="total_price")
 	public double gettotalPrice() {
 		return totalPrice;
 	}
@@ -83,6 +89,7 @@ public class Order {
 		this.totalPrice = totalPrice;
 	}
 
+	@Getter(name="fulfilled")
 	public boolean isFulfilled() {
 		return fulfilled;
 	}
@@ -91,6 +98,7 @@ public class Order {
 		this.fulfilled = fulfilled;
 	}
 
+	@Getter(name="quantity")
 	public int getQuantity() {
 		return quantity;
 	}
