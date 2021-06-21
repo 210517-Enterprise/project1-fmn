@@ -1,5 +1,6 @@
 package com.revature.repos;
 
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -37,20 +38,28 @@ public class DatabaseUpdater {
 
 	}
 
-	public static void updateOrder(Metamodel<Order> mm, Order order, Connection conn) {
+	public static void updateOrder(Metamodel<Order> mm, Order order, Connection conn) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException {
 		IdField pk = mm.getPrimaryKey();
-		List<ColumnField> attributes = mm.getAttributes();
-		List<ForeignKeyField> fks = mm.getForeignKeys();
 		Map<String, Method> getters = mm.getGetters();
 		
 		String sql = "UPDATE " + mm.getTableName() + " SET ";
 		
 		for(String columnName : getters.keySet()) {
-			sql += columnName + " = " + getters.get(columnName) + ", ";
+			if(!columnName.equals(pk.getColumnName()))
+				sql += columnName + " = " + getters.get(columnName).invoke(order, null) + ", ";
 		}
-		
+		sql = sql.substring(0, sql.lastIndexOf(","));
+		sql += " WHERE " + pk.getColumnName() + " = " + getters.get(pk.getColumnName()).invoke(order, null);
 		System.out.println(sql);
 		
+		
+		try {
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.executeQuery();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 
 	}
 
@@ -78,7 +87,7 @@ public class DatabaseUpdater {
 			
 			//updateCategory(mm, cat, connObj);
 			
-			Order order = new Order(1, 1, 1, null, 0, false, 0);
+			Order order = new Order(2, 1, 1, null, 0, false, 0);
 			Metamodel<Order> mmO = new Metamodel<>(Order.class);
 			
 			updateOrder(mmO, order, connObj);

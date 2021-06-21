@@ -27,7 +27,7 @@ public class Order {
 	@Column(columnName = "total_price", constraints = { Constraint.NOT_NULL }, dataType = "NUMERIC")
 	private double totalPrice;
 
-	@Column(columnName = "fullfilled", constraints = { Constraint.NOT_NULL }, dataType = "BOOLEAN")
+	@Column(columnName = "fulfilled", constraints = { Constraint.NOT_NULL }, dataType = "BOOLEAN")
 	private boolean fulfilled;
 
 	@Column(columnName = "quantity", constraints = { Constraint.NOT_NULL }, dataType = "INT")
