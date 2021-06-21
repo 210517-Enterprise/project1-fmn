@@ -6,7 +6,7 @@ import com.revature.annotations.Id;
 import com.revature.models.Constraint;
 
 
-public class IdField {
+public class IdField implements CustomField{
 	
 	private Field field;
 
@@ -17,23 +17,29 @@ public class IdField {
 		}
 		this.field = field;
 	}
+	
 
+	@Override
 	public String getName() {
 		return field.getName();
 	}
 	
+	@Override
 	public Class<?> getType(){
 		return field.getType();
 	}
 	
+	@Override
 	public String getSQLDataType() {
 		return field.getAnnotation(Id.class).dataType();
 	}
 	
+	@Override
 	public String getColumnName() {
 		return field.getAnnotation(Id.class).columnName();
 	}
 	
+	@Override
 	public Constraint[] getConstraints() {
 		return field.getAnnotation(Id.class).constraints();
 	}
