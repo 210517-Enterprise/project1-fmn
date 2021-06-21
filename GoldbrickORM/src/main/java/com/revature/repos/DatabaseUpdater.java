@@ -10,6 +10,8 @@ import java.util.Map;
 
 import javax.sql.DataSource;
 
+import org.apache.log4j.Logger;
+
 import com.revature.models.Category;
 import com.revature.models.Order;
 import com.revature.models.Product;
@@ -26,6 +28,8 @@ import com.revature.util.Metamodel;
  *
  */
 public class DatabaseUpdater {
+	
+	private static Logger log = Logger.getLogger(DatabaseUpdater.class);
 
 	/**
 	 * This method updates the values of an existing Category object in the database
@@ -34,20 +38,26 @@ public class DatabaseUpdater {
 	 * @param cat  The Category object that needs to be updated in the database
 	 * @param conn A connection from the connection pool
 	 */
-	public static void updateCategory(Metamodel<Category> mm, Category cat, Connection conn) {
+	public static boolean updateCategory(Metamodel<Category> mm, Category cat, Connection conn) {
 		IdField pk = mm.getPrimaryKey();
 		ColumnField name = mm.getAttributes().get(0); // category only has 1 attribute
 
 		String sql = "UPDATE " + mm.getTableName() + " SET " + name.getColumnName() + " = \'" + cat.getCategoryName()
 				+ "\' WHERE " + pk.getColumnName() + " = " + cat.getId();
 		try {
-			PreparedStatement ps = conn.prepareStatement(sql);
-			ps.executeQuery();
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			int rowsAffected = stmt.executeUpdate();
+			
+			if(rowsAffected <= 0) {
+				log.warn("No rows updated for Category: " + cat.getCategoryName());
+				return false;
+			}
 
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-
+		
+		return true;
 	}
 
 	/**
@@ -60,8 +70,9 @@ public class DatabaseUpdater {
 	 * @throws IllegalArgumentException
 	 * @throws InvocationTargetException
 	 */
-	public static void updateOrder(Metamodel<Order> mm, Order order, Connection conn)
+	public static boolean updateOrder(Metamodel<Order> mm, Order order, Connection conn)
 			throws IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+		
 		IdField pk = mm.getPrimaryKey();
 		Map<String, Method> getters = mm.getGetters();
 
@@ -78,13 +89,19 @@ public class DatabaseUpdater {
 		sql += " WHERE " + pk.getColumnName() + " = " + getters.get(pk.getColumnName()).invoke(order, null);
 
 		try {
-			PreparedStatement ps = conn.prepareStatement(sql);
-			ps.executeQuery();
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			int rowsAffected = stmt.executeUpdate();
+			
+			if(rowsAffected <= 0) {
+				log.warn("No rows updated for Order: " + order.getId());
+				return false;
+			}
 
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-
+		
+		return true;
 	}
 
 	/**
@@ -97,8 +114,9 @@ public class DatabaseUpdater {
 	 * @throws IllegalArgumentException
 	 * @throws InvocationTargetException
 	 */
-	public static void updateProduct(Metamodel<Product> mm, Product product, Connection conn)
+	public static boolean updateProduct(Metamodel<Product> mm, Product product, Connection conn)
 			throws IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+		
 		IdField pk = mm.getPrimaryKey();
 		Map<String, Method> getters = mm.getGetters();
 
@@ -123,13 +141,19 @@ public class DatabaseUpdater {
 		sql += " WHERE " + pk.getColumnName() + " = " + getters.get(pk.getColumnName()).invoke(product, null);
 
 		try {
-			PreparedStatement ps = conn.prepareStatement(sql);
-			ps.executeQuery();
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			int rowsAffected = stmt.executeUpdate();
+			
+			if(rowsAffected <= 0) {
+				log.warn("No rows updated for Product: " + product.getCategoryID());
+				return false;
+			}
 
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 
+		return true;
 	}
 
 	/**
@@ -142,8 +166,9 @@ public class DatabaseUpdater {
 	 * @throws IllegalArgumentException
 	 * @throws InvocationTargetException
 	 */
-	public static void updateUser(Metamodel<User> mm, User user, Connection conn)
+	public static boolean updateUser(Metamodel<User> mm, User user, Connection conn)
 			throws IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+		
 		IdField pk = mm.getPrimaryKey();
 		Map<String, Method> getters = mm.getGetters();
 
@@ -171,13 +196,19 @@ public class DatabaseUpdater {
 		sql += " WHERE " + pk.getColumnName() + " = " + getters.get(pk.getColumnName()).invoke(user, null);
 
 		try {
-			PreparedStatement ps = conn.prepareStatement(sql);
-			ps.executeQuery();
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			int rowsAffected = stmt.executeUpdate();
+			
+			if(rowsAffected <= 0) {
+				log.warn("No rows updated for User: " + user.getEmail());
+				return false;
+			}
 
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 
+		return true;
 	}
 
 	public static void main(String[] args) {
