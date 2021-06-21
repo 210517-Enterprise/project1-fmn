@@ -1,156 +1,114 @@
 package com.revature.repos;
 
-import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
 
 import javax.sql.DataSource;
 
 import com.revature.annotations.Entity;
-import com.revature.models.Category;
-import com.revature.models.Constraint;
-import com.revature.models.Order;
-import com.revature.models.Product;
 import com.revature.models.User;
 import com.revature.util.ColumnField;
 import com.revature.util.Configuration;
 import com.revature.util.ConnectionUtil;
 import com.revature.util.ForeignKeyField;
+import com.revature.util.IdField;
 import com.revature.util.Metamodel;
 
-public class InsertDB<T> {
-	
-	private Class<T> clazz;
-	
-	
+public class InsertDB {
 	
 	private Configuration config;
 	
-	public InsertDB(Class<T> clazz) {
-		this.clazz = clazz;
-		
-	}
 	public InsertDB(Configuration cfg) { 
 		this.config = cfg;
 	}
 	
-	
-	
-	public String getInsert(Connection conn) throws IllegalArgumentException, IllegalAccessException {
 		
-		StringBuilder insertBuilder = new StringBuilder("INSERT INTO " + getTableName(clazz) + "(" );
-		StringBuilder valuesBuilder = new StringBuilder(" VALUES (");
+	public static void insertUser(Metamodel<User> um, User user, Connection conn)
+			throws IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+		IdField pk = um.getPrimaryKey();
+		List<ColumnField> attributes = um.getAttributes();
+		// System.out.println(attributes);
+
+		Map<String, Method> getters = um.getGetters();
+
+		String sql = "INSERT INTO " + um.getTableName() + "(";
+
+		for (String columnName : getters.keySet()) {
+			if (!columnName.equals(pk.getColumnName())) {
+				sql += columnName + ", ";
+
+			}
+		}
+		sql = sql.substring(0, sql.lastIndexOf(","));
+		sql += ") VALUES (";
+
+		for (String columnName : getters.keySet()) {
+			if (!columnName.equals(pk.getColumnName())) {
+				sql += getters.get(columnName).invoke(user, null) + ",";
+			}
+		}
+
+		sql = sql.substring(0, sql.lastIndexOf(","));
+		sql += ")";
+		// for(String columnName : a) {
+		// sql += columnName;
+		// }
 		
-		try {
-			Field field = clazz.getField("column");
-			ColumnField[] columns = (ColumnField[]) field.get(User.class);
+		System.out.println(sql);
+	}
+	
+	public boolean getInsertString(Connection conn) {
+		
+		for(Metamodel<Class<?>> mm : this.config.getMetamodels()) {
 			
-			for (ColumnField column : columns) {
-				insertBuilder.append(column.getColumnName() + ", ");
+			StringBuilder insertBuilder = new StringBuilder("INSERT INTO " + getTableName(mm.getClazz()) + "(" );
+			StringBuilder valuesBuilder = new StringBuilder(" VALUES (");
+			
+			for(String col : getAttributes(mm)) {
+				insertBuilder.append(col + ", ");
 				valuesBuilder.append("?, ");
-				System.out.println(insertBuilder);
-			}
-		} catch (NoSuchFieldException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SecurityException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		StringBuilder finalString = insertBuilder.append(valuesBuilder);
-		
-		
-		
-		return finalString.toString();
-	}
-	
-	public void saveToTable(T obj, Connection conn) throws IllegalArgumentException, IllegalAccessException {
-		
-		String sql = getInsert(conn);
-		
-		try {
-			Field field = clazz.getField("column");
-			
-			ColumnField[] attributes = (ColumnField[]) field.get(null);
-			
-			PreparedStatement pstmt = conn.prepareStatement(sql);
-			
-			int counter = 1;
-			
-			for (ColumnField att : attributes) {
-				String attName = att.getColumnName();
-				
-				Field newField = obj.getClass().getDeclaredField(attName);
-				
-				pstmt.setObject(counter, newField.get(obj));
-				counter++;
 			}
 			
 			
+			insertBuilder.deleteCharAt(insertBuilder.length() - 1);
+			insertBuilder.deleteCharAt(insertBuilder.length() - 1);
+			valuesBuilder.deleteCharAt(valuesBuilder.length() - 1);
+			valuesBuilder.deleteCharAt(valuesBuilder.length() - 1);
+			insertBuilder.append(")");
+			System.out.println(insertBuilder);
+			valuesBuilder.append(");");
+			System.out.println(valuesBuilder);
 			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} catch (NoSuchFieldException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SecurityException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			StringBuilder finalString = insertBuilder.append(valuesBuilder);
+			
+			try {
+				PreparedStatement ps = conn.prepareStatement(finalString.toString());
+				
+				ps.execute();
+				
+				int count = 1;
+				
+				for(String col : getAttributes(mm)) {
+		//			ps.setObject(count, );
+					count++;
+				}
+				
+				
+				
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
+		
+		return false;
 	}
-	
-	
-	
-//	public boolean getInsertString(Connection conn) {
-//		
-//		for(Metamodel<Class<?>> mm : this.config.getMetamodels()) {
-//			
-//			StringBuilder insertBuilder = new StringBuilder("INSERT INTO " + getTableName(mm.getClazz()) + "(" );
-//			StringBuilder valuesBuilder = new StringBuilder(" VALUES (");
-//			
-//			for(String col : getAttributes(mm)) {
-//				insertBuilder.append(col + ", ");
-//				valuesBuilder.append("?, ");
-//			}
-//			
-//			
-//			insertBuilder.deleteCharAt(insertBuilder.length() - 1);
-//			insertBuilder.deleteCharAt(insertBuilder.length() - 1);
-//			valuesBuilder.deleteCharAt(valuesBuilder.length() - 1);
-//			valuesBuilder.deleteCharAt(valuesBuilder.length() - 1);
-//			insertBuilder.append(")");
-//			System.out.println(insertBuilder);
-//			valuesBuilder.append(");");
-//			System.out.println(valuesBuilder);
-//			
-//			StringBuilder finalString = insertBuilder.append(valuesBuilder);
-//			
-//			try {
-//				PreparedStatement ps = conn.prepareStatement(finalString.toString());
-//				
-//				ps.execute();
-//				
-//				int count = 1;
-//				
-//				for(String col : getAttributes(mm)) {
-//		//			ps.setObject(count, );
-//					count++;
-//				}
-//				
-//				
-//				
-//				
-//			} catch (SQLException e) {
-//				e.printStackTrace();
-//			}
-//		}
-//		
-//		return false;
-//	}
 	
 	private String getTableName(Class<?> clazz) {
 		try {
@@ -163,8 +121,8 @@ public class InsertDB<T> {
 	
 
 	private String[] getAttributes(Metamodel<Class<?>> model) {
-
-		List<ColumnField> atts = model.getAttributes();
+		Metamodel<User> um = new Metamodel<>(User.class);
+		List<ColumnField> atts = um.getAttributes();
 		String[] columns = new String[atts.size()];
 
 		for (int i = 0; i < atts.size(); i++) {
@@ -190,16 +148,12 @@ public static void main(String[] args) {
 			System.out.println("weeeeeee");
 			connObj = datasource.getConnection();
 			
-			Configuration cfg = new Configuration();
-		//	cfg.addAnnotatedClass(User.class)
-//			.addAnnotatedClass(Category.class)
-//			.addAnnotatedClass(Product.class)
-//			.addAnnotatedClass(Order.class);
-//			
+			User user = new User(0, "frank", null, null, null, null);	
+			Metamodel<User> um = new Metamodel<>(User.class);
 			
-			InsertDB dbb = new InsertDB(cfg);
-			dbb.getInsert(connObj);
+			insertUser(um, user, connObj);
 			
+					
 		} catch(SQLException e) {
 			e.printStackTrace();
 		} catch (NoSuchFieldException e) {

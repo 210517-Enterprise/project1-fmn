@@ -2,6 +2,7 @@ package com.revature.models;
 
 import com.revature.annotations.Column;
 import com.revature.annotations.Entity;
+import com.revature.annotations.Getter;
 import com.revature.annotations.Id;
 
 @Entity(tableName = "users")
@@ -30,7 +31,8 @@ public class User {
 		this.email = email;
 		this.password = password;
 	}
-
+	
+	
 	public User(int id, String firstName, String lastName, String email, String password, Role role) {
 		super();
 		this.id = id;
@@ -40,7 +42,8 @@ public class User {
 		this.password = password;
 		this.role = role;
 	}
-
+	
+	@Getter(name="id")
 	public int getId() {
 		return id;
 	}
@@ -48,7 +51,7 @@ public class User {
 	public void setId(int id) {
 		this.id = id;
 	}
-
+	@Getter(name="first_name")
 	public String getFirstName() {
 		return firstName;
 	}
@@ -56,7 +59,7 @@ public class User {
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
-
+	@Getter(name="last_name")
 	public String getLastName() {
 		return lastName;
 	}
@@ -64,7 +67,7 @@ public class User {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-
+	@Getter(name="email")
 	public String getEmail() {
 		return email;
 	}
@@ -72,7 +75,7 @@ public class User {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
+	@Getter(name="pwd")
 	public String getPassword() {
 		return password;
 	}
@@ -80,7 +83,7 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
+	@Getter(name="user_role")
 	public Role getRole() {
 		return role;
 	}
