@@ -155,7 +155,7 @@ public class DatabaseBuilder {
 			User u = db.getByUsername(connObj, "MOLLIE", "MOLLIE");
 			System.out.println(u.toString());
 			ArrayList<Order> o = new ArrayList<Order>();
-			o = db.getAllOrders(connObj, u);
+			o = db.getAllOrders(connObj);
 			if(o.size() == 0) {
 				System.out.println("No orders");
 			}

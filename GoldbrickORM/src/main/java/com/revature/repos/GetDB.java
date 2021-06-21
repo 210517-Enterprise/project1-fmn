@@ -123,7 +123,7 @@ public class GetDB {
 		return null;
 		
 	}		
-		public ArrayList<Order> getAllOrders(Connection conn, User u) throws SQLException{
+		public ArrayList<Order> getAllOrders(Connection conn) throws SQLException{
 			ArrayList<Order> orders = new ArrayList<Order>();
 			
 			String sql = "SELECT * FROM orders";
@@ -131,7 +131,6 @@ public class GetDB {
 			ResultSet rs = ps.executeQuery();
 			
 			while(rs.next()) {
-				System.out.println("INSIDE ORDERS");
 				int id = rs.getInt(1);
 				int userID = rs.getInt(2);
 				int productID = rs.getInt(3);
@@ -139,10 +138,6 @@ public class GetDB {
 				int priceTotal = rs.getInt(5);
 				boolean isFulfilled = rs.getBoolean(6);
 				int quantity = rs.getInt(7);
-				
-				
-				
-				
 				Order o = new Order(id, userID, productID, date, priceTotal, isFulfilled, quantity);
 				System.out.println("Printing Orders: \n");
 				System.out.println(o.toString());
