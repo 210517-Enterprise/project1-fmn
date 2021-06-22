@@ -4,9 +4,10 @@ import java.lang.reflect.Field;
 
 import com.revature.annotations.Column;
 import com.revature.annotations.Id;
+import com.revature.annotations.JoinColumn;
 import com.revature.models.Constraint;
 
-public class ColumnField {
+public class ColumnField implements CustomField{
 
 	private Field field;
 
@@ -17,26 +18,30 @@ public class ColumnField {
 		this.field = field;
 	}
 	
+	@Override
 	public String getName() {
 		return this.field.getName();
 	}
 	
+	@Override
 	public Class<?> getType(){
 		return this.field.getClass();
 	}
 	
+	@Override
 	public String getSQLDataType() {
 		return field.getAnnotation(Column.class).dataType();
 	}
 	
+	@Override
 	public String getColumnName() {
 		return this.field.getAnnotation(Column.class).columnName();
 	}
 	
+	@Override
 	public Constraint[] getConstraints() {
 		return field.getAnnotation(Column.class).constraints();
 	}
-	
 
 	@Override
 	public int hashCode() {
@@ -62,6 +67,8 @@ public class ColumnField {
 			return false;
 		return true;
 	}
+
+
 	
 	
 

@@ -1,23 +1,25 @@
 package com.revature.repos;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
 
 import javax.sql.DataSource;
 
-import com.revature.annotations.Entity;
 import com.revature.models.Category;
-import com.revature.models.Constraint;
 import com.revature.models.Order;
 import com.revature.models.Product;
+import com.revature.models.Role;
 import com.revature.models.User;
 import com.revature.util.ColumnField;
 import com.revature.util.Configuration;
 import com.revature.util.ConnectionUtil;
-import com.revature.util.ForeignKeyField;
+import com.revature.util.IdField;
 import com.revature.util.Metamodel;
 
 public class InsertDB {
@@ -29,77 +31,176 @@ public class InsertDB {
 	}
 	
 		
-	
-	public boolean getInsertString(Connection conn) {
-		
-		for(Metamodel<Class<?>> mm : this.config.getMetamodels()) {
-			
-			StringBuilder insertBuilder = new StringBuilder("INSERT INTO " + getTableName(mm.getClazz()) + "(" );
-			StringBuilder valuesBuilder = new StringBuilder(" VALUES (");
-			
-			for(String col : getAttributes(mm)) {
-				insertBuilder.append(col + ", ");
-				valuesBuilder.append("?, ");
-			}
-			
-			
-			insertBuilder.deleteCharAt(insertBuilder.length() - 1);
-			insertBuilder.deleteCharAt(insertBuilder.length() - 1);
-			valuesBuilder.deleteCharAt(valuesBuilder.length() - 1);
-			valuesBuilder.deleteCharAt(valuesBuilder.length() - 1);
-			insertBuilder.append(")");
-			System.out.println(insertBuilder);
-			valuesBuilder.append(");");
-			System.out.println(valuesBuilder);
-			
-			StringBuilder finalString = insertBuilder.append(valuesBuilder);
-			
-			try {
-				PreparedStatement ps = conn.prepareStatement(finalString.toString());
-				
-				ps.execute();
-				
-				int count = 1;
-				
-				for(String col : getAttributes(mm)) {
-		//			ps.setObject(count, );
-					count++;
-				}
-				
-				
-				
-				
-			} catch (SQLException e) {
-				e.printStackTrace();
+	public static void insertUser(Metamodel<User> um, User user, Connection conn)
+			throws IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+		IdField pk = um.getPrimaryKey();
+
+		Map<String, Method> getters = um.getGetters();
+
+		String sql = "INSERT INTO " + um.getTableName() + "(";
+
+		for (String columnName : getters.keySet()) {
+			if (!columnName.equals(pk.getColumnName())) {
+				sql += columnName + ", ";
+
 			}
 		}
+		sql = sql.substring(0, sql.lastIndexOf(","));
+		sql += ") VALUES (";
+
+		for (String columnName : getters.keySet()) {
+			if (!columnName.equals(pk.getColumnName())) {
+				if (getters.get(columnName).getReturnType() == String.class)
+					sql += "\'" + getters.get(columnName).invoke(user, null) + "\',";
+				else if (getters.get(columnName).getReturnType() == Role.class)
+					sql += "\'" + getters.get(columnName).invoke(user, null).toString() + "\',";
+				else
+					sql += getters.get(columnName).invoke(user, null) + ", ";
+
+			}
+		}
+
+		sql = sql.substring(0, sql.lastIndexOf(","));
+		sql += ")";
 		
-		return false;
-	}
-	
-	private String getTableName(Class<?> clazz) {
+		
 		try {
-			return clazz.getAnnotation(Entity.class).tableName();
-		} catch (SecurityException e) {
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.execute();
+		} catch (SQLException e) {
 			e.printStackTrace();
-			return null;
 		}
+		
 	}
 	
 
-	private String[] getAttributes(Metamodel<Class<?>> model) {
+	public static void insertCategory(Metamodel<Category> cm, Category category, Connection conn)
+			throws IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+		IdField pk = cm.getPrimaryKey();
 
-		List<ColumnField> atts = model.getAttributes();
-		String[] columns = new String[atts.size()];
+		Map<String, Method> getters = cm.getGetters();
 
-		for (int i = 0; i < atts.size(); i++) {
-			
-			columns[i] = atts.get(i).getColumnName();
-		
+		String sql = "INSERT INTO " + cm.getTableName() + "(";
+
+		for (String columnName : getters.keySet()) {
+			if (!columnName.equals(pk.getColumnName())) {
+				sql += columnName + ", ";
+
+			}
+		}
+		sql = sql.substring(0, sql.lastIndexOf(","));
+		sql += ") VALUES (";
+
+		for (String columnName : getters.keySet()) {
+			if (!columnName.equals(pk.getColumnName())) {
+				if (getters.get(columnName).getReturnType() == String.class)
+					sql += "\'" + getters.get(columnName).invoke(category, null) + "\',";
+				else
+					sql += getters.get(columnName).invoke(category, null) + ", ";
+
+			}
 		}
 
-		return columns;
+		sql = sql.substring(0, sql.lastIndexOf(","));
+		sql += ")";
+		
+		
+		try {
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.execute();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
 	}
+	
+	
+	public static void insertOrder(Metamodel<Order> om, Order order, Connection conn)
+			throws IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+		IdField pk = om.getPrimaryKey();
+
+		Map<String, Method> getters = om.getGetters();
+
+		String sql = "INSERT INTO " + om.getTableName() + "(";
+
+		for (String columnName : getters.keySet()) {
+			if (!columnName.equals(pk.getColumnName())) {
+				sql += columnName + ", ";
+
+			}
+		}
+		sql = sql.substring(0, sql.lastIndexOf(","));
+		sql += ") VALUES (";
+
+		for (String columnName : getters.keySet()) {
+			if (!columnName.equals(pk.getColumnName())) {
+				if (getters.get(columnName).getReturnType() == String.class)
+					sql += "\'" + getters.get(columnName).invoke(order, null) + "\',";
+				else
+					sql += getters.get(columnName).invoke(order, null) + ", ";
+
+			}
+		}
+
+		sql = sql.substring(0, sql.lastIndexOf(","));
+		sql += ")";
+		
+		
+		try {
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.execute();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
+	
+	public static void insertProduct(Metamodel<Product> pm, Product product, Connection conn)
+			throws IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+		IdField pk = pm.getPrimaryKey();
+
+		Map<String, Method> getters = pm.getGetters();
+
+		String sql = "INSERT INTO " + pm.getTableName() + "(";
+
+		for (String columnName : getters.keySet()) {
+			if (!columnName.equals(pk.getColumnName())) {
+				sql += columnName + ", ";
+
+			}
+		}
+		sql = sql.substring(0, sql.lastIndexOf(","));
+		sql += ") VALUES (";
+
+		for (String columnName : getters.keySet()) {
+			if (!columnName.equals(pk.getColumnName())) {
+				if (getters.get(columnName).getReturnType() == String.class)
+					sql += "\'" + getters.get(columnName).invoke(product, null) + "\',";
+				else
+					sql += getters.get(columnName).invoke(product, null) + ", ";
+
+			}
+		}
+
+		sql = sql.substring(0, sql.lastIndexOf(","));
+		sql += ")";
+		
+		
+		try {
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.execute();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
+	
+	
+	
+
+	
 	
 public static void main(String[] args) {
 		
@@ -115,16 +216,24 @@ public static void main(String[] args) {
 			System.out.println("weeeeeee");
 			connObj = datasource.getConnection();
 			
-			Configuration cfg = new Configuration();
-			cfg.addAnnotatedClass(User.class)
-			.addAnnotatedClass(Category.class)
-			.addAnnotatedClass(Product.class)
-			.addAnnotatedClass(Order.class);
+			User user = new User(0, "Frank", "Aurori", "test123@test.com", "pass", Role.ADMIN);
+			Metamodel<User> um = new Metamodel<>(User.class);
+			//insertUser(um, user, connObj);
+			
+			Category category = new Category(0, "clothing");
+			Metamodel<Category> cm = new Metamodel<>(Category.class);
+			//insertCategory(cm, category, connObj);
+			
+			Order order = new Order(3, 1, 1, null, 0, false, 0);	
+			Metamodel<Order> om = new Metamodel<>(Order.class);
+			//insertOrder(om, order, connObj);
+			
+			Product prod = new Product(2, 2, "test123", "test123", 0, 0, false);
+			Metamodel<Product> pm = new Metamodel<>(Product.class);
+			insertProduct(pm, prod, connObj);
 			
 			
-			InsertDB dbb = new InsertDB(cfg);
-			dbb.getInsertString(connObj);
-			
+					
 		} catch(SQLException e) {
 			e.printStackTrace();
 		} catch (NoSuchFieldException e) {

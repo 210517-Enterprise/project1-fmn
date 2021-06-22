@@ -6,7 +6,7 @@ import com.revature.annotations.Id;
 import com.revature.annotations.JoinColumn;
 import com.revature.models.Constraint;
 
-public class ForeignKeyField {
+public class ForeignKeyField implements CustomField{
 
 	private Field field;
 
@@ -18,22 +18,27 @@ public class ForeignKeyField {
 		this.field = field;
 	}
 
+	@Override
 	public String getName() {
 		return this.field.getName();
 	}
 	
+	@Override
 	public Class<?> getType(){
 		return this.field.getClass();
 	}
 	
+	@Override
 	public String getSQLDataType() {
 		return field.getAnnotation(JoinColumn.class).dataType();
 	}
 	
+	@Override
 	public String getColumnName() {
 		return this.field.getAnnotation(JoinColumn.class).columnName();
 	}
 	
+	@Override
 	public Constraint[] getConstraints() {
 		return field.getAnnotation(JoinColumn.class).constraints();
 	}

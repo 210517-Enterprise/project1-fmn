@@ -2,6 +2,7 @@ package com.revature.models;
 
 import com.revature.annotations.Column;
 import com.revature.annotations.Entity;
+import com.revature.annotations.Getter;
 import com.revature.annotations.Id;
 
 @Entity(tableName = "categories")
@@ -10,6 +11,7 @@ public class Category {
 	@Id(columnName = "id", constraints = {Constraint.PRIMARY_KEY}, 
 			dataType = "SERIAL")
 	private int id;
+	
 	@Column(columnName = "category_name", constraints = {Constraint.NOT_NULL}, dataType = "VARCHAR(50)")
 	private String categoryName;
 	
@@ -18,18 +20,25 @@ public class Category {
 		this.id = id;
 		this.categoryName = categoryName;
 	}
+	
+	@Getter(name="id")
 	public int getId() {
 		return id;
 	}
+	
 	public void setId(int id) {
 		this.id = id;
 	}
+	
+	@Getter(name="category_name")
 	public String getCategoryName() {
 		return categoryName;
 	}
+	
 	public void setCategoryName(String categoryName) {
 		this.categoryName = categoryName;
 	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;

@@ -22,14 +22,34 @@ import com.revature.util.ForeignKeyField;
 import com.revature.util.IdField;
 import com.revature.util.Metamodel;
 
+/**
+ * This class creates the tables in the database based on the meta-models in configuration
+ * @author Mollie Morrow, Nick Gianino, Frank Aurori
+ * @version 1.0 6/18/21
+ *
+ */
 public class DatabaseBuilder {
 
+	/**
+	 * The configuration object that provides the meta-models to create tables with
+	 */
 	private Configuration config;
 
+	/**
+	 * Constructor for an instance of a Database Builder
+	 * @param cfg The Configuration object
+	 */
 	public DatabaseBuilder(Configuration cfg) {
 		this.config = cfg;
 	}
 
+	/**
+	 * This method creates tables from the information provided in each meta-model in the configuration 
+	 * object
+	 * @param conn The connection from the connection pool
+	 * @return true if a table has been successfully create for each meta-model, false if not
+	 * @throws NoSuchFieldException
+	 */
 	public boolean createTables(Connection conn) throws NoSuchFieldException {
 		// check if tables exist in db
 		for (Metamodel<Class<?>> mm : this.config.getMetamodels()) {
@@ -75,8 +95,13 @@ public class DatabaseBuilder {
 	}
 
 
+	/**
+	 * This method is used within the createTable method to grab the Primary Key and its constraints of
+	 * an object for table creation
+	 * @param model The meta-model for the object
+	 * @return a string containing the primary key's column name and constraints
+	 */
 	private String getPrimaryKey(Metamodel<Class<?>> model) {
-		// need to figure out how to add constraints
 		String nameAndConstraints = model.getPrimaryKey().getColumnName();
 		nameAndConstraints += " " + model.getPrimaryKey().getSQLDataType();
 
@@ -88,13 +113,18 @@ public class DatabaseBuilder {
 
 	}
 
+	/**
+	 * This method is used within the createTable method to grab the Foreign Keys and their constraints of
+	 * an object for table creation
+	 * @param model The meta-model for the object
+	 * @return a string array containing the foreign keys' column names and constraints
+	 */
 	private String[] getForeignKeys(Metamodel<Class<?>> model) {
 
 		List<ForeignKeyField> fks = model.getForeignKeys();
 		String[] namesAndConstraints = new String[fks.size()];
 
 		for (int i = 0; i < fks.size(); i++) {
-			// need to figure out how to add constraints
 			namesAndConstraints[i] = fks.get(i).getColumnName();
 			namesAndConstraints[i] += " " + fks.get(i).getSQLDataType();
 			for (Constraint cons : fks.get(i).getConstraints()) {
@@ -106,13 +136,18 @@ public class DatabaseBuilder {
 		return namesAndConstraints;
 	}
 
+	/**
+	 * This method is used within the createTable method to grab the attributes and constraints of
+	 * an object for table creation
+	 * @param model The meta-model for the object
+	 * @return a string array containing the attributes' column names and constraints
+	 */
 	private String[] getAttributes(Metamodel<Class<?>> model) {
 
 		List<ColumnField> atts = model.getAttributes();
 		String[] columns = new String[atts.size()];
 
 		for (int i = 0; i < atts.size(); i++) {
-			// need to figure out how to add constraints
 			columns[i] = atts.get(i).getColumnName();
 			columns[i] += " " + atts.get(i).getSQLDataType();
 			for (Constraint cons : atts.get(i).getConstraints()) {
