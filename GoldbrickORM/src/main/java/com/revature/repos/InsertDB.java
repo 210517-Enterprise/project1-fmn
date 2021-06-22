@@ -34,7 +34,16 @@ public class InsertDB {
 		this.config = cfg;
 	}
 	
-		
+	/**
+	 * This method inserts the values of a User object in the database	
+	 * @param um    The meta-model of the User class
+	 * @param user  The User object that needs to be inserted in the database
+	 * @param conn  A connection from the connection pool
+	 * 
+	 * @throws IllegalAccessException
+	 * @throws IllegalArgumentException
+	 * @throws InvocationTargetException
+	 */
 	public static void insertUser(Metamodel<User> um, User user, Connection conn)
 			throws IllegalAccessException, IllegalArgumentException, InvocationTargetException {
 		IdField pk = um.getPrimaryKey();
@@ -78,7 +87,15 @@ public class InsertDB {
 		
 	}
 	
-
+	/**
+	 * This method inserts the values of a Category object in the database
+	 * @param cm       The meta-model of the Category class
+	 * @param category The Category object that needs to be inserted in the database
+	 * @param conn     A connection from the connection pool
+	 * @throws IllegalAccessException
+	 * @throws IllegalArgumentException
+	 * @throws InvocationTargetException
+	 */
 	public static void insertCategory(Metamodel<Category> cm, Category category, Connection conn)
 			throws IllegalAccessException, IllegalArgumentException, InvocationTargetException {
 		IdField pk = cm.getPrimaryKey();
@@ -120,7 +137,16 @@ public class InsertDB {
 		
 	}
 	
-	
+	/**
+	 * This method inserts the values of a Order object in the database
+	 * 
+	 * @param om    The meta-model of the Order class
+	 * @param order The Order object that needs to be inserted in the database
+	 * @param conn  A connection from the connection pool
+	 * @throws IllegalAccessException
+	 * @throws IllegalArgumentException
+	 * @throws InvocationTargetException
+	 */
 	public static void insertOrder(Metamodel<Order> om, Order order, Connection conn)
 			throws IllegalAccessException, IllegalArgumentException, InvocationTargetException {
 		IdField pk = om.getPrimaryKey();
@@ -162,7 +188,16 @@ public class InsertDB {
 		
 	}
 	
-	
+	/**
+	 * This method inserts the values of a product object in the database
+	 * 
+	 * @param pm      The meta-model of the Product class
+	 * @param product The Product object that needs to be inserted in the database
+	 * @param conn    A connection from the connection pool
+	 * @throws IllegalAccessException
+	 * @throws IllegalArgumentException
+	 * @throws InvocationTargetException
+	 */
 	public static void insertProduct(Metamodel<Product> pm, Product product, Connection conn)
 			throws IllegalAccessException, IllegalArgumentException, InvocationTargetException {
 		IdField pk = pm.getPrimaryKey();
