@@ -152,8 +152,23 @@ public class GetDB {
 		}
 
 		
+		public ArrayList<Order> getUserOrders(Connection conn, int userID) {
+			ArrayList<Order> o = new ArrayList<Order>();
+			
+			String sql = "SELECT * FROM orders where user_id = " + userID;
+			
+			
+			
+			return o;
+		}
 		
 		
+		//get all categories
+		
+		//get category by product by prodcut id
+		
+		
+		//for each: for ALL, for PRIMARY KEY, for FOREIGN KEY
 }
 	
 	
