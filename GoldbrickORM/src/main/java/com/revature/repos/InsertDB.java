@@ -11,6 +11,8 @@ import java.util.Map;
 
 import javax.sql.DataSource;
 
+import org.apache.log4j.Logger;
+
 import com.revature.models.Category;
 import com.revature.models.Order;
 import com.revature.models.Product;
@@ -23,6 +25,8 @@ import com.revature.util.IdField;
 import com.revature.util.Metamodel;
 
 public class InsertDB {
+	
+	private static Logger log = Logger.getLogger(InsertDB.class);
 	
 	private Configuration config;
 	
@@ -68,6 +72,7 @@ public class InsertDB {
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.execute();
 		} catch (SQLException e) {
+			log.warn("Failure to add User!");
 			e.printStackTrace();
 		}
 		
@@ -109,6 +114,7 @@ public class InsertDB {
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.execute();
 		} catch (SQLException e) {
+			log.warn("Failure to add Category!");
 			e.printStackTrace();
 		}
 		
@@ -150,6 +156,7 @@ public class InsertDB {
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.execute();
 		} catch (SQLException e) {
+			log.warn("Failure to add Order!");
 			e.printStackTrace();
 		}
 		
@@ -191,6 +198,7 @@ public class InsertDB {
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.execute();
 		} catch (SQLException e) {
+			log.warn("Failure to add Product!");
 			e.printStackTrace();
 		}
 		
