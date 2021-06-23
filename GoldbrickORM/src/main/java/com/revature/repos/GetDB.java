@@ -29,7 +29,7 @@ public class GetDB {
 	 * @return
 	 * @throws SQLException
 	 */
-	public ArrayList<User> getAllUsers(Connection conn, Metamodel<User> mm) throws SQLException{
+	public static ArrayList<User> getAllUsers(Connection conn, Metamodel<User> mm) throws SQLException{
 		ArrayList<User> allUsers = new ArrayList<User>();
 		
 		assert conn != null;
@@ -75,7 +75,7 @@ public class GetDB {
 	 * @return
 	 * @throws SQLException
 	 */
-	public User getByUserID(Connection conn, Metamodel<User> mm, int userID) throws SQLException{
+	public static User getByUserID(Connection conn, Metamodel<User> mm, int userID) throws SQLException{
 		
 		String sql = "SELECT * FROM " + mm.getTableName() + " WHERE " + mm.getPrimaryKey().getColumnName() + " = " + userID;
 		
@@ -117,7 +117,7 @@ public class GetDB {
 	 * @return
 	 * @throws SQLException
 	 */
-	public ArrayList<Order> getAllOrders(Connection conn, Metamodel<Order> om) throws SQLException{
+	public static ArrayList<Order> getAllOrders(Connection conn, Metamodel<Order> om) throws SQLException{
 		ArrayList<Order> orders = new ArrayList<Order>();
 			
 		String sql = "SELECT * FROM " + om.getTableName();
