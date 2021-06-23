@@ -13,6 +13,7 @@ import org.apache.log4j.Logger;
 
 import com.revature.models.Category;
 import com.revature.models.Order;
+import com.revature.models.Product;
 import com.revature.models.Role;
 import com.revature.models.User;
 import com.revature.util.ForeignKeyField;
@@ -31,8 +32,6 @@ public class GetDB {
 	 */
 	public ArrayList<User> getAllUsers(Connection conn, Metamodel<User> mm) throws SQLException{
 		ArrayList<User> allUsers = new ArrayList<User>();
-		
-		assert conn != null;
 		
 		String select = "SELECT * FROM " + mm.getTableName();
 		PreparedStatement ps = conn.prepareStatement(select);
@@ -105,6 +104,7 @@ public class GetDB {
 			log.info("Retrieved user: " + firstName + " from the database!");
 			return holder;
 	}
+		log.error("No user found with id: " + userID);
 		return null;
 		
 	}	
@@ -133,9 +133,9 @@ public class GetDB {
 			int priceTotal = rs.getInt(5);
 			boolean isFulfilled = rs.getBoolean(6);
 			int quantity = rs.getInt(7);
+			
 			Order o = new Order(id, userID, productID, date, priceTotal, isFulfilled, quantity);
 			orders.add(o);
-				
 		}
 		log.info("Retrieved all orders from the database!");
 		return orders;
@@ -185,16 +185,7 @@ public class GetDB {
 	public ArrayList<Order> getUserOrdersByUserID(Connection conn, Metamodel<Order> om, int userID) throws SQLException {
 		ArrayList<Order> o = new ArrayList<Order> ();
 		
-		ArrayList<String> l = new ArrayList<String>();
-		
-		String s = om.getForeignKeys().get(0).getColumnName();
-		
-		
-		for(String k : l) {
-			System.out.println(k.toString());
-		}
-		
-		String sql = "SELECT * FROM " + om.getTableName() + " where " + s + " = " + userID;
+		String sql = "SELECT * FROM " + om.getTableName() + " where " + om.getForeignKeys().get(0).getColumnName() + " = " + userID;
 		
 		PreparedStatement ps = conn.prepareStatement(sql);
 		ResultSet rs = ps.executeQuery();
@@ -227,9 +218,7 @@ public class GetDB {
 	public ArrayList<Order> getUserOrdersByProductID(Connection conn, Metamodel<Order> om, int userID) throws SQLException {
 		ArrayList<Order> o = new ArrayList<Order> ();
 		
-		String s = om.getForeignKeys().get(1).getColumnName();
-		
-		String sql = "SELECT * FROM " + om.getTableName() + " WHERE " + s + " = " + userID;
+		String sql = "SELECT * FROM " + om.getTableName() + " WHERE " + om.getForeignKeys().get(1).getColumnName() + " = " + userID;
 	
 		PreparedStatement ps = conn.prepareStatement(sql);
 		ResultSet rs = ps.executeQuery();
@@ -246,6 +235,7 @@ public class GetDB {
 			Order order = new Order(id, uID, productID, date, priceTotal, isFulfilled, quantity);
 			o.add(order);
 		}	
+		log.info("Retrieved Orders associated with userID: " + userID);
 		return o;
 		
 	}
@@ -268,6 +258,7 @@ public class GetDB {
 		while(rs.next()) {
 			int id = rs.getInt(1);
 			String categoryName = rs.getString(2);
+			
 			Category c = new Category(id, categoryName);
 			list.add(c);
 		}
@@ -287,7 +278,7 @@ public class GetDB {
 		ArrayList<Category> list = new ArrayList<Category>();
 		
 		String sql = "SELECT * FROM " + cm.getTableName() + " WHERE " + cm.getPrimaryKey().getColumnName() + " = "+ pk;
-		System.out.println(sql);
+		
 		PreparedStatement ps = conn.prepareStatement(sql);
 		ResultSet rs = ps.executeQuery();
 		
@@ -301,6 +292,105 @@ public class GetDB {
 		log.info("Retrieved all Categories associated with Primary key: " + pk);
 		return list;
 	}
+	
+	/**
+	 * Gets all product entities in the Database
+	 * @param conn
+	 * @param pm
+	 * @return
+	 * @throws SQLException
+	 */
+	public ArrayList<Product> getAllProducts(Connection conn, Metamodel<Product> pm) throws SQLException {
+		ArrayList<Product> list = new ArrayList<Product>();
+		
+		String sql = "SELECT * FROM " + pm.getTableName();
+		
+		PreparedStatement ps = conn.prepareStatement(sql);
+		ResultSet rs = ps.executeQuery();
+		
+		while(rs.next()) {
+			int id = rs.getInt(1);
+			int cID = rs.getInt(2);
+			String prodName = rs.getString(3);
+			String prodDesc = rs.getString(4);
+			int price = rs.getInt(5);
+			int quantity = rs.getInt(6);
+			boolean inStock = rs.getBoolean(7);
+			
+			Product p = new Product(id, cID, prodName, prodDesc, price, quantity, inStock);
+			list.add(p);
+		}	
+		log.info("Retrieved All Products from the Database!");
+		return list;
+	}
+	
+	/**
+	 * Gets all entities of products associated with given Primary Key
+	 * @param conn
+	 * @param pm
+	 * @param PK
+	 * @return
+	 * @throws SQLException
+	 */
+	public ArrayList<Product> getAllProductsByPrimaryKey(Connection conn, Metamodel<Product> pm, int PK) throws SQLException {
+		ArrayList<Product> list = new ArrayList<Product>();
+		
+		String sql = "SELECT * FROM " + pm.getTableName() + " WHERE " + pm.getPrimaryKey().getColumnName() + " = " + PK;
+		
+		PreparedStatement ps = conn.prepareStatement(sql);
+		ResultSet rs = ps.executeQuery();
+		
+		while(rs.next()) {
+			int id = rs.getInt(1);
+			int cID = rs.getInt(2);
+			String prodName = rs.getString(3);
+			String prodDesc = rs.getString(4);
+			int price = rs.getInt(5);
+			int quantity = rs.getInt(6);
+			boolean inStock = rs.getBoolean(7);
+			
+			Product p = new Product(id, cID, prodName, prodDesc, price, quantity, inStock);
+			list.add(p);
+		}
+		log.info("Retrieved all products associated with Primary Key: " + PK);
+		return list;
+	}
+	
+	/**
+	 * Gets all entities of products associated with given Foreign Key
+	 * @param conn
+	 * @param pm
+	 * @param FK
+	 * @return
+	 * @throws SQLException
+	 */
+	public ArrayList<Product> getAllProductsByForeignKey(Connection conn, Metamodel<Product> pm, int FK) throws SQLException {
+		ArrayList<Product> list = new ArrayList<Product>();
+		
+		String sql = "SELECT * FROM " + pm.getTableName() + " WHERE " + pm.getForeignKeys().get(0).getColumnName() + " = " + FK;
+		
+		PreparedStatement ps = conn.prepareStatement(sql);
+		ResultSet rs = ps.executeQuery();
+		
+		while(rs.next()) {
+			int id = rs.getInt(1);
+			int cID = rs.getInt(2);
+			String prodName = rs.getString(3);
+			String prodDesc = rs.getString(4);
+			int price = rs.getInt(5);
+			int quantity = rs.getInt(6);
+			boolean inStock = rs.getBoolean(7);
+			
+			Product p = new Product(id, cID, prodName, prodDesc, price, quantity, inStock);
+			list.add(p);
+		}
+		log.info("Retrieved all products associated with Foreign Key " + FK);
+		return list;
+	}
+	
+	
+	
+	
 	
 }
 	

@@ -124,3 +124,183 @@ otEmpty{event= } - Retrieved all Categories from the Database!
 2021-06-22 22:30:14 INFO  revature.repos.GetDB:301 - 
 otEmpty{userId= } - 
 otEmpty{event= } - Retrieved all Categories associated with Primary key: 1
+2021-06-23 14:36:12 INFO  revature.repos.GetDB:63 - 
+otEmpty{userId= } - 
+otEmpty{event= } - All users have been pulled from the databse
+2021-06-23 14:36:12 INFO  revature.repos.GetDB:63 - 
+otEmpty{userId= } - 
+otEmpty{event= } - All users have been pulled from the databse
+2021-06-23 14:36:12 INFO  revature.repos.GetDB:63 - 
+otEmpty{userId= } - 
+otEmpty{event= } - All users have been pulled from the databse
+2021-06-23 14:36:12 INFO  revature.repos.GetDB:63 - 
+otEmpty{userId= } - 
+otEmpty{event= } - All users have been pulled from the databse
+2021-06-23 14:36:12 INFO  revature.repos.GetDB:63 - 
+otEmpty{userId= } - 
+otEmpty{event= } - All users have been pulled from the databse
+2021-06-23 14:36:12 INFO  revature.repos.GetDB:67 - 
+otEmpty{userId= } - 
+otEmpty{event= } - All Users have been pulled from the database!
+2021-06-23 14:36:12 INFO  revature.repos.GetDB:106 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Retrieved user: Nick from the database!
+2021-06-23 14:36:12 INFO  revature.repos.GetDB:174 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Retrieved 1 orders from orderID: 2
+2021-06-23 14:36:12 INFO  revature.repos.GetDB:141 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Retrieved all orders from the database!
+2021-06-23 14:36:13 INFO  revature.repos.GetDB:215 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Retrieved 1 Orders from the server.
+2021-06-23 14:36:13 INFO  revature.repos.GetDB:275 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Retrieved all Categories from the Database!
+2021-06-23 14:36:13 INFO  revature.repos.GetDB:302 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Retrieved all Categories associated with Primary key: 1
+2021-06-23 14:39:53 INFO  revature.repos.GetDB:63 - 
+otEmpty{userId= } - 
+otEmpty{event= } - All users have been pulled from the databse
+2021-06-23 14:39:53 INFO  revature.repos.GetDB:63 - 
+otEmpty{userId= } - 
+otEmpty{event= } - All users have been pulled from the databse
+2021-06-23 14:39:53 INFO  revature.repos.GetDB:63 - 
+otEmpty{userId= } - 
+otEmpty{event= } - All users have been pulled from the databse
+2021-06-23 14:39:53 INFO  revature.repos.GetDB:63 - 
+otEmpty{userId= } - 
+otEmpty{event= } - All users have been pulled from the databse
+2021-06-23 14:39:53 INFO  revature.repos.GetDB:63 - 
+otEmpty{userId= } - 
+otEmpty{event= } - All users have been pulled from the databse
+2021-06-23 14:39:53 INFO  revature.repos.GetDB:67 - 
+otEmpty{userId= } - 
+otEmpty{event= } - All Users have been pulled from the database!
+2021-06-23 14:39:53 INFO  revature.repos.GetDB:106 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Retrieved user: Nick from the database!
+2021-06-23 14:39:53 INFO  revature.repos.GetDB:174 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Retrieved 1 orders from orderID: 2
+2021-06-23 14:39:53 INFO  revature.repos.GetDB:141 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Retrieved all orders from the database!
+2021-06-23 14:39:53 INFO  revature.repos.GetDB:215 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Retrieved 1 Orders from the server.
+2021-06-23 14:39:53 INFO  revature.repos.GetDB:275 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Retrieved all Categories from the Database!
+2021-06-23 14:39:53 INFO  revature.repos.GetDB:302 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Retrieved all Categories associated with Primary key: 1
+2021-06-23 14:41:30 INFO  revature.repos.GetDB:63 - 
+otEmpty{userId= } - 
+otEmpty{event= } - All users have been pulled from the databse
+2021-06-23 14:41:30 INFO  revature.repos.GetDB:63 - 
+otEmpty{userId= } - 
+otEmpty{event= } - All users have been pulled from the databse
+2021-06-23 14:41:30 INFO  revature.repos.GetDB:63 - 
+otEmpty{userId= } - 
+otEmpty{event= } - All users have been pulled from the databse
+2021-06-23 14:41:30 INFO  revature.repos.GetDB:63 - 
+otEmpty{userId= } - 
+otEmpty{event= } - All users have been pulled from the databse
+2021-06-23 14:41:30 INFO  revature.repos.GetDB:63 - 
+otEmpty{userId= } - 
+otEmpty{event= } - All users have been pulled from the databse
+2021-06-23 14:41:30 INFO  revature.repos.GetDB:67 - 
+otEmpty{userId= } - 
+otEmpty{event= } - All Users have been pulled from the database!
+2021-06-23 14:41:30 INFO  revature.repos.GetDB:106 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Retrieved user: Nick from the database!
+2021-06-23 14:41:30 INFO  revature.repos.GetDB:174 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Retrieved 1 orders from orderID: 2
+2021-06-23 14:41:30 INFO  revature.repos.GetDB:141 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Retrieved all orders from the database!
+2021-06-23 14:41:30 INFO  revature.repos.GetDB:215 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Retrieved 1 Orders from the server.
+2021-06-23 14:41:30 INFO  revature.repos.GetDB:275 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Retrieved all Categories from the Database!
+2021-06-23 14:41:30 INFO  revature.repos.GetDB:302 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Retrieved all Categories associated with Primary key: 1
+2021-06-23 14:42:18 INFO  revature.repos.GetDB:63 - 
+otEmpty{userId= } - 
+otEmpty{event= } - All users have been pulled from the databse
+2021-06-23 14:42:18 INFO  revature.repos.GetDB:63 - 
+otEmpty{userId= } - 
+otEmpty{event= } - All users have been pulled from the databse
+2021-06-23 14:42:18 INFO  revature.repos.GetDB:63 - 
+otEmpty{userId= } - 
+otEmpty{event= } - All users have been pulled from the databse
+2021-06-23 14:42:18 INFO  revature.repos.GetDB:63 - 
+otEmpty{userId= } - 
+otEmpty{event= } - All users have been pulled from the databse
+2021-06-23 14:42:18 INFO  revature.repos.GetDB:63 - 
+otEmpty{userId= } - 
+otEmpty{event= } - All users have been pulled from the databse
+2021-06-23 14:42:18 INFO  revature.repos.GetDB:67 - 
+otEmpty{userId= } - 
+otEmpty{event= } - All Users have been pulled from the database!
+2021-06-23 14:42:18 INFO  revature.repos.GetDB:106 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Retrieved user: Nick from the database!
+2021-06-23 14:42:18 INFO  revature.repos.GetDB:174 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Retrieved 1 orders from orderID: 2
+2021-06-23 14:42:18 INFO  revature.repos.GetDB:141 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Retrieved all orders from the database!
+2021-06-23 14:42:18 INFO  revature.repos.GetDB:215 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Retrieved 1 Orders from the server.
+2021-06-23 14:42:18 INFO  revature.repos.GetDB:275 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Retrieved all Categories from the Database!
+2021-06-23 14:42:18 INFO  revature.repos.GetDB:302 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Retrieved all Categories associated with Primary key: 1
+2021-06-23 14:43:43 INFO  revature.repos.GetDB:61 - 
+otEmpty{userId= } - 
+otEmpty{event= } - All users have been pulled from the databse
+2021-06-23 14:43:43 INFO  revature.repos.GetDB:61 - 
+otEmpty{userId= } - 
+otEmpty{event= } - All users have been pulled from the databse
+2021-06-23 14:43:43 INFO  revature.repos.GetDB:61 - 
+otEmpty{userId= } - 
+otEmpty{event= } - All users have been pulled from the databse
+2021-06-23 14:43:43 INFO  revature.repos.GetDB:61 - 
+otEmpty{userId= } - 
+otEmpty{event= } - All users have been pulled from the databse
+2021-06-23 14:43:43 INFO  revature.repos.GetDB:61 - 
+otEmpty{userId= } - 
+otEmpty{event= } - All users have been pulled from the databse
+2021-06-23 14:43:43 INFO  revature.repos.GetDB:65 - 
+otEmpty{userId= } - 
+otEmpty{event= } - All Users have been pulled from the database!
+2021-06-23 14:43:43 INFO  revature.repos.GetDB:104 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Retrieved user: Nick from the database!
+2021-06-23 14:43:43 INFO  revature.repos.GetDB:172 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Retrieved 1 orders from orderID: 2
+2021-06-23 14:43:43 INFO  revature.repos.GetDB:139 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Retrieved all orders from the database!
+2021-06-23 14:43:43 INFO  revature.repos.GetDB:204 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Retrieved 1 Orders from the server.
+2021-06-23 14:43:43 INFO  revature.repos.GetDB:262 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Retrieved all Categories from the Database!
+2021-06-23 14:43:43 INFO  revature.repos.GetDB:289 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Retrieved all Categories associated with Primary key: 1

@@ -188,7 +188,7 @@ public class DatabaseBuilder {
 			
 			Metamodel<User> mm = new Metamodel<>(User.class);
 			Metamodel<Order> om = new Metamodel<>(Order.class);
-			
+			Metamodel<Product> pm = new Metamodel<>(Product.class);
 			
 			System.out.println("\n==================Get All Users=======================\n");
 			db.getAllUsers(connObj, mm);
@@ -245,6 +245,27 @@ public class DatabaseBuilder {
 			categ = db.getAllCategoriesByPrimaryKey(connObj, cm, 1);
 			for(Category caz : categ) {
 				System.out.println(caz.toString());
+			}
+			
+			System.out.println("\n=============All products=====================\n");
+			ArrayList<Product> prod = new ArrayList<Product>();
+			prod = db.getAllProducts(connObj, pm);
+			for(Product p : prod) {
+				System.out.println(p.toString());
+			}
+			
+			System.out.println("\n============Products By Primary Key=====================\n");
+			ArrayList<Product> prod1 = new ArrayList<Product>();
+			prod1 = db.getAllProductsByPrimaryKey(connObj, pm, 1);
+			for(Product p : prod1) {
+				System.out.println(p.toString());
+			}
+			
+			System.out.println("\n=============Products by Foreign Key=====================\n");
+			ArrayList<Product> prod2 = new ArrayList<Product>();
+			prod2 = db.getAllProductsByForeignKey(connObj, pm, 2);
+			for(Product p : prod2) {
+				System.out.println(p.toString());
 			}
 			
 		} catch(SQLException e) {
