@@ -1,0 +1,75 @@
+2021-06-23 13:11:38 WARN  revature.repos.InsertDB:140 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Failure to add Category!
+2021-06-23 13:11:39 WARN  revature.repos.InsertDB:140 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Failure to add Category!
+2021-06-23 13:11:39 WARN  revature.repos.InsertDB:140 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Failure to add Category!
+2021-06-23 13:11:39 WARN  revature.repos.InsertDB:140 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Failure to add Category!
+2021-06-23 13:11:39 WARN  com.revature.Driver:71 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Failure to insert category
+2021-06-23 13:11:40 WARN  revature.repos.InsertDB:244 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Failure to add Product!
+2021-06-23 13:11:40 WARN  revature.repos.InsertDB:244 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Failure to add Product!
+2021-06-23 13:11:41 WARN  revature.repos.InsertDB:244 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Failure to add Product!
+2021-06-23 13:18:00 WARN  revature.repos.InsertDB:140 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Failure to add Category!
+2021-06-23 13:18:00 WARN  revature.repos.InsertDB:140 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Failure to add Category!
+2021-06-23 13:18:01 WARN  revature.repos.InsertDB:140 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Failure to add Category!
+2021-06-23 13:18:01 WARN  revature.repos.InsertDB:140 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Failure to add Category!
+2021-06-23 13:18:01 WARN  com.revature.Driver:71 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Failure to insert category
+2021-06-23 13:18:02 WARN  revature.repos.InsertDB:244 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Failure to add Product!
+2021-06-23 13:18:02 WARN  revature.repos.InsertDB:244 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Failure to add Product!
+2021-06-23 13:18:02 WARN  revature.repos.InsertDB:244 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Failure to add Product!
+2021-06-23 13:19:54 WARN  revature.repos.InsertDB:140 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Failure to add Category!
+2021-06-23 13:19:55 WARN  revature.repos.InsertDB:140 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Failure to add Category!
+2021-06-23 13:19:55 WARN  revature.repos.InsertDB:140 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Failure to add Category!
+2021-06-23 13:19:55 WARN  revature.repos.InsertDB:140 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Failure to add Category!
+2021-06-23 13:19:55 WARN  com.revature.Driver:71 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Failure to insert category
+2021-06-23 13:19:56 WARN  revature.repos.InsertDB:244 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Failure to add Product!
+2021-06-23 13:19:56 WARN  revature.repos.InsertDB:244 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Failure to add Product!
+2021-06-23 13:19:57 WARN  revature.repos.InsertDB:244 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Failure to add Product!
+2021-06-23 14:03:03 ERROR com.revature.Driver:69 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Failure to create tables for Congo

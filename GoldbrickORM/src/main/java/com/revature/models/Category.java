@@ -15,6 +15,12 @@ public class Category {
 	@Column(columnName = "category_name", constraints = {Constraint.NOT_NULL}, dataType = "VARCHAR(50)")
 	private String categoryName;
 	
+	public Category(String categoryName) {
+		super();
+		this.id = -1;
+		this.categoryName = categoryName;
+	}
+	
 	public Category(int id, String categoryName) {
 		super();
 		this.id = id;

@@ -30,6 +30,15 @@ public class Product {
 	@Column(columnName = "in_stock", constraints = {Constraint.NOT_NULL}, dataType = "BOOLEAN")
 	private boolean inStock;
 	
+	public Product(int catId, String productName, String productDescription, double price, int quantity) {
+		super();
+		this.categoryID = catId;
+		this.productName = productName;
+		this.productDescription = productDescription;
+		this.price = price;
+		this.quantity = quantity;
+	}
+	
 	public Product(int id, int catId, String productName, String productDescription, double price, int quantity, boolean inStock) {
 		super();
 		this.id = id;

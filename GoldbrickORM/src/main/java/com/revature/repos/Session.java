@@ -94,7 +94,11 @@ public class Session {
 	public void insert(User user, Connection conn) {
 		try {
 			InsertDB.insertUser(Metamodel.of(User.class), user, conn);
+			conn.close();
 		} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
+			log.warn(e.getMessage());
+			e.printStackTrace();
+		} catch (SQLException e) {
 			log.warn(e.getMessage());
 			e.printStackTrace();
 		}
@@ -103,7 +107,8 @@ public class Session {
 	public void insert(Product product, Connection conn) {
 		try {
 			InsertDB.insertProduct(Metamodel.of(Product.class), product, conn);
-		} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
+			conn.close();
+		} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException | SQLException e) {
 			log.warn(e.getMessage());
 			e.printStackTrace();
 		}
@@ -112,18 +117,22 @@ public class Session {
 	public void insert(Order order, Connection conn) {
 		try {
 			InsertDB.insertOrder(Metamodel.of(Order.class), order, conn);
-		} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
+			conn.close();
+		} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException | SQLException e) {
 			log.warn(e.getMessage());
 			e.printStackTrace();
 		}
 	}
 
-	public void insert(Category category, Connection conn) {
+	public int insert(Category category, Connection conn) {
 		try {
-			InsertDB.insertCategory(Metamodel.of(Category.class), category, conn);
-		} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
+			int id = InsertDB.insertCategory(Metamodel.of(Category.class), category, conn);
+			conn.close();
+			return id;
+		} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException | SQLException e) {
 			log.warn(e.getMessage());
 			e.printStackTrace();
+			return -1;
 		}
 	}
 

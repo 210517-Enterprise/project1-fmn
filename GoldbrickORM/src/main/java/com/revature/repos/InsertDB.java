@@ -125,16 +125,16 @@ public class InsertDB {
 		}
 
 		sql = sql.substring(0, sql.lastIndexOf(","));
-		sql += ")";
+		sql += ") RETURNING " + cm.getTableName() + "." + cm.getPrimaryKey().getColumnName();
 		
 		
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
-			ResultSet rs = ps.executeQuery();
-			
-			
-			int id = rs.getInt(1);
-			return id;
+			ResultSet rs;
+			if ((rs = ps.executeQuery()) != null) {
+				rs.next();
+				return rs.getInt(cm.getPrimaryKey().getColumnName());
+			}	
 			
 		} catch (SQLException e) {
 			log.warn("Failure to add Category!");
