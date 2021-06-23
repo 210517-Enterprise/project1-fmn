@@ -1,0 +1,126 @@
+2021-06-22 21:02:34 INFO  revature.repos.GetDB:62 - 
+otEmpty{userId= } - 
+otEmpty{event= } - All users have been pulled from the databse
+2021-06-22 21:02:34 INFO  revature.repos.GetDB:62 - 
+otEmpty{userId= } - 
+otEmpty{event= } - All users have been pulled from the databse
+2021-06-22 21:02:34 INFO  revature.repos.GetDB:62 - 
+otEmpty{userId= } - 
+otEmpty{event= } - All users have been pulled from the databse
+2021-06-22 21:02:34 INFO  revature.repos.GetDB:62 - 
+otEmpty{userId= } - 
+otEmpty{event= } - All users have been pulled from the databse
+2021-06-22 21:02:34 INFO  revature.repos.GetDB:62 - 
+otEmpty{userId= } - 
+otEmpty{event= } - All users have been pulled from the databse
+2021-06-22 21:03:21 INFO  revature.repos.GetDB:62 - 
+otEmpty{userId= } - 
+otEmpty{event= } - All users have been pulled from the databse
+2021-06-22 21:03:21 INFO  revature.repos.GetDB:62 - 
+otEmpty{userId= } - 
+otEmpty{event= } - All users have been pulled from the databse
+2021-06-22 21:03:21 INFO  revature.repos.GetDB:62 - 
+otEmpty{userId= } - 
+otEmpty{event= } - All users have been pulled from the databse
+2021-06-22 21:03:21 INFO  revature.repos.GetDB:62 - 
+otEmpty{userId= } - 
+otEmpty{event= } - All users have been pulled from the databse
+2021-06-22 21:03:21 INFO  revature.repos.GetDB:62 - 
+otEmpty{userId= } - 
+otEmpty{event= } - All users have been pulled from the databse
+2021-06-22 21:04:22 INFO  revature.repos.GetDB:62 - 
+otEmpty{userId= } - 
+otEmpty{event= } - All users have been pulled from the databse
+2021-06-22 21:04:22 INFO  revature.repos.GetDB:62 - 
+otEmpty{userId= } - 
+otEmpty{event= } - All users have been pulled from the databse
+2021-06-22 21:04:22 INFO  revature.repos.GetDB:62 - 
+otEmpty{userId= } - 
+otEmpty{event= } - All users have been pulled from the databse
+2021-06-22 21:04:22 INFO  revature.repos.GetDB:62 - 
+otEmpty{userId= } - 
+otEmpty{event= } - All users have been pulled from the databse
+2021-06-22 21:04:22 INFO  revature.repos.GetDB:62 - 
+otEmpty{userId= } - 
+otEmpty{event= } - All users have been pulled from the databse
+2021-06-22 21:04:38 INFO  revature.repos.GetDB:62 - 
+otEmpty{userId= } - 
+otEmpty{event= } - All users have been pulled from the databse
+2021-06-22 21:04:38 INFO  revature.repos.GetDB:62 - 
+otEmpty{userId= } - 
+otEmpty{event= } - All users have been pulled from the databse
+2021-06-22 21:04:38 INFO  revature.repos.GetDB:62 - 
+otEmpty{userId= } - 
+otEmpty{event= } - All users have been pulled from the databse
+2021-06-22 21:04:38 INFO  revature.repos.GetDB:62 - 
+otEmpty{userId= } - 
+otEmpty{event= } - All users have been pulled from the databse
+2021-06-22 21:04:38 INFO  revature.repos.GetDB:62 - 
+otEmpty{userId= } - 
+otEmpty{event= } - All users have been pulled from the databse
+2021-06-22 21:04:59 INFO  revature.repos.GetDB:62 - 
+otEmpty{userId= } - 
+otEmpty{event= } - All users have been pulled from the databse
+2021-06-22 21:04:59 INFO  revature.repos.GetDB:62 - 
+otEmpty{userId= } - 
+otEmpty{event= } - All users have been pulled from the databse
+2021-06-22 21:04:59 INFO  revature.repos.GetDB:62 - 
+otEmpty{userId= } - 
+otEmpty{event= } - All users have been pulled from the databse
+2021-06-22 21:04:59 INFO  revature.repos.GetDB:62 - 
+otEmpty{userId= } - 
+otEmpty{event= } - All users have been pulled from the databse
+2021-06-22 21:04:59 INFO  revature.repos.GetDB:62 - 
+otEmpty{userId= } - 
+otEmpty{event= } - All users have been pulled from the databse
+2021-06-22 21:07:04 INFO  revature.repos.GetDB:62 - 
+otEmpty{userId= } - 
+otEmpty{event= } - All users have been pulled from the databse
+2021-06-22 21:07:04 INFO  revature.repos.GetDB:62 - 
+otEmpty{userId= } - 
+otEmpty{event= } - All users have been pulled from the databse
+2021-06-22 21:07:04 INFO  revature.repos.GetDB:62 - 
+otEmpty{userId= } - 
+otEmpty{event= } - All users have been pulled from the databse
+2021-06-22 21:07:04 INFO  revature.repos.GetDB:62 - 
+otEmpty{userId= } - 
+otEmpty{event= } - All users have been pulled from the databse
+2021-06-22 21:07:04 INFO  revature.repos.GetDB:62 - 
+otEmpty{userId= } - 
+otEmpty{event= } - All users have been pulled from the databse
+2021-06-22 22:30:14 INFO  revature.repos.GetDB:62 - 
+otEmpty{userId= } - 
+otEmpty{event= } - All users have been pulled from the databse
+2021-06-22 22:30:14 INFO  revature.repos.GetDB:62 - 
+otEmpty{userId= } - 
+otEmpty{event= } - All users have been pulled from the databse
+2021-06-22 22:30:14 INFO  revature.repos.GetDB:62 - 
+otEmpty{userId= } - 
+otEmpty{event= } - All users have been pulled from the databse
+2021-06-22 22:30:14 INFO  revature.repos.GetDB:62 - 
+otEmpty{userId= } - 
+otEmpty{event= } - All users have been pulled from the databse
+2021-06-22 22:30:14 INFO  revature.repos.GetDB:62 - 
+otEmpty{userId= } - 
+otEmpty{event= } - All users have been pulled from the databse
+2021-06-22 22:30:14 INFO  revature.repos.GetDB:66 - 
+otEmpty{userId= } - 
+otEmpty{event= } - All Users have been pulled from the database!
+2021-06-22 22:30:14 INFO  revature.repos.GetDB:105 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Retrieved user: Nick from the database!
+2021-06-22 22:30:14 INFO  revature.repos.GetDB:173 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Retrieved 1 orders from orderID: 2
+2021-06-22 22:30:14 INFO  revature.repos.GetDB:140 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Retrieved all orders from the database!
+2021-06-22 22:30:14 INFO  revature.repos.GetDB:214 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Retrieved 1 Orders from the server.
+2021-06-22 22:30:14 INFO  revature.repos.GetDB:274 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Retrieved all Categories from the Database!
+2021-06-22 22:30:14 INFO  revature.repos.GetDB:301 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Retrieved all Categories associated with Primary key: 1
