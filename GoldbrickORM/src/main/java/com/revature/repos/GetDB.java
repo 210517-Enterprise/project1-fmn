@@ -150,7 +150,7 @@ public class GetDB {
 	 * @return
 	 * @throws SQLException
 	 */
-	public ArrayList<Order> getUserOrdersByPrimaryKey(Connection conn, Metamodel<Order> om, int orderID) throws SQLException {
+	public static ArrayList<Order> getUserOrdersByPrimaryKey(Connection conn, Metamodel<Order> om, int orderID) throws SQLException {
 		ArrayList<Order> o = new ArrayList<Order>();
 			
 		String sql = "SELECT * FROM " + om.getTableName() + " where " + om.getPrimaryKey().getColumnName() + " = " + orderID;
@@ -182,7 +182,7 @@ public class GetDB {
 	 * @return
 	 * @throws SQLException
 	 */
-	public ArrayList<Order> getUserOrdersByUserID(Connection conn, Metamodel<Order> om, int userID) throws SQLException {
+	public static ArrayList<Order> getUserOrdersByUserID(Connection conn, Metamodel<Order> om, int userID) throws SQLException {
 		ArrayList<Order> o = new ArrayList<Order> ();
 		
 		ArrayList<String> l = new ArrayList<String>();
@@ -224,7 +224,7 @@ public class GetDB {
 	 * @return
 	 * @throws SQLException
 	 */
-	public ArrayList<Order> getUserOrdersByProductID(Connection conn, Metamodel<Order> om, int userID) throws SQLException {
+	public static ArrayList<Order> getUserOrdersByProductID(Connection conn, Metamodel<Order> om, int userID) throws SQLException {
 		ArrayList<Order> o = new ArrayList<Order> ();
 		
 		String s = om.getForeignKeys().get(1).getColumnName();
@@ -257,7 +257,7 @@ public class GetDB {
 	 * @return
 	 * @throws SQLException
 	 */
-	public ArrayList<Category> getAllCategories(Connection conn, Metamodel<Category> cm) throws SQLException{
+	public static ArrayList<Category> getAllCategories(Connection conn, Metamodel<Category> cm) throws SQLException{
 		ArrayList<Category> list = new ArrayList<Category>();
 		
 		String sql = "SELECT * FROM " + cm.getTableName();
@@ -283,7 +283,7 @@ public class GetDB {
 	 * @return
 	 * @throws SQLException
 	 */
-	public ArrayList<Category> getAllCategoriesByPrimaryKey(Connection conn, Metamodel<Category> cm, int pk) throws SQLException {
+	public static ArrayList<Category> getAllCategoriesByPrimaryKey(Connection conn, Metamodel<Category> cm, int pk) throws SQLException {
 		ArrayList<Category> list = new ArrayList<Category>();
 		
 		String sql = "SELECT * FROM " + cm.getTableName() + " WHERE " + cm.getPrimaryKey().getColumnName() + " = "+ pk;
