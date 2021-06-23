@@ -30,7 +30,7 @@ public class GetDB {
 	 * @return
 	 * @throws SQLException
 	 */
-	public ArrayList<User> getAllUsers(Connection conn, Metamodel<User> mm) throws SQLException{
+	public static ArrayList<User> getAllUsers(Connection conn, Metamodel<User> mm) throws SQLException{
 		ArrayList<User> allUsers = new ArrayList<User>();
 		
 		String select = "SELECT * FROM " + mm.getTableName();
@@ -74,7 +74,7 @@ public class GetDB {
 	 * @return
 	 * @throws SQLException
 	 */
-	public User getByUserID(Connection conn, Metamodel<User> mm, int userID) throws SQLException{
+	public static User getByUserID(Connection conn, Metamodel<User> mm, int userID) throws SQLException{
 		
 		String sql = "SELECT * FROM " + mm.getTableName() + " WHERE " + mm.getPrimaryKey().getColumnName() + " = " + userID;
 		
@@ -117,7 +117,7 @@ public class GetDB {
 	 * @return
 	 * @throws SQLException
 	 */
-	public ArrayList<Order> getAllOrders(Connection conn, Metamodel<Order> om) throws SQLException{
+	public static ArrayList<Order> getAllOrders(Connection conn, Metamodel<Order> om) throws SQLException{
 		ArrayList<Order> orders = new ArrayList<Order>();
 			
 		String sql = "SELECT * FROM " + om.getTableName();
@@ -150,7 +150,7 @@ public class GetDB {
 	 * @return
 	 * @throws SQLException
 	 */
-	public ArrayList<Order> getUserOrdersByPrimaryKey(Connection conn, Metamodel<Order> om, int orderID) throws SQLException {
+	public static ArrayList<Order> getUserOrdersByPrimaryKey(Connection conn, Metamodel<Order> om, int orderID) throws SQLException {
 		ArrayList<Order> o = new ArrayList<Order>();
 			
 		String sql = "SELECT * FROM " + om.getTableName() + " where " + om.getPrimaryKey().getColumnName() + " = " + orderID;
@@ -182,7 +182,7 @@ public class GetDB {
 	 * @return
 	 * @throws SQLException
 	 */
-	public ArrayList<Order> getUserOrdersByUserID(Connection conn, Metamodel<Order> om, int userID) throws SQLException {
+	public static ArrayList<Order> getUserOrdersByUserID(Connection conn, Metamodel<Order> om, int userID) throws SQLException {
 		ArrayList<Order> o = new ArrayList<Order> ();
 		
 		String sql = "SELECT * FROM " + om.getTableName() + " where " + om.getForeignKeys().get(0).getColumnName() + " = " + userID;
@@ -215,7 +215,7 @@ public class GetDB {
 	 * @return
 	 * @throws SQLException
 	 */
-	public ArrayList<Order> getUserOrdersByProductID(Connection conn, Metamodel<Order> om, int userID) throws SQLException {
+	public static ArrayList<Order> getUserOrdersByProductID(Connection conn, Metamodel<Order> om, int userID) throws SQLException {
 		ArrayList<Order> o = new ArrayList<Order> ();
 		
 		String sql = "SELECT * FROM " + om.getTableName() + " WHERE " + om.getForeignKeys().get(1).getColumnName() + " = " + userID;
@@ -247,7 +247,7 @@ public class GetDB {
 	 * @return
 	 * @throws SQLException
 	 */
-	public ArrayList<Category> getAllCategories(Connection conn, Metamodel<Category> cm) throws SQLException{
+	public static ArrayList<Category> getAllCategories(Connection conn, Metamodel<Category> cm) throws SQLException{
 		ArrayList<Category> list = new ArrayList<Category>();
 		
 		String sql = "SELECT * FROM " + cm.getTableName();
@@ -274,7 +274,7 @@ public class GetDB {
 	 * @return
 	 * @throws SQLException
 	 */
-	public ArrayList<Category> getAllCategoriesByPrimaryKey(Connection conn, Metamodel<Category> cm, int pk) throws SQLException {
+	public static ArrayList<Category> getAllCategoriesByPrimaryKey(Connection conn, Metamodel<Category> cm, int pk) throws SQLException {
 		ArrayList<Category> list = new ArrayList<Category>();
 		
 		String sql = "SELECT * FROM " + cm.getTableName() + " WHERE " + cm.getPrimaryKey().getColumnName() + " = "+ pk;

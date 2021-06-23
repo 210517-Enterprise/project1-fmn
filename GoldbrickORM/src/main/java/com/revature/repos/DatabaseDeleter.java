@@ -29,7 +29,7 @@ public class DatabaseDeleter {
 	 * @param conn A connection from the connection pool
 	 * @return
 	 */
-	public  boolean deleteProductById(Metamodel<Product> mm, int id, Connection conn) {
+	public static boolean deleteProductById(Metamodel<Product> mm, int id, Connection conn) {
 		String sql = "DELETE FROM " + mm.getTableName() + " WHERE " + mm.getPrimaryKey().getColumnName() + " = " + id;
 		
 		try {
