@@ -187,14 +187,18 @@ public class DatabaseBuilder {
 			GetDB db = new GetDB();
 			
 			Metamodel<User> mm = new Metamodel<>(User.class);
-			db.getAll(connObj, mm);
+			Metamodel<Order> om = new Metamodel<>(Order.class);
+			
+			
+			System.out.println("\n==================Get All Users=======================\n");
+			db.getAllUsers(connObj, mm);
 			
 			//=============================================================================
 			User u = db.getByUserID(connObj, mm, 1);
 			System.out.println(u.toString());
 			//=============================================================================
 			System.out.println("\n==================Order by Primary Key=======================\n");
-			Metamodel<Order> om = new Metamodel<>(Order.class);
+			
 			ArrayList<Order> o = new ArrayList<Order>();
 			o = db.getUserOrdersByPrimaryKey(connObj, om, 2);
 			if(o.size() == 0) {
@@ -236,12 +240,12 @@ public class DatabaseBuilder {
 				System.out.println(ca.toString());
 			}
 			
-//			System.out.println("\n=============Categories by ID======================\n");
-//			ArrayList<Category> categ = new ArrayList<Category>();
-//			categ = db.getAllCategoriesByProductID(connObj, cm, 1);
-//			for(Category caz : categ) {
-//				System.out.println(caz.toString());
-//			}
+			System.out.println("\n=============Categories by Primary Key======================\n");
+			ArrayList<Category> categ = new ArrayList<Category>();
+			categ = db.getAllCategoriesByPrimaryKey(connObj, cm, 1);
+			for(Category caz : categ) {
+				System.out.println(caz.toString());
+			}
 			
 		} catch(SQLException e) {
 			e.printStackTrace();

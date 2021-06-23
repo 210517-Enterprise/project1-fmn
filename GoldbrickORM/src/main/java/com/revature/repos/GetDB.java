@@ -29,7 +29,7 @@ public class GetDB {
 	 * @return
 	 * @throws SQLException
 	 */
-	public ArrayList<User> getAll(Connection conn, Metamodel<User> mm) throws SQLException{
+	public ArrayList<User> getAllUsers(Connection conn, Metamodel<User> mm) throws SQLException{
 		ArrayList<User> allUsers = new ArrayList<User>();
 		
 		assert conn != null;
@@ -53,18 +53,17 @@ public class GetDB {
 			} else if (user_role.equals("CUSTOMER")) {
 				role = Role.CUSTOMER;
 			} else {
-		//		log.fatal("User role not found for user: " + email);
-				System.out.println("re");
+				log.fatal("User role not found for user: " + email);
 				System.exit(0);;
 			}
 			
 			User holder = new User(id, firstName, lastName, email, pwd, role);
 			System.out.println(holder.toString());
-		//	log.info("All users have been pulled from the databse");
+			log.info("All users have been pulled from the databse");
 			allUsers.add(holder);
 		}
 		
-		
+		log.info("All Users have been pulled from the database!");
 		return allUsers;
 	}
 
@@ -103,16 +102,26 @@ public class GetDB {
 			}
 			
 			User holder = new User(id, firstName, lastName, email, pwd, role);
+			log.info("Retrieved user: " + firstName + " from the database!");
 			return holder;
 	}
 		return null;
 		
 	}	
 	
+	/**
+	 * getAllOrders aims to retrieve all orders and return them as an arraylist
+	 * 
+	 * @param conn
+	 * @param om
+	 * @return
+	 * @throws SQLException
+	 */
 	public ArrayList<Order> getAllOrders(Connection conn, Metamodel<Order> om) throws SQLException{
 		ArrayList<Order> orders = new ArrayList<Order>();
 			
 		String sql = "SELECT * FROM " + om.getTableName();
+		
 		PreparedStatement ps = conn.prepareStatement(sql);
 		ResultSet rs = ps.executeQuery();
 			
@@ -128,10 +137,19 @@ public class GetDB {
 			orders.add(o);
 				
 		}
+		log.info("Retrieved all orders from the database!");
 		return orders;
 	}
 
-		
+	
+	/**
+	 * gets all orders associated with a user via primary key
+	 * @param conn
+	 * @param om
+	 * @param orderID
+	 * @return
+	 * @throws SQLException
+	 */
 	public ArrayList<Order> getUserOrdersByPrimaryKey(Connection conn, Metamodel<Order> om, int orderID) throws SQLException {
 		ArrayList<Order> o = new ArrayList<Order>();
 			
@@ -152,16 +170,25 @@ public class GetDB {
 			Order order = new Order(id, uID, productID, date, priceTotal, isFulfilled, quantity);
 			o.add(order);
 		}	
+		log.info("Retrieved " + o.size() + " orders from orderID: " + orderID);
 		return o;
 	}
 	
+	/**
+	 * gets all orders associated with the user via userID
+	 * @param conn
+	 * @param om
+	 * @param userID
+	 * @return
+	 * @throws SQLException
+	 */
 	public ArrayList<Order> getUserOrdersByUserID(Connection conn, Metamodel<Order> om, int userID) throws SQLException {
 		ArrayList<Order> o = new ArrayList<Order> ();
 		
 		ArrayList<String> l = new ArrayList<String>();
 		
 		String s = om.getForeignKeys().get(0).getColumnName();
-		//l.add(om.getForeignKeys().get(0).getName());
+		
 		
 		for(String k : l) {
 			System.out.println(k.toString());
@@ -184,10 +211,19 @@ public class GetDB {
 			Order order = new Order(id, uID, productID, date, priceTotal, isFulfilled, quantity);
 			o.add(order);
 		}	
+		log.info("Retrieved " + o.size() + " Orders from the server.");
 		return o;
 		
 	}
 	
+	/**
+	 * gets all orders associated with the product id
+	 * @param conn
+	 * @param om
+	 * @param userID
+	 * @return
+	 * @throws SQLException
+	 */
 	public ArrayList<Order> getUserOrdersByProductID(Connection conn, Metamodel<Order> om, int userID) throws SQLException {
 		ArrayList<Order> o = new ArrayList<Order> ();
 		
@@ -214,6 +250,13 @@ public class GetDB {
 		
 	}
 	
+	/**
+	 * Gets all category entries in the current database
+	 * @param conn
+	 * @param cm
+	 * @return
+	 * @throws SQLException
+	 */
 	public ArrayList<Category> getAllCategories(Connection conn, Metamodel<Category> cm) throws SQLException{
 		ArrayList<Category> list = new ArrayList<Category>();
 		
@@ -228,8 +271,36 @@ public class GetDB {
 			Category c = new Category(id, categoryName);
 			list.add(c);
 		}
+		log.info("Retrieved all Categories from the Database!");
 		return list;
-	}			
+	}	
+	
+	/**
+	 * Retrieves all categories associated with the primary key
+	 * @param conn
+	 * @param cm
+	 * @param pk
+	 * @return
+	 * @throws SQLException
+	 */
+	public ArrayList<Category> getAllCategoriesByPrimaryKey(Connection conn, Metamodel<Category> cm, int pk) throws SQLException {
+		ArrayList<Category> list = new ArrayList<Category>();
+		
+		String sql = "SELECT * FROM " + cm.getTableName() + " WHERE " + cm.getPrimaryKey().getColumnName() + " = "+ pk;
+		System.out.println(sql);
+		PreparedStatement ps = conn.prepareStatement(sql);
+		ResultSet rs = ps.executeQuery();
+		
+		while(rs.next()) {
+			int id = rs.getInt(1);
+			String categoryName = rs.getString(2);
+			
+			Category c = new Category(id, categoryName);
+			list.add(c);
+		}
+		log.info("Retrieved all Categories associated with Primary key: " + pk);
+		return list;
+	}
 	
 }
 	
