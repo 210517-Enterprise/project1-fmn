@@ -383,18 +383,5 @@ public class GetDB {
 		}
 		log.info("Retrieved all products associated with Foreign Key " + FK);
 		return list;
-	}
-	
-	
-	
-	
-	
+	}	
 }
-	
-	
-	
-
-
-
-
-
