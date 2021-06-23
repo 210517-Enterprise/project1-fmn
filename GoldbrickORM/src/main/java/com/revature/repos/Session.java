@@ -23,6 +23,10 @@ import com.revature.util.Metamodel;
 public class Session {
 
 	private static Logger log = Logger.getLogger(Session.class);
+	
+	public Transaction getTransaction() {
+		return new Transaction();
+	}
 
 	public boolean createTables(Configuration cfg, Connection conn) {
 		try {
