@@ -5,9 +5,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.List;
 
 import org.apache.log4j.Logger;
 
@@ -16,7 +14,6 @@ import com.revature.models.Order;
 import com.revature.models.Product;
 import com.revature.models.Role;
 import com.revature.models.User;
-import com.revature.util.ForeignKeyField;
 import com.revature.util.Metamodel;
 
 
@@ -92,9 +89,9 @@ public class GetDB {
 			
 			//assert role
 			if(user_role.equals("ADMIN")) {
-				role = role.ADMIN;
+				role = Role.ADMIN;
 			} else if (user_role.equals("CUSTOMER")) {
-				role = role.CUSTOMER;
+				role = Role.CUSTOMER;
 			} else {
 				log.fatal("User role not found for user: " + email);
 				System.exit(0);;
@@ -300,7 +297,7 @@ public class GetDB {
 	 * @return
 	 * @throws SQLException
 	 */
-	public ArrayList<Product> getAllProducts(Connection conn, Metamodel<Product> pm) throws SQLException {
+	public static ArrayList<Product> getAllProducts(Connection conn, Metamodel<Product> pm) throws SQLException {
 		ArrayList<Product> list = new ArrayList<Product>();
 		
 		String sql = "SELECT * FROM " + pm.getTableName();
@@ -332,7 +329,7 @@ public class GetDB {
 	 * @return
 	 * @throws SQLException
 	 */
-	public ArrayList<Product> getAllProductsByPrimaryKey(Connection conn, Metamodel<Product> pm, int PK) throws SQLException {
+	public static ArrayList<Product> getAllProductsByPrimaryKey(Connection conn, Metamodel<Product> pm, int PK) throws SQLException {
 		ArrayList<Product> list = new ArrayList<Product>();
 		
 		String sql = "SELECT * FROM " + pm.getTableName() + " WHERE " + pm.getPrimaryKey().getColumnName() + " = " + PK;
@@ -364,7 +361,7 @@ public class GetDB {
 	 * @return
 	 * @throws SQLException
 	 */
-	public ArrayList<Product> getAllProductsByForeignKey(Connection conn, Metamodel<Product> pm, int FK) throws SQLException {
+	public static ArrayList<Product> getAllProductsByForeignKey(Connection conn, Metamodel<Product> pm, int FK) throws SQLException {
 		ArrayList<Product> list = new ArrayList<Product>();
 		
 		String sql = "SELECT * FROM " + pm.getTableName() + " WHERE " + pm.getForeignKeys().get(0).getColumnName() + " = " + FK;

@@ -3,7 +3,6 @@ package com.revature.repos;
 import java.lang.reflect.InvocationTargetException;
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -15,6 +14,12 @@ import com.revature.models.User;
 import com.revature.util.Configuration;
 import com.revature.util.Metamodel;
 
+/**
+ * This class ................
+ * @author Mollie Morrow, Nick Gianino, Frank Aurori
+ * @version 1.0 6/23/21
+ *
+ */
 public class Session {
 
 	private static Logger log = Logger.getLogger(Session.class);
@@ -30,9 +35,9 @@ public class Session {
 	}
 
 	// Overload update methods
-	public boolean update(Metamodel<User> mm, User user, Connection conn) {
+	public boolean update(User user, Connection conn) {
 		try {
-			return DatabaseUpdater.updateUser(mm, user, conn);
+			return DatabaseUpdater.updateUser(Metamodel.of(User.class), user, conn);
 		} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
 			log.warn(e.getMessage());
 			e.printStackTrace();
@@ -40,13 +45,13 @@ public class Session {
 		}
 	}
 
-	public boolean update(Metamodel<Category> mm, Category category, Connection conn) {
-		return DatabaseUpdater.updateCategory(mm, category, conn);
+	public boolean update(Category category, Connection conn) {
+		return DatabaseUpdater.updateCategory(Metamodel.of(Category.class), category, conn);
 	}
 
-	public boolean update(Metamodel<Product> mm, Product product, Connection conn) {
+	public boolean update(Product product, Connection conn) {
 		try {
-			return DatabaseUpdater.updateProduct(mm, product, conn);
+			return DatabaseUpdater.updateProduct(Metamodel.of(Product.class), product, conn);
 		} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
 			log.warn(e.getMessage());
 			e.printStackTrace();
@@ -54,9 +59,9 @@ public class Session {
 		}
 	}
 
-	public boolean update(Metamodel<Order> mm, Order order, Connection conn) {
+	public boolean update(Order order, Connection conn) {
 		try {
-			return DatabaseUpdater.updateOrder(mm, order, conn);
+			return DatabaseUpdater.updateOrder(Metamodel.of(Order.class), order, conn);
 		} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
 			log.warn(e.getMessage());
 			e.printStackTrace();
@@ -65,53 +70,53 @@ public class Session {
 	}
 
 	// overload delete methods
-	public boolean delete(Metamodel<Category> mm, Category category, Connection conn) {
-		return DatabaseDeleter.deleteCategoryById(mm, category.getId(), conn);
+	public boolean delete(Category category, Connection conn) {
+		return DatabaseDeleter.deleteCategoryById(Metamodel.of(Category.class), category.getId(), conn);
 	}
 
-	public boolean delete(Metamodel<Order> mm, Order order, Connection conn) {
-		return DatabaseDeleter.deleteOrderById(mm, order.getId(), conn);
+	public boolean delete(Order order, Connection conn) {
+		return DatabaseDeleter.deleteOrderById(Metamodel.of(Order.class), order.getId(), conn);
 	}
 
-	public boolean delete(Metamodel<Product> mm, Product product, Connection conn) {
-		return DatabaseDeleter.deleteProductById(mm, product.getId(), conn);
+	public boolean delete(Product product, Connection conn) {
+		return DatabaseDeleter.deleteProductById(Metamodel.of(Product.class), product.getId(), conn);
 	}
 
-	public boolean delete(Metamodel<User> mm, User user, Connection conn) {
-		return DatabaseDeleter.deleteUserById(mm, user.getId(), conn);
+	public boolean delete(User user, Connection conn) {
+		return DatabaseDeleter.deleteUserById(Metamodel.of(User.class), user.getId(), conn);
 	}
 
 	// overload insert methods
-	public void insert(Metamodel<User> mm, User user, Connection conn) {
+	public void insert(User user, Connection conn) {
 		try {
-			InsertDB.insertUser(mm, user, conn);
+			InsertDB.insertUser(Metamodel.of(User.class), user, conn);
 		} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
 			log.warn(e.getMessage());
 			e.printStackTrace();
 		}
 	}
 
-	public void insert(Metamodel<Product> mm, Product product, Connection conn) {
+	public void insert(Product product, Connection conn) {
 		try {
-			InsertDB.insertProduct(mm, product, conn);
+			InsertDB.insertProduct(Metamodel.of(Product.class), product, conn);
 		} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
 			log.warn(e.getMessage());
 			e.printStackTrace();
 		}
 	}
 
-	public void insert(Metamodel<Order> mm, Order order, Connection conn) {
+	public void insert(Order order, Connection conn) {
 		try {
-			InsertDB.insertOrder(mm, order, conn);
+			InsertDB.insertOrder(Metamodel.of(Order.class), order, conn);
 		} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
 			log.warn(e.getMessage());
 			e.printStackTrace();
 		}
 	}
 
-	public void insert(Metamodel<Category> mm, Category category, Connection conn) {
+	public void insert(Category category, Connection conn) {
 		try {
-			InsertDB.insertCategory(mm, category, conn);
+			InsertDB.insertCategory(Metamodel.of(Category.class), category, conn);
 		} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
 			log.warn(e.getMessage());
 			e.printStackTrace();
@@ -152,7 +157,7 @@ public class Session {
 
 	public List<Product> selectAll(Connection conn, Product product) {
 		try {
-			return GetDB.getAllProducts(conn, Metamodel.of(Category.class));
+			return GetDB.getAllProducts(conn, Metamodel.of(Product.class));
 		} catch (SQLException e) {
 			log.warn(e.getMessage());
 			e.printStackTrace();
@@ -168,6 +173,8 @@ public class Session {
 				return GetDB.getUserOrdersByPrimaryKey(conn, Metamodel.of(Order.class), id);
 			else if (clazz.equals(Category.class))
 				return GetDB.getAllCategoriesByPrimaryKey(conn, Metamodel.of(Category.class), id);
+			else if (clazz.equals(Product.class))
+				return GetDB.getAllProductsByPrimaryKey(conn, Metamodel.of(Product.class), id);
 			else
 				return null;
 		} catch (SQLException e) {
@@ -188,9 +195,19 @@ public class Session {
 		}
 	}
 	
-	public List<Order> selectAllByForeignKey(Connection conn, int userID, Order tableClass, Product referenceClass) {
+	public List<Order> selectAllByForeignKey(Connection conn, int productID, Order tableClass, Product referenceClass) {
 		try {
-			return GetDB.getUserOrdersByProductID(conn, Metamodel.of(Order.class), userID);
+			return GetDB.getUserOrdersByProductID(conn, Metamodel.of(Order.class), productID);
+		} catch (SQLException e) {
+			log.warn(e.getMessage());
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	public List<Product> selectAllByForeignKey(Connection conn, int categoryID, Product tableClass, Category referenceClass) {
+		try {
+			return GetDB.getAllProductsByForeignKey(conn, Metamodel.of(Product.class), categoryID);
 		} catch (SQLException e) {
 			log.warn(e.getMessage());
 			e.printStackTrace();
