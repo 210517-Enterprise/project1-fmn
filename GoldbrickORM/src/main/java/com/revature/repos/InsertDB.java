@@ -80,6 +80,7 @@ public class InsertDB {
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.execute();
+			
 		} catch (SQLException e) {
 			log.warn("Failure to add User!");
 			e.printStackTrace();
@@ -96,7 +97,7 @@ public class InsertDB {
 	 * @throws IllegalArgumentException
 	 * @throws InvocationTargetException
 	 */
-	public static void insertCategory(Metamodel<Category> cm, Category category, Connection conn)
+	public static int insertCategory(Metamodel<Category> cm, Category category, Connection conn)
 			throws IllegalAccessException, IllegalArgumentException, InvocationTargetException {
 		IdField pk = cm.getPrimaryKey();
 
@@ -129,11 +130,18 @@ public class InsertDB {
 		
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
-			ps.execute();
+			ResultSet rs = ps.executeQuery();
+			
+			
+			int id = rs.getInt(1);
+			return id;
+			
 		} catch (SQLException e) {
 			log.warn("Failure to add Category!");
 			e.printStackTrace();
 		}
+		
+		return -1;
 		
 	}
 	

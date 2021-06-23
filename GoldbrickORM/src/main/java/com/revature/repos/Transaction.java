@@ -105,6 +105,5 @@ public class Transaction {
 			log.warn("Cannot set transaction!");
 		}
 	}
-	
 
 }
