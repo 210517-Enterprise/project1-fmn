@@ -495,3 +495,21 @@ otEmpty{event= } - Failure to create tables for Congo
 2021-06-24 12:25:27 INFO  revature.repos.GetDB:363 - 
 otEmpty{userId= } - 
 otEmpty{event= } - Retrieved all products associated with Primary Key: 2
+2021-06-24 14:00:27 ERROR com.revature.Driver:99 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Failure to create tables for Congo
+2021-06-24 14:01:13 INFO  revature.repos.GetDB:59 - 
+otEmpty{userId= } - 
+otEmpty{event= } - All users have been pulled from the databse
+2021-06-24 14:01:13 INFO  revature.repos.GetDB:59 - 
+otEmpty{userId= } - 
+otEmpty{event= } - All users have been pulled from the databse
+2021-06-24 14:01:13 INFO  revature.repos.GetDB:63 - 
+otEmpty{userId= } - 
+otEmpty{event= } - All Users have been pulled from the database!
+2021-06-24 14:01:20 INFO  revature.repos.GetDB:142 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Retrieved all orders from the database!
+2021-06-24 14:01:25 INFO  revature.repos.GetDB:271 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Retrieved all Categories from the Database!

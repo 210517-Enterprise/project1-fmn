@@ -485,10 +485,12 @@ public class Driver {
 			List<User> users = new ArrayList<User>();
 			users = ses.selectAll(connPool.getConnection(), user);
 			System.out.println("========================================Users========================================");
+			System.out.println("ID              First Name              Last Name              Email              Password "
+					+ "               Role");
 			// System.out.println("ID First Name Last Name Email Password Role");
 			for (User u : users) {
 				System.out.println(u.getId() + "        " + u.getFirstName() + "        " + u.getLastName() + "        "
-						+ u.getEmail() + "        " + u.getPassword() + "        " + u.getRole().toString() + "\n\n");
+						+ u.getEmail() + "        " + u.getPassword() + "        " + u.getRole().toString() + "\n");
 			}
 		} catch (SQLException e) {
 			log.warn("Failure to retrieve all users from the databse.");
@@ -497,8 +499,9 @@ public class Driver {
 	}
 
 	private static void viewAllOrders() {
-		System.out.println("Printing all Orders: ");
-
+		System.out.println("========================================Orders========================================");
+		System.out.println("ID              userID              ProductID              Quantity              Order Date");
+		
 		Order order = null;
 		Session ses = new Session();
 
@@ -506,7 +509,8 @@ public class Driver {
 			List<Order> orders = new ArrayList<Order>();
 			orders = ses.selectAll(connPool.getConnection(), order);
 			for (Order o : orders) {
-				System.out.println(o.toString());
+				System.out.println(o.getId() + "        " + o.getUserID() + "        " + o.getProductID() + "        " 
+									+ o.getOrderDate().toString() 	+ "        " + o.gettotalPrice() + "        " + o.getQuantity());
 			}
 		} catch (SQLException e) {
 			log.warn("Failure to retrieve all orders from the databse.");
@@ -515,8 +519,10 @@ public class Driver {
 	}
 
 	private static void viewAllProducts() {
-		System.out.println("Printing all Products: ");
-
+		System.out.println("========================================Products========================================");
+		System.out.println("ID              First Name              Last Name              Email              Password "
+				+ "               Role");
+		
 		Product product = null;
 		Session ses = new Session();
 
@@ -524,7 +530,8 @@ public class Driver {
 			List<Product> products = new ArrayList<Product>();
 			products = ses.selectAll(connPool.getConnection(), product);
 			for (Product p : products) {
-				System.out.println(p.toString());
+				System.out.println(p.getId() + "        " + p.getCategoryID() + "        " + p.getProductName() + "        " 
+						+ p.getProductDescription() 	+ "        " + p.getPrice() + "        " + p.getQuantity());
 			}
 		} catch (SQLException e) {
 			log.warn("Failure to retrieve all products from the databse.");
@@ -533,7 +540,7 @@ public class Driver {
 	}
 
 	private static void viewAllCategories() {
-		System.out.println("Printing all Categories: ");
+		System.out.println("========================================Categories========================================");
 
 		Category category = null;
 		Session ses = new Session();
