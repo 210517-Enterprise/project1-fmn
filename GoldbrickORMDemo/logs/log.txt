@@ -76,3 +76,6 @@ otEmpty{event= } - Failure to create tables for Congo
 2021-06-23 21:19:38 ERROR com.revature.Driver:69 - 
 otEmpty{userId= } - 
 otEmpty{event= } - Failure to create tables for Congo
+2021-06-24 10:09:22 ERROR com.revature.Driver:70 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Failure to create tables for Congo

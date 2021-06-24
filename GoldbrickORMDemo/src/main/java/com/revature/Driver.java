@@ -1,5 +1,6 @@
 package com.revature;
 
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Scanner;
 
@@ -51,7 +52,7 @@ public class Driver {
 	private static void initializeStore() {
 		Session ses = new Session();
 		Transaction tx = ses.getTransaction();
-		
+
 		ConnectionUtil util = new ConnectionUtil();
 		util.printDBStatus();
 
@@ -142,64 +143,63 @@ public class Driver {
 	private static void runAdminFunctionality() {
 		// admin: update/remove/insert products/categories select
 		// users/orders/products/categories
-		System.out.println("Would you like to:");
-		System.out.println("[1] Insert a product or category");
-		System.out.println("[2] Update a product or category");
-		System.out.println("[2] Remove a product or category");
-		System.out.println("[4] View all users");
-		System.out.println("[5] View all orders");
-		System.out.println("[6] View all products");
-		System.out.println("[7] View all categories");
-		int request = scan.nextInt();
+		int request = 0;
+		while (request != 0) {
+			System.out.println("Would you like to:");
+			System.out.println("[1] Insert a product or category");
+			System.out.println("[2] Update a product or category");
+			System.out.println("[3] Remove a product or category");
+			System.out.println("[4] View all users");
+			System.out.println("[5] View all orders");
+			System.out.println("[6] View all products");
+			System.out.println("[7] View all categories");
+			System.out.println("[8] Exit Admin View");
+			request = scan.nextInt();
 
-		switch (request) {
-		case 1:
-			boolean flag = false;
-			while (!flag) {
-				System.out.println("Would you like to insert a product or category?");
-				String table = scan.next();
-				if (table.equalsIgnoreCase("product")) {
-					flag = true;
-					insertProduct();
-
-				} else if (table.equalsIgnoreCase("category")) {
-					flag = true;
-					insertCategory();
-				} else {
-					System.out.println("Please choose product or category");
-				}
+			switch (request) {
+			case 1:
+				insert();
+				break;
+			case 2:
+				remove();
+				break;
+			case 3:
+				update();
+				break;
+			case 4:
+				break;
+			case 5:
+				break;
+			case 6:
+				break;
+			case 7:
+				break;
+			case 8:
+				break;
+			default:
+				break;
 			}
-			break;
-		case 2:
-			flag = false;
-			while(!flag) {
-				System.out.println("Would you like to update a product or category");
-				String table = scan.next();
-				if (table.equalsIgnoreCase("product")) {
-					flag = true;
-					updateProduct();
-				} else if (table.equalsIgnoreCase("category")) {
-					flag = true;
-					updateCategory();
-				} else {
-					System.out.println("Please choose product or category");
-				}
-			}
-			break;
-		case 3:
-			break;
-		case 4:
-			break;
-		case 5:
-			break;
-		case 6:
-			break;
-		case 7:
-			break;
 		}
-
 	}
 	
+	public static void update() {
+		boolean flag = false;
+		while (!flag) {
+			System.out.println("Would you like to insert a product or category?");
+			String table = scan.next();
+			if (table.equalsIgnoreCase("product")) {
+				flag = true;
+				updateProduct();
+			} else if (table.equalsIgnoreCase("category")) {
+				flag = true;
+				updateCategory();
+			} else {
+				System.out.println("Please choose product or category");
+			}
+		
+		}
+	}
+
 	public static void updateProduct() {
 		
 		System.out.print("Update product name: ");
@@ -212,8 +212,24 @@ public class Driver {
 		int pQuantity = scan.nextInt();
 		System.out.println("What is the product ID: ");
 		int pId = scan.nextInt();
+		Connection conn;
+		Session ses = new Session();
+		try {
+			conn = connPool.getConnection();
+			
+			
+			// Need to get product 
+			Product product = (Product) ses.selectAllById(conn, pId, Product.class);
+			
+			// cant add new constructor??
+			Product updatedProduct = new Product(pId, pName, pDesc, pPrice, pQuantity);
+			
+			boolean updated = ses.update(product, conn);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			
+		}
 		
-	//	Product product = new Product();
 		
 	}
 	
@@ -223,7 +239,7 @@ public class Driver {
 		System.out.println("What is the category Id: ");
 		int cId = scan.nextInt();
 		
-		// should we enter the the id and retrieve the record by PK?? or just create a new object
+		// should we enter the the id and retrieve the record by PK?? or just create a new object and replace 
 		Category category = new Category(cId, cName);
 		Session ses = new Session();
 		
@@ -232,10 +248,88 @@ public class Driver {
 		} catch (SQLException e) {
 			log.warn("Failed to update category");
 			e.printStackTrace();
-		}
-		
+		} 
 	}
 	
+	private static void remove() {
+		boolean flag = false;
+		while (!flag) {
+			System.out.println("Would you like to remove a product or category?");
+			String table = scan.next();
+			if (table.equalsIgnoreCase("product")) {
+				flag = true;
+				removeProduct();
+
+			} else if (table.equalsIgnoreCase("category")) {
+				flag = true;
+				removeCategory();
+			} else {
+				System.out.println("Please choose product or category");
+			}
+		}
+	}
+	
+	private static void removeProduct() {
+		System.out.print("ID of the product to remove: ");
+		int id = scan.nextInt();
+		
+		Session ses = new Session();
+		Connection conn;
+		try {
+			conn = connPool.getConnection();
+			Product prod = (Product) ses.selectAllById(conn, id, Product.class);
+			boolean deleted = ses.delete(prod, conn);
+			
+			if(deleted)
+				System.out.println("Product #" + id + " successfully deleted");
+			else
+				log.warn("Failure to remove product #" + id);
+		} catch (SQLException e) {
+			log.warn(e.getMessage());
+			e.printStackTrace();
+		}
+
+	}
+	
+	private static void removeCategory() {
+		System.out.print("ID of the category to remove: ");
+		int id = scan.nextInt();
+		
+		Session ses = new Session();
+		Connection conn;
+		try {
+			conn = connPool.getConnection();
+			Category category = (Category) ses.selectAllById(conn, id, Category.class);
+			boolean deleted = ses.delete(category, conn);
+			
+			if(deleted)
+				System.out.println("Category #" + id + " successfully deleted");
+			else
+				log.warn("Failure to remove category #" + id + ", ensure no dependencies exist and try again");
+		} catch (SQLException e) {
+			log.warn(e.getMessage());
+			e.printStackTrace();
+		}
+
+	}
+
+	private static void insert() {
+		boolean flag = false;
+		while (!flag) {
+			System.out.println("Would you like to insert a product or category?");
+			String table = scan.next();
+			if (table.equalsIgnoreCase("product")) {
+				flag = true;
+				insertProduct();
+
+			} else if (table.equalsIgnoreCase("category")) {
+				flag = true;
+				insertCategory();
+			} else {
+				System.out.println("Please choose product or category");
+			}
+		}
+	}
 	private static void insertProduct() {
 		System.out.print("Product name: ");
 		String name = scan.next();
@@ -247,22 +341,23 @@ public class Driver {
 		int quantity = scan.nextInt();
 		System.out.println("\nWhat is the ID of the category this product belongs in?");
 		int catID = scan.nextInt();
-		
+
 		Product product = new Product(catID, name, desc, price, quantity);
 		Session ses = new Session();
+		
 		try {
 			ses.insert(product, connPool.getConnection());
 		} catch (SQLException e) {
 			log.warn("Failure to insert new product " + name);
 			e.printStackTrace();
 		}
-		
+
 	}
-	
+
 	private static void insertCategory() {
 		System.out.print("Category name: ");
 		String name = scan.next();
-		
+
 		Category cat = new Category(name);
 		Session ses = new Session();
 		try {
@@ -271,7 +366,7 @@ public class Driver {
 			log.warn("Failure to insert new product " + name);
 			e.printStackTrace();
 		}
-		
+
 	}
 
 	private static void runCustomerFunctionality() {
