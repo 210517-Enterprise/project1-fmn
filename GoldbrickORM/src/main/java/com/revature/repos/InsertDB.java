@@ -178,6 +178,8 @@ public class InsertDB {
 			if (!columnName.equals(pk.getColumnName())) {
 				if (getters.get(columnName).getReturnType() == String.class)
 					sql += "\'" + getters.get(columnName).invoke(order, null) + "\',";
+				else if (getters.get(columnName).getReturnType() == Date.class)
+					sql += "DATE " + getters.get(columnName).invoke(order, null) + ",";
 				else
 					sql += getters.get(columnName).invoke(order, null) + ", ";
 
