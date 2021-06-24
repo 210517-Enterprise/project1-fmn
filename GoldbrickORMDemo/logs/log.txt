@@ -207,3 +207,174 @@ otEmpty{event= } - ERROR: relation "products" does not exist
 otEmpty{userId= } - 
 otEmpty{event= } - ERROR: relation "products" does not exist
   Position: 13
+2021-06-24 07:29:27 WARN  revature.repos.DatabaseBuilder:93 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Connection is closed.
+2021-06-24 07:29:27 ERROR com.revature.Driver:86 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Failure to create tables for Congo
+2021-06-24 07:29:27 WARN  revature.repos.InsertDB:142 - 
+otEmpty{userId= } - 
+otEmpty{event= } - ERROR: relation "categories" does not exist
+  Position: 13
+2021-06-24 07:29:27 WARN  revature.repos.InsertDB:142 - 
+otEmpty{userId= } - 
+otEmpty{event= } - ERROR: relation "categories" does not exist
+  Position: 13
+2021-06-24 07:29:28 WARN  revature.repos.InsertDB:142 - 
+otEmpty{userId= } - 
+otEmpty{event= } - ERROR: relation "categories" does not exist
+  Position: 13
+2021-06-24 07:29:28 WARN  revature.repos.InsertDB:142 - 
+otEmpty{userId= } - 
+otEmpty{event= } - ERROR: relation "categories" does not exist
+  Position: 13
+2021-06-24 07:29:28 WARN  com.revature.Driver:112 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Failure to insert category
+2021-06-24 07:29:28 WARN  revature.repos.InsertDB:248 - 
+otEmpty{userId= } - 
+otEmpty{event= } - ERROR: relation "products" does not exist
+  Position: 13
+2021-06-24 07:29:29 WARN  revature.repos.InsertDB:248 - 
+otEmpty{userId= } - 
+otEmpty{event= } - ERROR: relation "products" does not exist
+  Position: 13
+2021-06-24 07:29:29 WARN  revature.repos.InsertDB:248 - 
+otEmpty{userId= } - 
+otEmpty{event= } - ERROR: relation "products" does not exist
+  Position: 13
+2021-06-24 07:29:30 WARN  revature.repos.InsertDB:248 - 
+otEmpty{userId= } - 
+otEmpty{event= } - ERROR: relation "products" does not exist
+  Position: 13
+2021-06-24 07:29:30 WARN  revature.repos.InsertDB:248 - 
+otEmpty{userId= } - 
+otEmpty{event= } - ERROR: relation "products" does not exist
+  Position: 13
+2021-06-24 07:29:30 WARN  revature.repos.InsertDB:248 - 
+otEmpty{userId= } - 
+otEmpty{event= } - ERROR: relation "products" does not exist
+  Position: 13
+2021-06-24 07:32:13 ERROR com.revature.Driver:86 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Failure to create tables for Congo
+2021-06-24 07:41:50 ERROR com.revature.Driver:86 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Failure to create tables for Congo
+2021-06-24 07:41:59 INFO  revature.repos.GetDB:59 - 
+otEmpty{userId= } - 
+otEmpty{event= } - All users have been pulled from the databse
+2021-06-24 07:41:59 INFO  revature.repos.GetDB:59 - 
+otEmpty{userId= } - 
+otEmpty{event= } - All users have been pulled from the databse
+2021-06-24 07:41:59 INFO  revature.repos.GetDB:63 - 
+otEmpty{userId= } - 
+otEmpty{event= } - All Users have been pulled from the database!
+2021-06-24 07:42:08 INFO  revature.repos.GetDB:142 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Retrieved all orders from the database!
+2021-06-24 07:42:13 INFO  revature.repos.GetDB:331 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Retrieved All Products from the Database!
+2021-06-24 07:42:18 INFO  revature.repos.GetDB:271 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Retrieved all Categories from the Database!
+2021-06-24 07:48:08 ERROR com.revature.Driver:86 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Failure to create tables for Congo
+2021-06-24 07:48:15 INFO  revature.repos.GetDB:59 - 
+otEmpty{userId= } - 
+otEmpty{event= } - All users have been pulled from the databse
+2021-06-24 07:48:15 INFO  revature.repos.GetDB:59 - 
+otEmpty{userId= } - 
+otEmpty{event= } - All users have been pulled from the databse
+2021-06-24 07:48:15 INFO  revature.repos.GetDB:63 - 
+otEmpty{userId= } - 
+otEmpty{event= } - All Users have been pulled from the database!
+2021-06-24 07:49:29 ERROR com.revature.Driver:86 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Failure to create tables for Congo
+2021-06-24 07:49:38 INFO  revature.repos.GetDB:59 - 
+otEmpty{userId= } - 
+otEmpty{event= } - All users have been pulled from the databse
+2021-06-24 07:49:38 INFO  revature.repos.GetDB:59 - 
+otEmpty{userId= } - 
+otEmpty{event= } - All users have been pulled from the databse
+2021-06-24 07:49:38 INFO  revature.repos.GetDB:63 - 
+otEmpty{userId= } - 
+otEmpty{event= } - All Users have been pulled from the database!
+2021-06-24 07:50:34 ERROR com.revature.Driver:86 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Failure to create tables for Congo
+2021-06-24 07:50:39 INFO  revature.repos.GetDB:59 - 
+otEmpty{userId= } - 
+otEmpty{event= } - All users have been pulled from the databse
+2021-06-24 07:50:39 INFO  revature.repos.GetDB:59 - 
+otEmpty{userId= } - 
+otEmpty{event= } - All users have been pulled from the databse
+2021-06-24 07:50:39 INFO  revature.repos.GetDB:63 - 
+otEmpty{userId= } - 
+otEmpty{event= } - All Users have been pulled from the database!
+2021-06-24 07:51:57 ERROR com.revature.Driver:86 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Failure to create tables for Congo
+2021-06-24 07:52:04 INFO  revature.repos.GetDB:59 - 
+otEmpty{userId= } - 
+otEmpty{event= } - All users have been pulled from the databse
+2021-06-24 07:52:04 INFO  revature.repos.GetDB:59 - 
+otEmpty{userId= } - 
+otEmpty{event= } - All users have been pulled from the databse
+2021-06-24 07:52:04 INFO  revature.repos.GetDB:63 - 
+otEmpty{userId= } - 
+otEmpty{event= } - All Users have been pulled from the database!
+2021-06-24 07:53:17 ERROR com.revature.Driver:86 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Failure to create tables for Congo
+2021-06-24 07:53:21 INFO  revature.repos.GetDB:59 - 
+otEmpty{userId= } - 
+otEmpty{event= } - All users have been pulled from the databse
+2021-06-24 07:53:21 INFO  revature.repos.GetDB:59 - 
+otEmpty{userId= } - 
+otEmpty{event= } - All users have been pulled from the databse
+2021-06-24 07:53:21 INFO  revature.repos.GetDB:63 - 
+otEmpty{userId= } - 
+otEmpty{event= } - All Users have been pulled from the database!
+2021-06-24 07:54:40 ERROR com.revature.Driver:86 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Failure to create tables for Congo
+2021-06-24 07:54:49 INFO  revature.repos.GetDB:59 - 
+otEmpty{userId= } - 
+otEmpty{event= } - All users have been pulled from the databse
+2021-06-24 07:54:49 INFO  revature.repos.GetDB:59 - 
+otEmpty{userId= } - 
+otEmpty{event= } - All users have been pulled from the databse
+2021-06-24 07:54:49 INFO  revature.repos.GetDB:63 - 
+otEmpty{userId= } - 
+otEmpty{event= } - All Users have been pulled from the database!
+2021-06-24 08:10:10 WARN  revature.repos.DatabaseBuilder:93 - 
+otEmpty{userId= } - 
+otEmpty{event= } - ERROR: relation "users" already exists
+2021-06-24 08:10:10 ERROR com.revature.Driver:93 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Failure to create tables for Congo
+2021-06-24 08:10:11 WARN  revature.repos.InsertDB:85 - 
+otEmpty{userId= } - 
+otEmpty{event= } - ERROR: duplicate key value violates unique constraint "users_email_key"
+  Detail: Key (email)=(admin@theshop.com) already exists.
+2021-06-24 08:10:11 WARN  revature.repos.InsertDB:85 - 
+otEmpty{userId= } - 
+otEmpty{event= } - ERROR: duplicate key value violates unique constraint "users_email_key"
+  Detail: Key (email)=(faurori@gmail.com) already exists.
+2021-06-24 08:10:36 ERROR com.revature.Driver:93 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Failure to create tables for Congo
+2021-06-24 08:11:02 INFO  revature.repos.DatabaseBuilder:115 - 
+otEmpty{userId= } - 
+otEmpty{event= } - No tables to drop.....
+2021-06-24 08:13:59 ERROR com.revature.Driver:93 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Failure to create tables for Congo
+2021-06-24 08:15:59 ERROR com.revature.Driver:93 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Failure to create tables for Congo
