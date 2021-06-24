@@ -293,6 +293,7 @@ public class DatabaseBuilder {
 			prod1 = db.getAllProductsByPrimaryKey(connObj, pm, 1);
 			
 			System.out.println(prod1.toString());
+			
 			System.out.println("\n=============Products by Foreign Key=====================\n");
 			ArrayList<Product> prod2 = new ArrayList<Product>();
 			prod2 = db.getAllProductsByForeignKey(connObj, pm, 2);
