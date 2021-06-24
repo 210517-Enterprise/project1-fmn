@@ -243,6 +243,7 @@ public class Driver {
 			conn = connPool.getConnection();
 
 			Product p = (Product) ses.selectAllById(conn, pId, Product.class);
+
 			System.out.println("==================================================== Product =====================================================");
 			System.out.println("=Product ID=  [1]=CategoryID=  [2]=Product Name=   [3]=Product Description=  [4]=Product Price=  [5]=Product Quantity=");
 			System.out.println(p.getId() + "              " + p.getCategoryID() + "               " + p.getProductName()+ "         " + p.getProductDescription() + "            "+  p.getPrice() + "             " + p.getQuantity());
