@@ -34,10 +34,12 @@ public class DatabaseDeleter {
 		
 		try {
 			PreparedStatement stmt = conn.prepareStatement(sql);
-			if(stmt.execute(sql))
+			if(!stmt.execute()) {
+				conn.close();
 				return true;
+			}
 			else {
-				log.warn("Failure to delete Product #" + id);
+				log.warn("Failure to delete Order #" + id);
 				return false;
 			}
 
@@ -59,10 +61,12 @@ public class DatabaseDeleter {
 		
 		try {
 			PreparedStatement stmt = conn.prepareStatement(sql);
-			if(stmt.execute(sql))
+			if(!stmt.execute()) {
+				conn.close();
 				return true;
+			}
 			else {
-				log.warn("Failure to delete Product #" + id);
+				log.warn("Failure to delete Order #" + id);
 				return false;
 			}
 
@@ -84,10 +88,12 @@ public class DatabaseDeleter {
 		
 		try {
 			PreparedStatement stmt = conn.prepareStatement(sql);
-			if(stmt.execute(sql))
+			if(!stmt.execute()) { 
+				conn.close();
 				return true;
+			}
 			else {
-				log.warn("Failure to delete Product #" + id);
+				log.warn("Failure to delete Category #" + id);
 				return false;
 			}
 
@@ -109,8 +115,10 @@ public class DatabaseDeleter {
 		
 		try {
 			PreparedStatement stmt = conn.prepareStatement(sql);
-			if(stmt.execute(sql))
+			if(!stmt.execute()) {
+				conn.close();
 				return true;
+			}
 			else {
 				log.warn("Failure to delete Product #" + id);
 				return false;

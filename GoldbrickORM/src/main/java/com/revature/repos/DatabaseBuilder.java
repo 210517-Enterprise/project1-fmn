@@ -83,11 +83,11 @@ public class DatabaseBuilder {
 				PreparedStatement ps = conn.prepareStatement(str.toString());
 				
 				isCreated = ps.execute();
-				
+				conn.close();
 				
 				
 			} catch (SQLException e) {
-				Log.warn("Failure to create table: " + e.getMessage());
+				Log.warn(e.getMessage());
 				e.printStackTrace();
 				return false;
 			}

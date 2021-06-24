@@ -80,11 +80,11 @@ public class InsertDB {
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.execute();
-			
+			conn.close();
 		} catch (SQLException e) {
-			log.warn("Failure to add User!");
+			log.warn(e.getMessage());
 			e.printStackTrace();
-		}
+		} 
 		
 	}
 	
@@ -133,11 +133,13 @@ public class InsertDB {
 			ResultSet rs;
 			if ((rs = ps.executeQuery()) != null) {
 				rs.next();
-				return rs.getInt(cm.getPrimaryKey().getColumnName());
+				int newID = rs.getInt(cm.getPrimaryKey().getColumnName());
+				conn.close();
+				return newID;
 			}	
 			
 		} catch (SQLException e) {
-			log.warn("Failure to add Category!");
+			log.warn(e.getMessage());
 			e.printStackTrace();
 		}
 		
@@ -189,8 +191,9 @@ public class InsertDB {
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.execute();
+			conn.close();
 		} catch (SQLException e) {
-			log.warn("Failure to add Order!");
+			log.warn(e.getMessage());
 			e.printStackTrace();
 		}
 		
@@ -240,8 +243,9 @@ public class InsertDB {
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.execute();
+			conn.close();
 		} catch (SQLException e) {
-			log.warn("Failure to add Product!");
+			log.warn(e.getMessage());
 			e.printStackTrace();
 		}
 		

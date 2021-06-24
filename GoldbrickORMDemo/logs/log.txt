@@ -73,3 +73,36 @@ otEmpty{event= } - Failure to add Product!
 2021-06-23 14:03:03 ERROR com.revature.Driver:69 - 
 otEmpty{userId= } - 
 otEmpty{event= } - Failure to create tables for Congo
+2021-06-23 17:55:33 ERROR com.revature.Driver:70 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Failure to create tables for Congo
+2021-06-23 17:56:59 ERROR com.revature.Driver:70 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Failure to create tables for Congo
+2021-06-23 17:57:49 INFO  revature.repos.GetDB:289 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Retrieved all Categories associated with Primary key: 5
+2021-06-23 18:10:45 ERROR com.revature.Driver:70 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Failure to create tables for Congo
+2021-06-23 18:17:45 ERROR com.revature.Driver:82 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Failure to create tables for Congo
+2021-06-23 18:20:22 ERROR com.revature.Driver:84 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Failure to create tables for Congo
+2021-06-23 18:21:13 WARN  com.revature.Driver:251 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Failure to remove category #5, ensure no dependencies exist and try again
+2021-06-23 18:24:22 ERROR com.revature.Driver:84 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Failure to create tables for Congo
+2021-06-23 18:24:40 WARN  revature.repos.DatabaseDeleter:90 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Failure to delete Category #5
+2021-06-23 18:24:40 WARN  com.revature.Driver:251 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Failure to remove category #5, ensure no dependencies exist and try again
+2021-06-23 18:29:41 ERROR com.revature.Driver:84 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Failure to create tables for Congo

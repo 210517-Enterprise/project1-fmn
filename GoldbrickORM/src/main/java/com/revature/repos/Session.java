@@ -7,6 +7,7 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
+import com.revature.exceptions.UnannotatedClassException;
 import com.revature.models.Category;
 import com.revature.models.Order;
 import com.revature.models.Product;
@@ -74,8 +75,18 @@ public class Session {
 	}
 
 	// overload delete methods
-	public boolean delete(Category category, Connection conn) {
-		return DatabaseDeleter.deleteCategoryById(Metamodel.of(Category.class), category.getId(), conn);
+	public boolean delete(Class<?> clazz, int id, Connection conn) {
+		if(clazz.equals(Category.class))
+			return DatabaseDeleter.deleteCategoryById(Metamodel.of(Category.class), id, conn);
+		else if(clazz.equals(Order.class))
+			return DatabaseDeleter.deleteOrderById(Metamodel.of(Order.class), id, conn);
+		else if(clazz.equals(Product.class))
+			return DatabaseDeleter.deleteProductById(Metamodel.of(Product.class), id, conn);
+		else if(clazz.equals(User.class))
+			return DatabaseDeleter.deleteUserById(Metamodel.of(User.class), id, conn);
+		else {
+			throw new UnannotatedClassException("Failure to delete object from class that contains no annotations");
+		}
 	}
 
 	public boolean delete(Order order, Connection conn) {
@@ -94,21 +105,16 @@ public class Session {
 	public void insert(User user, Connection conn) {
 		try {
 			InsertDB.insertUser(Metamodel.of(User.class), user, conn);
-			conn.close();
 		} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
 			log.warn(e.getMessage());
 			e.printStackTrace();
-		} catch (SQLException e) {
-			log.warn(e.getMessage());
-			e.printStackTrace();
-		}
+		} 
 	}
 
 	public void insert(Product product, Connection conn) {
 		try {
 			InsertDB.insertProduct(Metamodel.of(Product.class), product, conn);
-			conn.close();
-		} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException | SQLException e) {
+		} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
 			log.warn(e.getMessage());
 			e.printStackTrace();
 		}
@@ -117,8 +123,7 @@ public class Session {
 	public void insert(Order order, Connection conn) {
 		try {
 			InsertDB.insertOrder(Metamodel.of(Order.class), order, conn);
-			conn.close();
-		} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException | SQLException e) {
+		} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
 			log.warn(e.getMessage());
 			e.printStackTrace();
 		}
@@ -127,9 +132,8 @@ public class Session {
 	public int insert(Category category, Connection conn) {
 		try {
 			int id = InsertDB.insertCategory(Metamodel.of(Category.class), category, conn);
-			conn.close();
 			return id;
-		} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException | SQLException e) {
+		} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
 			log.warn(e.getMessage());
 			e.printStackTrace();
 			return -1;
