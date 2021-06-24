@@ -80,10 +80,11 @@ public class InsertDB {
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.execute();
+			conn.close();
 		} catch (SQLException e) {
-			log.warn("Failure to add User!");
+			log.warn(e.getMessage());
 			e.printStackTrace();
-		}
+		} 
 		
 	}
 	
@@ -96,7 +97,7 @@ public class InsertDB {
 	 * @throws IllegalArgumentException
 	 * @throws InvocationTargetException
 	 */
-	public static void insertCategory(Metamodel<Category> cm, Category category, Connection conn)
+	public static int insertCategory(Metamodel<Category> cm, Category category, Connection conn)
 			throws IllegalAccessException, IllegalArgumentException, InvocationTargetException {
 		IdField pk = cm.getPrimaryKey();
 
@@ -124,16 +125,25 @@ public class InsertDB {
 		}
 
 		sql = sql.substring(0, sql.lastIndexOf(","));
-		sql += ")";
+		sql += ") RETURNING " + cm.getTableName() + "." + cm.getPrimaryKey().getColumnName();
 		
 		
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
-			ps.execute();
+			ResultSet rs;
+			if ((rs = ps.executeQuery()) != null) {
+				rs.next();
+				int newID = rs.getInt(cm.getPrimaryKey().getColumnName());
+				conn.close();
+				return newID;
+			}	
+			
 		} catch (SQLException e) {
-			log.warn("Failure to add Category!");
+			log.warn(e.getMessage());
 			e.printStackTrace();
 		}
+		
+		return -1;
 		
 	}
 	
@@ -181,8 +191,9 @@ public class InsertDB {
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.execute();
+			conn.close();
 		} catch (SQLException e) {
-			log.warn("Failure to add Order!");
+			log.warn(e.getMessage());
 			e.printStackTrace();
 		}
 		
@@ -232,8 +243,9 @@ public class InsertDB {
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.execute();
+			conn.close();
 		} catch (SQLException e) {
-			log.warn("Failure to add Product!");
+			log.warn(e.getMessage());
 			e.printStackTrace();
 		}
 		

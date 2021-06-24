@@ -49,8 +49,9 @@ public class GetDB {
 			} else if (user_role.equals("CUSTOMER")) {
 				role = Role.CUSTOMER;
 			} else {
-				log.fatal("User role not found for user: " + email);
-				System.exit(0);;
+				log.warn("User role not found for user: " + email);
+				conn.close();
+				return null;
 			}
 			
 			User holder = new User(id, firstName, lastName, email, pwd, role);
@@ -60,6 +61,7 @@ public class GetDB {
 		}
 		
 		log.info("All Users have been pulled from the database!");
+		conn.close();
 		return allUsers;
 	}
 
@@ -93,15 +95,18 @@ public class GetDB {
 			} else if (user_role.equals("CUSTOMER")) {
 				role = Role.CUSTOMER;
 			} else {
-				log.fatal("User role not found for user: " + email);
-				System.exit(0);;
+				log.warn("User role not found for user: " + email);
+				conn.close();
+				return null;
 			}
 			
 			User holder = new User(id, firstName, lastName, email, pwd, role);
 			log.info("Retrieved user: " + firstName + " from the database!");
+			conn.close();
 			return holder;
 	}
 		log.error("No user found with id: " + userID);
+		conn.close();
 		return null;
 		
 	}	
@@ -135,6 +140,7 @@ public class GetDB {
 			orders.add(o);
 		}
 		log.info("Retrieved all orders from the database!");
+		conn.close();
 		return orders;
 	}
 
@@ -168,6 +174,7 @@ public class GetDB {
 			o.add(order);
 		}	
 		log.info("Retrieved " + o.size() + " orders from orderID: " + orderID);
+		conn.close();
 		return o;
 	}
 	
@@ -200,6 +207,7 @@ public class GetDB {
 			o.add(order);
 		}	
 		log.info("Retrieved " + o.size() + " Orders from the server.");
+		conn.close();
 		return o;
 		
 	}
@@ -233,6 +241,7 @@ public class GetDB {
 			o.add(order);
 		}	
 		log.info("Retrieved Orders associated with userID: " + userID);
+		conn.close();
 		return o;
 		
 	}
@@ -260,6 +269,7 @@ public class GetDB {
 			list.add(c);
 		}
 		log.info("Retrieved all Categories from the Database!");
+		conn.close();
 		return list;
 	}	
 	
@@ -287,6 +297,7 @@ public class GetDB {
 			list.add(c);
 		}
 		log.info("Retrieved all Categories associated with Primary key: " + pk);
+		conn.close();
 		return list;
 	}
 	
@@ -318,6 +329,7 @@ public class GetDB {
 			list.add(p);
 		}	
 		log.info("Retrieved All Products from the Database!");
+		conn.close();
 		return list;
 	}
 	
@@ -350,6 +362,7 @@ public class GetDB {
 			list.add(p);
 		}
 		log.info("Retrieved all products associated with Primary Key: " + PK);
+		conn.close();
 		return list;
 	}
 	
@@ -382,6 +395,7 @@ public class GetDB {
 			list.add(p);
 		}
 		log.info("Retrieved all products associated with Foreign Key " + FK);
+		conn.close();
 		return list;
 	}	
 }

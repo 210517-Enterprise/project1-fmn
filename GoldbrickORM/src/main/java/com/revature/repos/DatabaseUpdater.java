@@ -52,10 +52,12 @@ public class DatabaseUpdater {
 			
 			if(rowsAffected <= 0) {
 				log.warn("No rows updated for Category: " + cat.getCategoryName());
+				conn.close();
 				return false;
 			}
-
+			conn.close();
 		} catch (SQLException e) {
+			log.warn(e.getMessage());
 			e.printStackTrace();
 		}
 		
@@ -99,10 +101,14 @@ public class DatabaseUpdater {
 			
 			if(rowsAffected <= 0) {
 				log.warn("No rows updated for Order: " + order.getId());
+				conn.close();
 				return false;
 			}
+			
+			conn.close();
 
 		} catch (SQLException e) {
+			log.warn(e.getMessage());
 			e.printStackTrace();
 		}
 		
@@ -154,10 +160,12 @@ public class DatabaseUpdater {
 			
 			if(rowsAffected <= 0) {
 				log.warn("No rows updated for Product: " + product.getCategoryID());
+				conn.close();
 				return false;
 			}
-
+			conn.close();
 		} catch (SQLException e) {
+			log.warn(e.getMessage());
 			e.printStackTrace();
 		}
 
@@ -212,10 +220,13 @@ public class DatabaseUpdater {
 			
 			if(rowsAffected <= 0) {
 				log.warn("No rows updated for User: " + user.getEmail());
+				conn.close();
 				return false;
 			}
 
+			conn.close();
 		} catch (SQLException e) {
+			log.warn(e.getMessage());
 			e.printStackTrace();
 		}
 

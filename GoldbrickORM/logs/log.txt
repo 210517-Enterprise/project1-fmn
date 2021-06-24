@@ -304,3 +304,6 @@ otEmpty{event= } - Retrieved all Categories from the Database!
 2021-06-23 14:43:43 INFO  revature.repos.GetDB:289 - 
 otEmpty{userId= } - 
 otEmpty{event= } - Retrieved all Categories associated with Primary key: 1
+2021-06-23 15:55:18 WARN  revature.repos.InsertDB:242 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Failure to add Product!

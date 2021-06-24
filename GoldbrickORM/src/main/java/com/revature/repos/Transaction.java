@@ -11,19 +11,19 @@ import org.apache.log4j.Logger;
  * Transaction Management :  (begin, commit, savepoint, rollback)
  */
 
-public class Transactions {
+public class Transaction {
 	
-	private static Transactions transaction = new Transactions();
+	private static Transaction transaction = new Transaction();
 	
 	private HashMap<String, Savepoint> savepoints;
 	
-	private static Logger log = Logger.getLogger(Transactions.class);
+	private static Logger log = Logger.getLogger(Transaction.class);
 	
-	public Transactions() {
+	public Transaction() {
 		savepoints = new HashMap();
 	}
 	
-	public static Transactions getTransaction() {
+	public static Transaction getTransaction() {
 		return transaction;
 	}
 	
@@ -105,6 +105,5 @@ public class Transactions {
 			log.warn("Cannot set transaction!");
 		}
 	}
-	
 
 }

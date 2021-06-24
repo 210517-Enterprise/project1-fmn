@@ -22,6 +22,8 @@ import com.revature.util.ForeignKeyField;
 import com.revature.util.IdField;
 import com.revature.util.Metamodel;
 
+import jdk.internal.org.jline.utils.Log;
+
 /**
  * This class creates the tables in the database based on the meta-models in configuration
  * @author Mollie Morrow, Nick Gianino, Frank Aurori
@@ -52,6 +54,7 @@ public class DatabaseBuilder {
 	 */
 	public boolean createTables(Connection conn) throws NoSuchFieldException {
 		// check if tables exist in db
+		boolean isCreated = false;
 		for (Metamodel<Class<?>> mm : this.config.getMetamodels()) {
 
 			IdField pk = mm.getPrimaryKey();
@@ -74,24 +77,24 @@ public class DatabaseBuilder {
 			str.deleteCharAt(str.length()-1); //get rid of extra ","
 			str.append(");");
 			
-			System.out.println(str);
+			//System.out.println(str);
 			
 			try {
 				PreparedStatement ps = conn.prepareStatement(str.toString());
 				
-				ps.executeQuery();
-				
+				isCreated = ps.execute();
+				conn.close();
 				
 				
 			} catch (SQLException e) {
+				Log.warn(e.getMessage());
 				e.printStackTrace();
+				return false;
 			}
 
 		}
 		
-		
-
-		return false;
+		return isCreated;
 	}
 
 
