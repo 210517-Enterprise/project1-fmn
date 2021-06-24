@@ -38,6 +38,16 @@ public class Session {
 			return false;
 		}
 	}
+	
+	public boolean dropTables(Configuration cfg, Connection conn) {
+		try {
+			return new DatabaseBuilder(cfg).dropTables(conn);
+		} catch (SQLException e) {
+			log.warn(e.getMessage());
+			e.printStackTrace();
+			return false;
+		}
+	}
 
 	// Overload update methods
 	public boolean update(User user, Connection conn) {

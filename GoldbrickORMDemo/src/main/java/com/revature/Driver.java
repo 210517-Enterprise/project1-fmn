@@ -22,6 +22,7 @@ import com.revature.util.ConnectionUtil;
 
 public class Driver {
 
+	public static Configuration cfg = new Configuration();
 	public static final DataSource connPool = setUpConnection();
 	public static Logger log = Logger.getLogger(Driver.class);
 	public static Scanner scan = new Scanner(System.in);
@@ -50,6 +51,7 @@ public class Driver {
 
 		}
 		
+		dropTables();
 		System.out.println("Thanks for visiting Daintree");
 
 	}
@@ -64,6 +66,16 @@ public class Driver {
 		else
 			return true;
 	}
+	
+	private static void dropTables() {
+		Session ses = new Session();
+		try {
+			ses.dropTables(cfg, connPool.getConnection());
+		} catch (SQLException e) {
+			log.warn(e.getMessage());
+			e.printStackTrace();
+		}
+	}
 
 	private static void initializeStore() {
 		Session ses = new Session();
@@ -72,7 +84,6 @@ public class Driver {
 		ConnectionUtil util = new ConnectionUtil();
 		util.printDBStatus();
 
-		Configuration cfg = new Configuration();
 		cfg.addAnnotatedClass(User.class);
 		cfg.addAnnotatedClass(Category.class);
 		cfg.addAnnotatedClass(Product.class);
@@ -439,8 +450,11 @@ public class Driver {
 		try {
 			List<User> users = new ArrayList<User>();
 			users = ses.selectAll(connPool.getConnection(), user);
+			System.out.println("========================================Users========================================");
+			//System.out.println("ID      First Name      Last Name      Email                 Password            Role");
 			for(User u : users) {
-				System.out.println(u.toString());
+				System.out.println(u.getId() + "        " + u.getFirstName()  + "        " + u.getLastName() + "        " + u.getEmail() 
+					+ "        " + u.getPassword() + "        " + u.getRole().toString() + "\n\n");
 			}
 		} catch(SQLException e) {
 			log.warn("Failure to retrieve all users from the databse.");
