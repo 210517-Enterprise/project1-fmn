@@ -219,38 +219,85 @@ public class Driver {
 	}
 
 	public static void updateProduct() {
-		
-		System.out.print("Update product name: ");
-		String pName = scan.next();
-		System.out.println("\nUpdate product description: ");
-		String pDesc = scan.next();
-		System.out.println("\nUpdate product price: ");
-		double pPrice = scan.nextDouble();
-		System.out.println("Update the quantity in stock: ");
-		int pQuantity = scan.nextInt();
+
 		System.out.println("What is the product ID: ");
 		int pId = scan.nextInt();
 		Connection conn;
+
 		Session ses = new Session();
 		try {
+
 			conn = connPool.getConnection();
-			
-			
-			// Need to get product 
-			Product product = (Product) ses.selectAllById(conn, pId, Product.class);
-			
-			// cant add new constructor??
-			Product updatedProduct = new Product(pId, pName, pDesc, pPrice, pQuantity);
-			
-			boolean updated = ses.update(product, conn);
+
+			Product p = (Product) ses.selectAllById(conn, pId, Product.class);
+			System.out.println("==================================================== Product =====================================================");
+			System.out.println("=Product ID=  [1]=CategoryID=  [2]=Product Name=   [3]=Product Description=  [4]=Product Price=  [5]=Product Quantity=");
+			System.out.println(p.getId() + p.getCategoryID() + p.getProductName() + p.getProductDescription()
+					+ p.getPrice() + p.getQuantity());
+
+			System.out.println("What would you like to update?");
+			int request = scan.nextInt();
+			switch (request) {
+			case 1:
+				System.out.print("Update category id: ");
+				int cId = scan.nextInt();
+				p.setCategoryID(cId);
+				ses.update(p, conn);
+				System.out.println("Updated category id to: " + p.getCategoryID());
+				log.info("Successfully updated category id");
+				break;
+			case 2:
+				System.out.print("Update product name: ");
+				String pName = scan.next();
+				p.setProductName(pName);
+				ses.update(p, conn);
+				System.out.println("Updated product name to: " + p.getProductName());
+				log.info("Successfully updated product name");
+				break;
+			case 3:
+				System.out.print("Update product description: ");
+				String pDesc = scan.next();
+				p.setProductName(pDesc);
+				ses.update(p, conn);
+				System.out.println("Updated product description to: " + p.getProductDescription());
+				log.info("Successfully updated product description");
+				break;
+			case 4:
+				System.out.print("Update product description: ");
+				double pPrice = scan.nextDouble();
+				p.setPrice(pPrice);
+				ses.update(p, conn);
+				System.out.println("Updated product price to: $" + p.getPrice());
+				log.info("Successfully updated product description");
+				break;
+			case 5:
+				System.out.print("Update product quantity: ");
+				int pQuan = scan.nextInt();
+				if (pQuan < 0) {
+					System.out.println("Entered a negative quanity please try again!");
+					int request2 = scan.nextInt();
+					p.setQuantity(request2);
+					ses.update(p, conn);
+					System.out.println("Updated product quanity to: " + p.getQuantity());
+					log.info("Successfully updated product quantity");
+				} else {
+					p.setQuantity(pQuan);
+					ses.update(p, conn);
+					System.out.println("Updated category id to: " + p.getQuantity());
+					log.info("Successfully updated product 	quantity");
+					break;
+				}
+
+			}
+
 		} catch (SQLException e) {
 			e.printStackTrace();
-			
+			log.warn("failed to update product!");
+
 		}
-		
-		
+
 	}
-	
+
 	public static void updateCategory() {
 		System.out.println("Update the category name: ");
 		String cName = scan.next();

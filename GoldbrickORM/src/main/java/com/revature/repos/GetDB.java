@@ -341,9 +341,8 @@ public class GetDB {
 	 * @return
 	 * @throws SQLException
 	 */
-	public static ArrayList<Product> getAllProductsByPrimaryKey(Connection conn, Metamodel<Product> pm, int PK) throws SQLException {
-		ArrayList<Product> list = new ArrayList<Product>();
-		
+	public static Product getAllProductsByPrimaryKey(Connection conn, Metamodel<Product> pm, int PK) throws SQLException {
+		Product p = null;
 		String sql = "SELECT * FROM " + pm.getTableName() + " WHERE " + pm.getPrimaryKey().getColumnName() + " = " + PK;
 		
 		PreparedStatement ps = conn.prepareStatement(sql);
@@ -358,12 +357,12 @@ public class GetDB {
 			int quantity = rs.getInt(6);
 			boolean inStock = rs.getBoolean(7);
 			
-			Product p = new Product(id, cID, prodName, prodDesc, price, quantity, inStock);
-			list.add(p);
+			p = new Product(id, cID, prodName, prodDesc, price, quantity, inStock);
+			
 		}
 		log.info("Retrieved all products associated with Primary Key: " + PK);
 		conn.close();
-		return list;
+		return p;
 	}
 	
 	/**

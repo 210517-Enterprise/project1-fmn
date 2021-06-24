@@ -262,11 +262,11 @@ public class DatabaseBuilder {
 			}
 			
 			System.out.println("\n============Products By Primary Key=====================\n");
-			ArrayList<Product> prod1 = new ArrayList<Product>();
+			Product prod1 = null;
 			prod1 = db.getAllProductsByPrimaryKey(connObj, pm, 1);
-			for(Product p : prod1) {
-				System.out.println(p.toString());
-			}
+			
+			System.out.println(prod1.toString());
+			
 			
 			System.out.println("\n=============Products by Foreign Key=====================\n");
 			ArrayList<Product> prod2 = new ArrayList<Product>();

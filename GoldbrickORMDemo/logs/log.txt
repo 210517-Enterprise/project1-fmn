@@ -207,3 +207,61 @@ otEmpty{event= } - ERROR: relation "products" does not exist
 otEmpty{userId= } - 
 otEmpty{event= } - ERROR: relation "products" does not exist
   Position: 13
+2021-06-24 10:35:55 WARN  revature.repos.DatabaseBuilder:93 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Connection is closed.
+2021-06-24 10:35:55 ERROR com.revature.Driver:86 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Failure to create tables for Congo
+2021-06-24 10:35:55 WARN  revature.repos.InsertDB:142 - 
+otEmpty{userId= } - 
+otEmpty{event= } - ERROR: relation "categories" does not exist
+  Position: 13
+2021-06-24 10:35:56 WARN  revature.repos.InsertDB:142 - 
+otEmpty{userId= } - 
+otEmpty{event= } - ERROR: relation "categories" does not exist
+  Position: 13
+2021-06-24 10:35:56 WARN  revature.repos.InsertDB:142 - 
+otEmpty{userId= } - 
+otEmpty{event= } - ERROR: relation "categories" does not exist
+  Position: 13
+2021-06-24 10:35:56 WARN  revature.repos.InsertDB:142 - 
+otEmpty{userId= } - 
+otEmpty{event= } - ERROR: relation "categories" does not exist
+  Position: 13
+2021-06-24 10:35:56 WARN  com.revature.Driver:112 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Failure to insert category
+2021-06-24 10:35:57 WARN  revature.repos.InsertDB:248 - 
+otEmpty{userId= } - 
+otEmpty{event= } - ERROR: relation "products" does not exist
+  Position: 13
+2021-06-24 10:35:57 WARN  revature.repos.InsertDB:248 - 
+otEmpty{userId= } - 
+otEmpty{event= } - ERROR: relation "products" does not exist
+  Position: 13
+2021-06-24 10:35:57 WARN  revature.repos.InsertDB:248 - 
+otEmpty{userId= } - 
+otEmpty{event= } - ERROR: relation "products" does not exist
+  Position: 13
+2021-06-24 10:35:58 WARN  revature.repos.InsertDB:248 - 
+otEmpty{userId= } - 
+otEmpty{event= } - ERROR: relation "products" does not exist
+  Position: 13
+2021-06-24 10:35:58 WARN  revature.repos.InsertDB:248 - 
+otEmpty{userId= } - 
+otEmpty{event= } - ERROR: relation "products" does not exist
+  Position: 13
+2021-06-24 10:35:58 WARN  revature.repos.InsertDB:248 - 
+otEmpty{userId= } - 
+otEmpty{event= } - ERROR: relation "products" does not exist
+  Position: 13
+2021-06-24 10:36:38 ERROR com.revature.Driver:86 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Failure to create tables for Congo
+2021-06-24 11:14:45 ERROR com.revature.Driver:86 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Failure to create tables for Congo
+2021-06-24 11:15:28 INFO  revature.repos.GetDB:364 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Retrieved all products associated with Primary Key: 1
