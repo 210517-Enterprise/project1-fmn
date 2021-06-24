@@ -486,8 +486,8 @@ public class Driver {
 			List<User> users = new ArrayList<User>();
 			users = ses.selectAll(connPool.getConnection(), user);
 			System.out.println("========================================Users========================================");
-			System.out.println("ID              First Name              Last Name              Email              Password "
-					+ "               Role");
+			System.out.println("ID       First Name  Last Name          Email                Password "
+					+ "            Role");
 			// System.out.println("ID First Name Last Name Email Password Role");
 			for (User u : users) {
 				System.out.println(u.getId() + "        " + u.getFirstName() + "        " + u.getLastName() + "        "
@@ -521,8 +521,8 @@ public class Driver {
 
 	private static void viewAllProducts() {
 		System.out.println("========================================Products========================================");
-		System.out.println("ID              First Name              Last Name              Email              Password "
-				+ "               Role");
+		System.out.println("ID      Category ID    Product Name      Price      Quantity "
+				+ "       Description");
 		
 		Product product = null;
 		Session ses = new Session();
@@ -531,8 +531,8 @@ public class Driver {
 			List<Product> products = new ArrayList<Product>();
 			products = ses.selectAll(connPool.getConnection(), product);
 			for (Product p : products) {
-				System.out.println(p.getId() + "        " + p.getCategoryID() + "        " + p.getProductName() + "        " 
-						+ p.getProductDescription() 	+ "        " + p.getPrice() + "        " + p.getQuantity());
+				System.out.println(p.getId() + "         " + p.getCategoryID() + "         " + p.getProductName() + "        " 
+						 	+ "       " + p.getPrice() + "       " + p.getQuantity() + "        " + p.getProductDescription());
 			}
 		} catch (SQLException e) {
 			log.warn("Failure to retrieve all products from the databse.");
@@ -542,14 +542,15 @@ public class Driver {
 
 	private static void viewAllCategories() {
 		System.out.println("========================================Categories========================================");
-
+		System.out.println("ID     Category Name");
+		
 		Category category = null;
 		Session ses = new Session();
 		try {
 			List<Category> categories = new ArrayList<Category>();
 			categories = ses.selectAll(connPool.getConnection(), category);
 			for (Category c : categories) {
-				System.out.println(c.toString());
+				System.out.println(c.getId() + "     " + c.getCategoryName());
 			}
 		} catch (SQLException e) {
 			log.warn("Failure to retrieve all categories from the databse.");
