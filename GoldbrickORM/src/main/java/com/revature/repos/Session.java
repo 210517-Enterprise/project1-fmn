@@ -24,6 +24,7 @@ import com.revature.util.Metamodel;
 public class Session {
 
 	private static Logger log = Logger.getLogger(Session.class);
+	private static ObjectCache cacheObject = ObjectCache.getInstance();
 	
 	public Transaction getTransaction() {
 		return new Transaction();
@@ -52,6 +53,7 @@ public class Session {
 	// Overload update methods
 	public boolean update(User user, Connection conn) {
 		try {
+			cacheObject.put(user);
 			return DatabaseUpdater.updateUser(Metamodel.of(User.class), user, conn);
 		} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
 			log.warn(e.getMessage());
