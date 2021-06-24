@@ -243,18 +243,10 @@ public class Driver {
 			conn = connPool.getConnection();
 
 			Product p = (Product) ses.selectAllById(conn, pId, Product.class);
-<<<<<<< HEAD
 			System.out.println("==================================================== Product =====================================================");
 			System.out.println("=Product ID=  [1]=CategoryID=  [2]=Product Name=   [3]=Product Description=  [4]=Product Price=  [5]=Product Quantity=");
 			System.out.println(p.getId() + "              " + p.getCategoryID() + "               " + p.getProductName()+ "         " + p.getProductDescription() + "            "+  p.getPrice() + "             " + p.getQuantity());
-=======
-			System.out.println(
-					"==================================================== Product =====================================================");
-			System.out.println(
-					"=Product ID=  [1]=CategoryID=  [2]=Product Name=   [3]=Product Description=  [4]=Product Price=  [5]=Product Quantity=");
-			System.out.println(p.getId() + p.getCategoryID() + p.getProductName() + p.getProductDescription()
-					+ p.getPrice() + p.getQuantity());
->>>>>>> 45fc4f5a3274fbf1935350a959edc197bdef0033
+
 
 			System.out.println("What would you like to update?");
 			int adminRequest = scan.nextInt();
