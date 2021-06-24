@@ -495,3 +495,67 @@ otEmpty{event= } - Failure to create tables for Congo
 2021-06-24 12:25:27 INFO  revature.repos.GetDB:363 - 
 otEmpty{userId= } - 
 otEmpty{event= } - Retrieved all products associated with Primary Key: 2
+2021-06-24 09:30:26 ERROR com.revature.Driver:99 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Failure to create tables for Congo
+2021-06-24 09:30:33 INFO  revature.repos.GetDB:331 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Retrieved All Products from the Database!
+2021-06-24 09:30:38 INFO  revature.repos.GetDB:271 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Retrieved all Categories from the Database!
+2021-06-24 09:30:43 INFO  revature.repos.GetDB:396 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Retrieved all products associated with Foreign Key 1
+2021-06-24 09:30:55 INFO  revature.repos.GetDB:363 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Retrieved all products associated with Primary Key: 1
+2021-06-24 09:30:55 WARN  revature.repos.InsertDB:196 - 
+otEmpty{userId= } - 
+otEmpty{event= } - ERROR: column "order_date" is of type date but expression is of type integer
+  Hint: You will need to rewrite or cast the expression.
+  Position: 95
+2021-06-24 09:39:47 ERROR com.revature.Driver:99 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Failure to create tables for Congo
+2021-06-24 09:39:54 INFO  revature.repos.GetDB:363 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Retrieved all products associated with Primary Key: 1
+2021-06-24 09:39:54 WARN  revature.repos.InsertDB:199 - 
+otEmpty{userId= } - 
+otEmpty{event= } - ERROR: INSERT has more target columns than expressions
+  Position: 76
+2021-06-24 09:41:13 ERROR com.revature.Driver:99 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Failure to create tables for Congo
+2021-06-24 09:41:19 INFO  revature.repos.GetDB:363 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Retrieved all products associated with Primary Key: 1
+2021-06-24 09:41:19 WARN  revature.repos.InsertDB:199 - 
+otEmpty{userId= } - 
+otEmpty{event= } - ERROR: column "order_date" is of type date but expression is of type integer
+  Hint: You will need to rewrite or cast the expression.
+  Position: 95
+2021-06-24 09:43:22 ERROR com.revature.Driver:99 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Failure to create tables for Congo
+2021-06-24 09:43:35 INFO  revature.repos.GetDB:363 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Retrieved all products associated with Primary Key: 1
+2021-06-24 09:43:35 WARN  revature.repos.InsertDB:199 - 
+otEmpty{userId= } - 
+otEmpty{event= } - ERROR: column "order_date" is of type date but expression is of type integer
+  Hint: You will need to rewrite or cast the expression.
+  Position: 95
+2021-06-24 09:46:52 ERROR com.revature.Driver:99 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Failure to create tables for Congo
+2021-06-24 09:46:58 INFO  revature.repos.GetDB:363 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Retrieved all products associated with Primary Key: 1
+2021-06-24 09:47:40 INFO  revature.repos.GetDB:209 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Retrieved 1 Orders from the server.
+2021-06-24 09:47:49 INFO  revature.repos.GetDB:104 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Retrieved user: Frank from the database!
