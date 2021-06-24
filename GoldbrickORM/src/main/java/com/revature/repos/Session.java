@@ -89,18 +89,6 @@ public class Session {
 		}
 	}
 
-	public boolean delete(Order order, Connection conn) {
-		return DatabaseDeleter.deleteOrderById(Metamodel.of(Order.class), order.getId(), conn);
-	}
-
-	public boolean delete(Product product, Connection conn) {
-		return DatabaseDeleter.deleteProductById(Metamodel.of(Product.class), product.getId(), conn);
-	}
-
-	public boolean delete(User user, Connection conn) {
-		return DatabaseDeleter.deleteUserById(Metamodel.of(User.class), user.getId(), conn);
-	}
-
 	// overload insert methods
 	public void insert(User user, Connection conn) {
 		try {
