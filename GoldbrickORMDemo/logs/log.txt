@@ -1,0 +1,75 @@
+2021-06-24 15:11:03 WARN  revature.repos.DatabaseBuilder:96 - 
+otEmpty{userId= } - 
+otEmpty{event= } - ERROR: relation "users" already exists
+2021-06-24 15:11:03 ERROR com.revature.Driver:99 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Failure to create tables for Congo
+2021-06-24 15:11:03 WARN  revature.repos.InsertDB:85 - 
+otEmpty{userId= } - 
+otEmpty{event= } - ERROR: duplicate key value violates unique constraint "users_email_key"
+  Detail: Key (email)=(admin@theshop.com) already exists.
+2021-06-24 15:11:03 WARN  revature.repos.InsertDB:85 - 
+otEmpty{userId= } - 
+otEmpty{event= } - ERROR: duplicate key value violates unique constraint "users_email_key"
+  Detail: Key (email)=(faurori@gmail.com) already exists.
+2021-06-24 15:11:08 INFO  revature.repos.GetDB:59 - 
+otEmpty{userId= } - 
+otEmpty{event= } - All users have been pulled from the databse
+2021-06-24 15:11:08 INFO  revature.repos.GetDB:59 - 
+otEmpty{userId= } - 
+otEmpty{event= } - All users have been pulled from the databse
+2021-06-24 15:11:08 INFO  revature.repos.GetDB:63 - 
+otEmpty{userId= } - 
+otEmpty{event= } - All Users have been pulled from the database!
+2021-06-24 15:11:10 INFO  revature.repos.GetDB:142 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Retrieved all orders from the database!
+2021-06-24 15:11:15 INFO  revature.repos.GetDB:331 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Retrieved All Products from the Database!
+2021-06-24 15:11:22 INFO  revature.repos.GetDB:271 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Retrieved all Categories from the Database!
+2021-06-24 15:12:07 WARN  revature.repos.DatabaseBuilder:96 - 
+otEmpty{userId= } - 
+otEmpty{event= } - ERROR: relation "users" already exists
+2021-06-24 15:12:07 ERROR com.revature.Driver:99 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Failure to create tables for Congo
+2021-06-24 15:12:08 WARN  revature.repos.InsertDB:85 - 
+otEmpty{userId= } - 
+otEmpty{event= } - ERROR: duplicate key value violates unique constraint "users_email_key"
+  Detail: Key (email)=(admin@theshop.com) already exists.
+2021-06-24 15:12:08 WARN  revature.repos.InsertDB:85 - 
+otEmpty{userId= } - 
+otEmpty{event= } - ERROR: duplicate key value violates unique constraint "users_email_key"
+  Detail: Key (email)=(faurori@gmail.com) already exists.
+2021-06-24 15:12:13 INFO  revature.repos.GetDB:59 - 
+otEmpty{userId= } - 
+otEmpty{event= } - All users have been pulled from the databse
+2021-06-24 15:12:13 INFO  revature.repos.GetDB:59 - 
+otEmpty{userId= } - 
+otEmpty{event= } - All users have been pulled from the databse
+2021-06-24 15:12:13 INFO  revature.repos.GetDB:63 - 
+otEmpty{userId= } - 
+otEmpty{event= } - All Users have been pulled from the database!
+2021-06-24 15:12:15 INFO  revature.repos.GetDB:142 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Retrieved all orders from the database!
+2021-06-24 15:12:32 INFO  revature.repos.GetDB:331 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Retrieved All Products from the Database!
+2021-06-24 15:12:34 INFO  revature.repos.GetDB:271 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Retrieved all Categories from the Database!
+2021-06-24 15:12:41 INFO  revature.repos.GetDB:363 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Retrieved all products associated with Primary Key: 1
+2021-06-24 15:12:41 WARN  revature.repos.InsertDB:196 - 
+otEmpty{userId= } - 
+otEmpty{event= } - ERROR: column "order_date" is of type date but expression is of type integer
+  Hint: You will need to rewrite or cast the expression.
+  Position: 95
+2021-06-24 15:15:19 INFO  revature.repos.GetDB:331 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Retrieved All Products from the Database!
