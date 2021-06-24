@@ -73,3 +73,6 @@ otEmpty{event= } - Failure to add Product!
 2021-06-23 14:03:03 ERROR com.revature.Driver:69 - 
 otEmpty{userId= } - 
 otEmpty{event= } - Failure to create tables for Congo
+2021-06-23 21:19:38 ERROR com.revature.Driver:69 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Failure to create tables for Congo

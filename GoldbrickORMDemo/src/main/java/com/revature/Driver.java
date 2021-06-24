@@ -171,6 +171,20 @@ public class Driver {
 			}
 			break;
 		case 2:
+			flag = false;
+			while(!flag) {
+				System.out.println("Would you like to update a product or category");
+				String table = scan.next();
+				if (table.equalsIgnoreCase("product")) {
+					flag = true;
+					updateProduct();
+				} else if (table.equalsIgnoreCase("category")) {
+					flag = true;
+					updateCategory();
+				} else {
+					System.out.println("Please choose product or category");
+				}
+			}
 			break;
 		case 3:
 			break;
@@ -184,6 +198,42 @@ public class Driver {
 			break;
 		}
 
+	}
+	
+	public static void updateProduct() {
+		
+		System.out.print("Update product name: ");
+		String pName = scan.next();
+		System.out.println("\nUpdate product description: ");
+		String pDesc = scan.next();
+		System.out.println("\nUpdate product price: ");
+		double pPrice = scan.nextDouble();
+		System.out.println("Update the quantity in stock: ");
+		int pQuantity = scan.nextInt();
+		System.out.println("What is the product ID: ");
+		int pId = scan.nextInt();
+		
+	//	Product product = new Product();
+		
+	}
+	
+	public static void updateCategory() {
+		System.out.println("Update the category name: ");
+		String cName = scan.next();
+		System.out.println("What is the category Id: ");
+		int cId = scan.nextInt();
+		
+		// should we enter the the id and retrieve the record by PK?? or just create a new object
+		Category category = new Category(cId, cName);
+		Session ses = new Session();
+		
+		try {
+			ses.update(category, connPool.getConnection());
+		} catch (SQLException e) {
+			log.warn("Failed to update category");
+			e.printStackTrace();
+		}
+		
 	}
 	
 	private static void insertProduct() {
