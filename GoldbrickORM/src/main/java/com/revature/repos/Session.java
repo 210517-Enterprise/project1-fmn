@@ -7,6 +7,7 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
+import com.revature.exceptions.UnannotatedClassException;
 import com.revature.models.Category;
 import com.revature.models.Order;
 import com.revature.models.Product;
@@ -74,41 +75,34 @@ public class Session {
 	}
 
 	// overload delete methods
-	public boolean delete(Category category, Connection conn) {
-		return DatabaseDeleter.deleteCategoryById(Metamodel.of(Category.class), category.getId(), conn);
-	}
-
-	public boolean delete(Order order, Connection conn) {
-		return DatabaseDeleter.deleteOrderById(Metamodel.of(Order.class), order.getId(), conn);
-	}
-
-	public boolean delete(Product product, Connection conn) {
-		return DatabaseDeleter.deleteProductById(Metamodel.of(Product.class), product.getId(), conn);
-	}
-
-	public boolean delete(User user, Connection conn) {
-		return DatabaseDeleter.deleteUserById(Metamodel.of(User.class), user.getId(), conn);
+	public boolean delete(Class<?> clazz, int id, Connection conn) {
+		if(clazz.equals(Category.class))
+			return DatabaseDeleter.deleteCategoryById(Metamodel.of(Category.class), id, conn);
+		else if(clazz.equals(Order.class))
+			return DatabaseDeleter.deleteOrderById(Metamodel.of(Order.class), id, conn);
+		else if(clazz.equals(Product.class))
+			return DatabaseDeleter.deleteProductById(Metamodel.of(Product.class), id, conn);
+		else if(clazz.equals(User.class))
+			return DatabaseDeleter.deleteUserById(Metamodel.of(User.class), id, conn);
+		else {
+			throw new UnannotatedClassException("Failure to delete object from class that contains no annotations");
+		}
 	}
 
 	// overload insert methods
 	public void insert(User user, Connection conn) {
 		try {
 			InsertDB.insertUser(Metamodel.of(User.class), user, conn);
-			conn.close();
 		} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
 			log.warn(e.getMessage());
 			e.printStackTrace();
-		} catch (SQLException e) {
-			log.warn(e.getMessage());
-			e.printStackTrace();
-		}
+		} 
 	}
 
 	public void insert(Product product, Connection conn) {
 		try {
 			InsertDB.insertProduct(Metamodel.of(Product.class), product, conn);
-			conn.close();
-		} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException | SQLException e) {
+		} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
 			log.warn(e.getMessage());
 			e.printStackTrace();
 		}
@@ -117,8 +111,7 @@ public class Session {
 	public void insert(Order order, Connection conn) {
 		try {
 			InsertDB.insertOrder(Metamodel.of(Order.class), order, conn);
-			conn.close();
-		} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException | SQLException e) {
+		} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
 			log.warn(e.getMessage());
 			e.printStackTrace();
 		}
@@ -127,9 +120,8 @@ public class Session {
 	public int insert(Category category, Connection conn) {
 		try {
 			int id = InsertDB.insertCategory(Metamodel.of(Category.class), category, conn);
-			conn.close();
 			return id;
-		} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException | SQLException e) {
+		} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
 			log.warn(e.getMessage());
 			e.printStackTrace();
 			return -1;
@@ -137,7 +129,7 @@ public class Session {
 	}
 
 	// overload select * methods
-	public List<User> selectAll(Connection conn, User user) {
+	public List<User> selectAll(Connection conn, User u) {
 		try {
 			return GetDB.getAllUsers(conn, Metamodel.of(User.class));
 
@@ -148,7 +140,7 @@ public class Session {
 		}
 	}
 
-	public List<Order> selectAll(Connection conn, Order order) {
+	public List<Order> selectAll(Connection conn, Order o) {
 		try {
 			return GetDB.getAllOrders(conn, Metamodel.of(Order.class));
 		} catch (SQLException e) {
@@ -158,7 +150,7 @@ public class Session {
 		}
 	}
 
-	public List<Category> selectAll(Connection conn, Category category) {
+	public List<Category> selectAll(Connection conn, Category c) {
 		try {
 			return GetDB.getAllCategories(conn, Metamodel.of(Category.class));
 		} catch (SQLException e) {
@@ -168,7 +160,7 @@ public class Session {
 		}
 	}
 
-	public List<Product> selectAll(Connection conn, Product product) {
+	public List<Product> selectAll(Connection conn, Product p) {
 		try {
 			return GetDB.getAllProducts(conn, Metamodel.of(Product.class));
 		} catch (SQLException e) {

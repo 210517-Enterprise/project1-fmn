@@ -10,11 +10,14 @@ public class InsertDBTests {
 	private InsertDB insertDB;
 	
 	@Before
-	public void setup() {
+	public void startup() {
 		
 	}
 	
 	@Test
+	public void InsertUserTest() {
+		
+	}
 	public void insertUser() {
 		
 	}

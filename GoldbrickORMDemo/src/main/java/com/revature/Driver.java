@@ -2,6 +2,8 @@ package com.revature;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import javax.sql.DataSource;
@@ -30,23 +32,37 @@ public class Driver {
 		initializeStore();
 
 		// static login as an admin or a customer
-		boolean choseFunctionality = false;
-		while (!choseFunctionality) {
+		boolean keepRunning = true;
+		while (keepRunning) {
 			System.out.println("Would you like to explore functionality for an Admin or Customer?");
 			String userLogin = scan.next();
 
 			if (userLogin.equalsIgnoreCase("admin")) {
-				choseFunctionality = true;
 				runAdminFunctionality();
+				keepRunning = continueOrQuit();
+				
 			}
 
 			if (userLogin.equalsIgnoreCase("customer")) {
-				choseFunctionality = true;
 				runCustomerFunctionality();
+				keepRunning = continueOrQuit();
 			}
 
 		}
+		
+		System.out.println("Thanks for visiting Daintree");
 
+	}
+	
+	private static boolean continueOrQuit() {
+		System.out.println("[1] Quit");
+		System.out.println("[2] Explore different funnctionality");
+		int request = scan.nextInt();
+		
+		if(request == 1)
+			return false;
+		else
+			return true;
 	}
 
 	private static void initializeStore() {
@@ -65,7 +81,7 @@ public class Driver {
 		try {
 			// create tables
 			if (ses.createTables(cfg, connPool.getConnection()))
-				System.out.println("Tables for Congo successfully created...");
+				System.out.println("Tables for Daintree successfully created...");
 			else
 				log.error("Failure to create tables for Congo");
 
@@ -144,7 +160,7 @@ public class Driver {
 		// admin: update/remove/insert products/categories select
 		// users/orders/products/categories
 		int request = 0;
-		while (request != 0) {
+		while (request != 8) {
 			System.out.println("Would you like to:");
 			System.out.println("[1] Insert a product or category");
 			System.out.println("[2] Update a product or category");
@@ -161,20 +177,22 @@ public class Driver {
 				insert();
 				break;
 			case 2:
-				remove();
-				break;
-			case 3:
 				update();
 				break;
+			case 3:
+				remove();
+				break;
 			case 4:
+				viewAllUsers();
 				break;
 			case 5:
+				viewAllOrders();
 				break;
 			case 6:
+				viewAllProducts();
 				break;
 			case 7:
-				break;
-			case 8:
+				viewAllCategories();
 				break;
 			default:
 				break;
@@ -277,8 +295,7 @@ public class Driver {
 		Connection conn;
 		try {
 			conn = connPool.getConnection();
-			Product prod = (Product) ses.selectAllById(conn, id, Product.class);
-			boolean deleted = ses.delete(prod, conn);
+			boolean deleted = ses.delete(Product.class, id, conn);
 			
 			if(deleted)
 				System.out.println("Product #" + id + " successfully deleted");
@@ -296,11 +313,8 @@ public class Driver {
 		int id = scan.nextInt();
 		
 		Session ses = new Session();
-		Connection conn;
 		try {
-			conn = connPool.getConnection();
-			Category category = (Category) ses.selectAllById(conn, id, Category.class);
-			boolean deleted = ses.delete(category, conn);
+			boolean deleted = ses.delete(Category.class, id, connPool.getConnection());
 			
 			if(deleted)
 				System.out.println("Category #" + id + " successfully deleted");
@@ -333,13 +347,13 @@ public class Driver {
 	private static void insertProduct() {
 		System.out.print("Product name: ");
 		String name = scan.next();
-		System.out.print("\nProduct description: ");
+		System.out.print("Product description: ");
 		String desc = scan.next();
-		System.out.print("\nPrice: ");
+		System.out.print("Price: ");
 		double price = scan.nextDouble();
-		System.out.println("\nHow many do you have in stock?");
+		System.out.println("How many do you have in stock?");
 		int quantity = scan.nextInt();
-		System.out.println("\nWhat is the ID of the category this product belongs in?");
+		System.out.println("at is the ID of the category this product belongs in?");
 		int catID = scan.nextInt();
 
 		Product product = new Product(catID, name, desc, price, quantity);
@@ -353,7 +367,7 @@ public class Driver {
 		}
 
 	}
-
+	
 	private static void insertCategory() {
 		System.out.print("Category name: ");
 		String name = scan.next();
@@ -368,10 +382,108 @@ public class Driver {
 		}
 
 	}
+	
+	private static void viewAllUsers() {
+		System.out.println("Printing all users: ");
+		
+		User user = null;
+		Session ses = new Session();
+		
+		try {
+			List<User> users = new ArrayList<User>();
+			users = ses.selectAll(connPool.getConnection(), user);
+			for(User u : users) {
+				System.out.println(u.toString());
+			}
+		} catch(SQLException e) {
+			log.warn("Failure to retrieve all users from the databse.");
+			e.printStackTrace();
+		}
+	}
+	
+	private static void viewAllOrders() {
+		System.out.println("Printing all Orders: ");
+		
+		Order order = null;
+		Session ses = new Session();
+		
+		try {
+			List<Order> orders = new ArrayList<Order>();
+			orders = ses.selectAll(connPool.getConnection(), order);
+			for(Order o : orders) {
+				System.out.println(o.toString());
+			}
+		} catch(SQLException e) {
+			log.warn("Failure to retrieve all orders from the databse.");
+			e.printStackTrace();
+		}
+	}
+	
+	private static void viewAllProducts() {
+		System.out.println("Printing all Products: ");
+		
+		Product product = null;
+		Session ses = new Session();
+		
+		try {
+			List<Product> products = new ArrayList<Product>();
+			products = ses.selectAll(connPool.getConnection(), product);
+			for(Product p : products) {
+				System.out.println(p.toString());
+			}
+		} catch(SQLException e) {
+			log.warn("Failure to retrieve all products from the databse.");
+			e.printStackTrace();
+		}
+	}
+	
+	private static void viewAllCategories() {
+		System.out.println("Printing all Categories: ");
+		
+		Category category = null;
+		Session ses = new Session();
+		try {
+			List<Category> categories = new ArrayList<Category>();
+			categories = ses.selectAll(connPool.getConnection(), category);
+			for(Category c : categories) {
+				System.out.println(c.toString());
+			}
+		} catch(SQLException e) {
+			log.warn("Failure to retrieve all categories from the databse.");
+			e.printStackTrace();
+		}
+	}
 
 	private static void runCustomerFunctionality() {
 		// customer: insert order select products/their user info/their
 		// orders/categories
+		
+		int request = 0;
+		while (request != 6) {
+			System.out.println("Would you like to:");
+			System.out.println("[1] View all products");
+			System.out.println("[2] View products by category"); //display categories in here
+			System.out.println("[3] Order a product");
+			System.out.println("[4] View all your orders");
+			System.out.println("[5] View your account information");
+			System.out.println("[6] Exit Customer View");
+			request = scan.nextInt();
+
+			switch (request) {
+			case 1:
+				break;
+			case 2:
+				break;
+			case 3:
+				break;
+			case 4:
+				break;
+			case 5:
+				break;
+			default:
+				break;
+			}
+		}
 
 	}
 

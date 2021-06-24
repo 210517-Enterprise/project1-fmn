@@ -9,6 +9,8 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
+import org.apache.log4j.Logger;
+
 import com.revature.annotations.Entity;
 import com.revature.models.Category;
 import com.revature.models.Constraint;
@@ -22,7 +24,6 @@ import com.revature.util.ForeignKeyField;
 import com.revature.util.IdField;
 import com.revature.util.Metamodel;
 
-import jdk.internal.org.jline.utils.Log;
 
 /**
  * This class creates the tables in the database based on the meta-models in configuration
@@ -36,6 +37,8 @@ public class DatabaseBuilder {
 	 * The configuration object that provides the meta-models to create tables with
 	 */
 	private Configuration config;
+	
+	private static Logger log = Logger.getLogger(DatabaseBuilder.class);
 
 	/**
 	 * Constructor for an instance of a Database Builder
@@ -83,11 +86,11 @@ public class DatabaseBuilder {
 				PreparedStatement ps = conn.prepareStatement(str.toString());
 				
 				isCreated = ps.execute();
-				
+				conn.close();
 				
 				
 			} catch (SQLException e) {
-				Log.warn("Failure to create table: " + e.getMessage());
+				log.warn(e.getMessage());
 				e.printStackTrace();
 				return false;
 			}
