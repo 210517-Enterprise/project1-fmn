@@ -54,8 +54,9 @@ public class DatabaseBuilder {
 	 * @param conn The connection from the connection pool
 	 * @return true if a table has been successfully create for each meta-model, false if not
 	 * @throws NoSuchFieldException
+	 * @throws SQLException 
 	 */
-	public boolean createTables(Connection conn) throws NoSuchFieldException {
+	public boolean createTables(Connection conn) throws NoSuchFieldException, SQLException {
 		// check if tables exist in db
 		boolean isCreated = false;
 		for (Metamodel<Class<?>> mm : this.config.getMetamodels()) {
@@ -86,7 +87,6 @@ public class DatabaseBuilder {
 				PreparedStatement ps = conn.prepareStatement(str.toString());
 				
 				isCreated = ps.execute();
-				conn.close();
 				
 				
 			} catch (SQLException e) {
@@ -97,6 +97,7 @@ public class DatabaseBuilder {
 
 		}
 		
+		conn.close();
 		return isCreated;
 	}
 

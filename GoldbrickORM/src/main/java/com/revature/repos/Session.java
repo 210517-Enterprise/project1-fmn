@@ -32,7 +32,7 @@ public class Session {
 	public boolean createTables(Configuration cfg, Connection conn) {
 		try {
 			return new DatabaseBuilder(cfg).createTables(conn);
-		} catch (NoSuchFieldException e) {
+		} catch (NoSuchFieldException | SQLException e) {
 			log.warn(e.getMessage());
 			e.printStackTrace();
 			return false;
