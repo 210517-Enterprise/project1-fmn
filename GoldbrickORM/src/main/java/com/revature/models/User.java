@@ -6,7 +6,7 @@ import com.revature.annotations.Getter;
 import com.revature.annotations.Id;
 
 @Entity(tableName = "users")
-public class User {
+public class User implements AnnotatedClass{
 	
 	@Id(columnName = "id", constraints = {Constraint.PRIMARY_KEY}, dataType = "SERIAL")
 	private int id;

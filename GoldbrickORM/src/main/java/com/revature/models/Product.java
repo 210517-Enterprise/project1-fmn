@@ -7,7 +7,7 @@ import com.revature.annotations.Id;
 import com.revature.annotations.JoinColumn;
 
 @Entity(tableName = "products")
-public class Product {
+public class Product implements AnnotatedClass{
 	
 	@Id(columnName = "id", constraints = {Constraint.PRIMARY_KEY}, dataType = "SERIAL")
 	private int id;
