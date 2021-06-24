@@ -33,6 +33,21 @@ public class Order {
 	@Column(columnName = "quantity", constraints = { Constraint.NOT_NULL }, dataType = "INT")
 	private int quantity;
 
+	public Order() {
+		
+	}
+	
+	public Order(int userID, int productID, Date orderDate, double totalPrice, boolean fulfilled,
+			int quantity) {
+		super();
+		this.userID = userID;
+		this.productID = productID;
+		this.orderDate = orderDate;
+		this.totalPrice = totalPrice;
+		this.fulfilled = fulfilled;
+		this.quantity = quantity;
+	}
+	
 	public Order(int id, int userID, int productID, Date orderDate, double totalPrice, boolean fulfilled,
 			int quantity) {
 		super();
@@ -44,6 +59,7 @@ public class Order {
 		this.fulfilled = fulfilled;
 		this.quantity = quantity;
 	}
+
 
 	@Getter(name="id")
 	public int getId() {

@@ -58,6 +58,9 @@ public class Product {
 		this.quantity = quantity;
 	}
 
+	public Product() {
+	}
+
 	@Getter(name = "id")
 	public int getId() {
 		return id;
