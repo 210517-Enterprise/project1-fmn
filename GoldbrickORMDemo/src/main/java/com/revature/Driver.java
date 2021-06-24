@@ -214,7 +214,7 @@ public class Driver {
 	public static void update() {
 		boolean flag = false;
 		while (!flag) {
-			System.out.println("Would you like to insert a product or category?");
+			System.out.println("Would you like to update a product or category?");
 			String table = scan.next();
 			if (table.equalsIgnoreCase("product")) {
 				flag = true;
@@ -243,60 +243,89 @@ public class Driver {
 			Product p = (Product) ses.selectAllById(conn, pId, Product.class);
 			System.out.println("==================================================== Product =====================================================");
 			System.out.println("=Product ID=  [1]=CategoryID=  [2]=Product Name=   [3]=Product Description=  [4]=Product Price=  [5]=Product Quantity=");
-			System.out.println(p.getId() + p.getCategoryID() + p.getProductName() + p.getProductDescription()
-					+ p.getPrice() + p.getQuantity());
+			System.out.println(p.getId() + "              " + p.getCategoryID() + "               " + p.getProductName()+ "         " + p.getProductDescription() + "            "+  p.getPrice() + "             " + p.getQuantity());
 
 			System.out.println("What would you like to update?");
-			int request = scan.nextInt();
-			switch (request) {
+			int adminRequest = scan.nextInt();
+			switch (adminRequest) {
 			case 1:
 				System.out.print("Update category id: ");
 				int cId = scan.nextInt();
 				p.setCategoryID(cId);
-				ses.update(p, conn);
-				System.out.println("Updated category id to: " + p.getCategoryID());
-				log.info("Successfully updated category id");
-				break;
+				try {
+					conn = connPool.getConnection();
+					ses.update(p, conn);
+					System.out.println("Updated category id to: " + p.getCategoryID());
+					//log.info("Successfully updated category id");
+					break;
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+				
 			case 2:
 				System.out.print("Update product name: ");
 				String pName = scan.next();
+				pName += scan.nextLine();
 				p.setProductName(pName);
-				ses.update(p, conn);
-				System.out.println("Updated product name to: " + p.getProductName());
-				log.info("Successfully updated product name");
-				break;
+				try {
+					conn = connPool.getConnection();
+					ses.update(p, conn);
+					System.out.println("Updated product name to: " + p.getProductName());
+					//log.info("Successfully updated product name");
+					break;
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
 			case 3:
 				System.out.print("Update product description: ");
+				
 				String pDesc = scan.next();
-				p.setProductName(pDesc);
-				ses.update(p, conn);
-				System.out.println("Updated product description to: " + p.getProductDescription());
-				log.info("Successfully updated product description");
-				break;
+				pDesc = scan.nextLine();
+				try {
+					conn = connPool.getConnection();
+					p.setProductDescription(pDesc);
+					ses.update(p, conn);
+					System.out.println("Updated product description to: " + p.getProductDescription());
+					break;
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+				
 			case 4:
-				System.out.print("Update product description: ");
+				System.out.print("Update product price: ");
 				double pPrice = scan.nextDouble();
-				p.setPrice(pPrice);
-				ses.update(p, conn);
-				System.out.println("Updated product price to: $" + p.getPrice());
-				log.info("Successfully updated product description");
-				break;
+				try {
+					conn = connPool.getConnection();
+					p.setPrice(pPrice);
+					ses.update(p, conn);
+					System.out.println("Updated product price to: $" + p.getPrice());
+					break;
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+				
 			case 5:
 				System.out.print("Update product quantity: ");
 				int pQuan = scan.nextInt();
-				if (pQuan < 0) {
-					System.out.println("Entered a negative quanity please try again!");
-					int request2 = scan.nextInt();
-					p.setQuantity(request2);
-					ses.update(p, conn);
-					System.out.println("Updated product quanity to: " + p.getQuantity());
-					log.info("Successfully updated product quantity");
-				} else {
-					p.setQuantity(pQuan);
-					ses.update(p, conn);
-					System.out.println("Updated category id to: " + p.getQuantity());
-					log.info("Successfully updated product 	quantity");
-					break;
+				try {
+					conn = connPool.getConnection();
+					if (pQuan < 0) {
+						System.out.println("Entered a negative quanity please try again!");
+						int request2 = scan.nextInt();
+						p.setQuantity(request2);
+						ses.update(p, conn);
+						System.out.println("Updated product quanity to: " + p.getQuantity());
+						//log.info("Successfully updated product quantity");
+					} else {
+						p.setQuantity(pQuan);
+						ses.update(p, conn);
+						System.out.println("Updated product quantity to: " + p.getQuantity());
+						//log.info("Successfully updated product 	quantity");
+						break;
+					}
+				
+				} catch (SQLException e) {
+					e.printStackTrace();
 				}
 
 			}

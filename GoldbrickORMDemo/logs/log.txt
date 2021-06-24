@@ -265,3 +265,233 @@ otEmpty{event= } - Failure to create tables for Congo
 2021-06-24 11:15:28 INFO  revature.repos.GetDB:364 - 
 otEmpty{userId= } - 
 otEmpty{event= } - Retrieved all products associated with Primary Key: 1
+2021-06-24 11:24:39 ERROR com.revature.Driver:97 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Failure to create tables for Congo
+2021-06-24 11:24:49 INFO  revature.repos.GetDB:363 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Retrieved all products associated with Primary Key: 1
+2021-06-24 11:25:30 WARN  revature.repos.DatabaseUpdater:168 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Connection is closed.
+2021-06-24 11:25:30 INFO  com.revature.Driver:266 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Successfully updated product name
+2021-06-24 11:30:43 WARN  revature.repos.DatabaseBuilder:96 - 
+otEmpty{userId= } - 
+otEmpty{event= } - ERROR: relation "users" already exists
+2021-06-24 11:30:43 ERROR com.revature.Driver:97 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Failure to create tables for Congo
+2021-06-24 11:30:44 WARN  revature.repos.InsertDB:85 - 
+otEmpty{userId= } - 
+otEmpty{event= } - ERROR: duplicate key value violates unique constraint "users_email_key"
+  Detail: Key (email)=(admin@theshop.com) already exists.
+2021-06-24 11:30:44 WARN  revature.repos.InsertDB:85 - 
+otEmpty{userId= } - 
+otEmpty{event= } - ERROR: duplicate key value violates unique constraint "users_email_key"
+  Detail: Key (email)=(faurori@gmail.com) already exists.
+2021-06-24 11:32:54 ERROR com.revature.Driver:97 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Failure to create tables for Congo
+2021-06-24 11:33:05 INFO  revature.repos.GetDB:363 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Retrieved all products associated with Primary Key: 1
+2021-06-24 11:33:35 INFO  com.revature.Driver:274 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Successfully updated product name
+2021-06-24 11:36:15 ERROR com.revature.Driver:97 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Failure to create tables for Congo
+2021-06-24 11:36:26 INFO  revature.repos.GetDB:363 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Retrieved all products associated with Primary Key: 1
+2021-06-24 11:36:39 INFO  com.revature.Driver:274 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Successfully updated product name
+2021-06-24 11:37:00 INFO  revature.repos.GetDB:363 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Retrieved all products associated with Primary Key: 1
+2021-06-24 11:39:09 WARN  revature.repos.DatabaseBuilder:96 - 
+otEmpty{userId= } - 
+otEmpty{event= } - ERROR: relation "users" already exists
+2021-06-24 11:39:09 ERROR com.revature.Driver:97 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Failure to create tables for Congo
+2021-06-24 11:39:09 WARN  revature.repos.InsertDB:85 - 
+otEmpty{userId= } - 
+otEmpty{event= } - ERROR: duplicate key value violates unique constraint "users_email_key"
+  Detail: Key (email)=(admin@theshop.com) already exists.
+2021-06-24 11:39:09 WARN  revature.repos.InsertDB:85 - 
+otEmpty{userId= } - 
+otEmpty{event= } - ERROR: duplicate key value violates unique constraint "users_email_key"
+  Detail: Key (email)=(faurori@gmail.com) already exists.
+2021-06-24 11:39:27 INFO  revature.repos.GetDB:363 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Retrieved all products associated with Primary Key: 1
+2021-06-24 11:43:44 ERROR com.revature.Driver:97 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Failure to create tables for Congo
+2021-06-24 11:43:53 INFO  revature.repos.GetDB:363 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Retrieved all products associated with Primary Key: 2
+2021-06-24 11:45:53 ERROR com.revature.Driver:97 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Failure to create tables for Congo
+2021-06-24 11:46:03 INFO  revature.repos.GetDB:363 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Retrieved all products associated with Primary Key: 2
+2021-06-24 11:47:42 ERROR com.revature.Driver:97 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Failure to create tables for Congo
+2021-06-24 11:47:49 INFO  revature.repos.GetDB:363 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Retrieved all products associated with Primary Key: 2
+2021-06-24 11:48:42 INFO  revature.repos.GetDB:363 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Retrieved all products associated with Primary Key: 2
+2021-06-24 11:48:48 WARN  revature.repos.DatabaseUpdater:168 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Connection is closed.
+2021-06-24 11:52:16 WARN  revature.repos.DatabaseBuilder:96 - 
+otEmpty{userId= } - 
+otEmpty{event= } - ERROR: relation "users" already exists
+2021-06-24 11:52:16 ERROR com.revature.Driver:97 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Failure to create tables for Congo
+2021-06-24 11:52:16 WARN  revature.repos.InsertDB:85 - 
+otEmpty{userId= } - 
+otEmpty{event= } - ERROR: duplicate key value violates unique constraint "users_email_key"
+  Detail: Key (email)=(admin@theshop.com) already exists.
+2021-06-24 11:52:16 WARN  revature.repos.InsertDB:85 - 
+otEmpty{userId= } - 
+otEmpty{event= } - ERROR: duplicate key value violates unique constraint "users_email_key"
+  Detail: Key (email)=(faurori@gmail.com) already exists.
+2021-06-24 11:52:27 ERROR com.revature.Driver:97 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Failure to create tables for Congo
+2021-06-24 11:52:35 INFO  revature.repos.GetDB:363 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Retrieved all products associated with Primary Key: 2
+2021-06-24 11:52:57 INFO  revature.repos.GetDB:363 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Retrieved all products associated with Primary Key: 2
+2021-06-24 11:53:27 INFO  revature.repos.GetDB:363 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Retrieved all products associated with Primary Key: 2
+2021-06-24 11:54:04 INFO  revature.repos.GetDB:363 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Retrieved all products associated with Primary Key: 2
+2021-06-24 11:56:09 WARN  revature.repos.DatabaseBuilder:96 - 
+otEmpty{userId= } - 
+otEmpty{event= } - ERROR: relation "users" already exists
+2021-06-24 11:56:09 ERROR com.revature.Driver:97 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Failure to create tables for Congo
+2021-06-24 11:56:09 WARN  revature.repos.InsertDB:85 - 
+otEmpty{userId= } - 
+otEmpty{event= } - ERROR: duplicate key value violates unique constraint "users_email_key"
+  Detail: Key (email)=(admin@theshop.com) already exists.
+2021-06-24 11:56:09 WARN  revature.repos.InsertDB:85 - 
+otEmpty{userId= } - 
+otEmpty{event= } - ERROR: duplicate key value violates unique constraint "users_email_key"
+  Detail: Key (email)=(faurori@gmail.com) already exists.
+2021-06-24 11:56:40 ERROR com.revature.Driver:97 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Failure to create tables for Congo
+2021-06-24 11:56:48 INFO  revature.repos.GetDB:363 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Retrieved all products associated with Primary Key: 2
+2021-06-24 11:58:10 INFO  revature.repos.GetDB:363 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Retrieved all products associated with Primary Key: 2
+2021-06-24 12:10:50 ERROR com.revature.Driver:97 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Failure to create tables for Congo
+2021-06-24 12:10:59 INFO  revature.repos.GetDB:363 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Retrieved all products associated with Primary Key: 2
+2021-06-24 12:11:23 INFO  revature.repos.GetDB:363 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Retrieved all products associated with Primary Key: 2
+2021-06-24 12:11:39 INFO  revature.repos.GetDB:363 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Retrieved all products associated with Primary Key: 2
+2021-06-24 12:11:59 INFO  revature.repos.GetDB:363 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Retrieved all products associated with Primary Key: 2
+2021-06-24 12:12:13 INFO  revature.repos.GetDB:363 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Retrieved all products associated with Primary Key: 2
+2021-06-24 12:13:22 WARN  revature.repos.DatabaseBuilder:96 - 
+otEmpty{userId= } - 
+otEmpty{event= } - ERROR: relation "users" already exists
+2021-06-24 12:13:22 ERROR com.revature.Driver:97 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Failure to create tables for Congo
+2021-06-24 12:13:22 WARN  revature.repos.InsertDB:85 - 
+otEmpty{userId= } - 
+otEmpty{event= } - ERROR: duplicate key value violates unique constraint "users_email_key"
+  Detail: Key (email)=(admin@theshop.com) already exists.
+2021-06-24 12:13:22 WARN  revature.repos.InsertDB:85 - 
+otEmpty{userId= } - 
+otEmpty{event= } - ERROR: duplicate key value violates unique constraint "users_email_key"
+  Detail: Key (email)=(faurori@gmail.com) already exists.
+2021-06-24 12:13:57 WARN  revature.repos.DatabaseBuilder:96 - 
+otEmpty{userId= } - 
+otEmpty{event= } - ERROR: relation "users" already exists
+2021-06-24 12:13:57 ERROR com.revature.Driver:97 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Failure to create tables for Congo
+2021-06-24 12:13:58 WARN  revature.repos.InsertDB:85 - 
+otEmpty{userId= } - 
+otEmpty{event= } - ERROR: duplicate key value violates unique constraint "users_email_key"
+  Detail: Key (email)=(admin@theshop.com) already exists.
+2021-06-24 12:13:58 WARN  revature.repos.InsertDB:85 - 
+otEmpty{userId= } - 
+otEmpty{event= } - ERROR: duplicate key value violates unique constraint "users_email_key"
+  Detail: Key (email)=(faurori@gmail.com) already exists.
+2021-06-24 12:14:14 ERROR com.revature.Driver:97 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Failure to create tables for Congo
+2021-06-24 12:14:20 INFO  revature.repos.GetDB:363 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Retrieved all products associated with Primary Key: 2
+2021-06-24 12:17:56 ERROR com.revature.Driver:97 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Failure to create tables for Congo
+2021-06-24 12:18:02 INFO  revature.repos.GetDB:363 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Retrieved all products associated with Primary Key: 2
+2021-06-24 12:21:34 WARN  revature.repos.DatabaseBuilder:96 - 
+otEmpty{userId= } - 
+otEmpty{event= } - ERROR: relation "users" already exists
+2021-06-24 12:21:34 ERROR com.revature.Driver:97 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Failure to create tables for Congo
+2021-06-24 12:21:34 WARN  revature.repos.InsertDB:85 - 
+otEmpty{userId= } - 
+otEmpty{event= } - ERROR: duplicate key value violates unique constraint "users_email_key"
+  Detail: Key (email)=(admin@theshop.com) already exists.
+2021-06-24 12:21:35 WARN  revature.repos.InsertDB:85 - 
+otEmpty{userId= } - 
+otEmpty{event= } - ERROR: duplicate key value violates unique constraint "users_email_key"
+  Detail: Key (email)=(faurori@gmail.com) already exists.
+2021-06-24 12:21:49 ERROR com.revature.Driver:97 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Failure to create tables for Congo
+2021-06-24 12:21:56 INFO  revature.repos.GetDB:363 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Retrieved all products associated with Primary Key: 2
+2021-06-24 12:24:06 ERROR com.revature.Driver:97 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Failure to create tables for Congo
+2021-06-24 12:24:14 INFO  revature.repos.GetDB:363 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Retrieved all products associated with Primary Key: 2
+2021-06-24 12:25:22 ERROR com.revature.Driver:97 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Failure to create tables for Congo
+2021-06-24 12:25:27 INFO  revature.repos.GetDB:363 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Retrieved all products associated with Primary Key: 2
