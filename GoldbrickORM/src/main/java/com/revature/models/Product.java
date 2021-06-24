@@ -49,6 +49,14 @@ public class Product {
 		this.quantity = quantity;
 		this.inStock = inStock;
 	}
+	
+	public Product(String productName, String productDescription, double price, int quantity) {
+		super();
+		this.productName = productName;
+		this.productDescription = productDescription;
+		this.price = price;
+		this.quantity = quantity;
+	}
 
 	@Getter(name = "id")
 	public int getId() {
