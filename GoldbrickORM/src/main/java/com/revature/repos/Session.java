@@ -129,7 +129,7 @@ public class Session {
 	}
 
 	// overload select * methods
-	public List<User> selectAll(Connection conn, User user) {
+	public List<User> selectAll(Connection conn, User u) {
 		try {
 			return GetDB.getAllUsers(conn, Metamodel.of(User.class));
 
@@ -140,7 +140,7 @@ public class Session {
 		}
 	}
 
-	public List<Order> selectAll(Connection conn, Order order) {
+	public List<Order> selectAll(Connection conn, Order o) {
 		try {
 			return GetDB.getAllOrders(conn, Metamodel.of(Order.class));
 		} catch (SQLException e) {
@@ -150,7 +150,7 @@ public class Session {
 		}
 	}
 
-	public List<Category> selectAll(Connection conn, Category category) {
+	public List<Category> selectAll(Connection conn, Category c) {
 		try {
 			return GetDB.getAllCategories(conn, Metamodel.of(Category.class));
 		} catch (SQLException e) {
@@ -160,7 +160,7 @@ public class Session {
 		}
 	}
 
-	public List<Product> selectAll(Connection conn, Product product) {
+	public List<Product> selectAll(Connection conn, Product p) {
 		try {
 			return GetDB.getAllProducts(conn, Metamodel.of(Product.class));
 		} catch (SQLException e) {
