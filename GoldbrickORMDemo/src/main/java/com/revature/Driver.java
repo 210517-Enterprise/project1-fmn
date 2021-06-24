@@ -2,6 +2,8 @@ package com.revature;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import javax.sql.DataSource;
@@ -181,12 +183,16 @@ public class Driver {
 				remove();
 				break;
 			case 4:
+				viewAllUsers();
 				break;
 			case 5:
+				viewAllOrders();
 				break;
 			case 6:
+				viewAllProducts();
 				break;
 			case 7:
+				viewAllCategories();
 				break;
 			default:
 				break;
@@ -293,7 +299,7 @@ public class Driver {
 		}
 
 	}
-
+	
 	private static void insertCategory() {
 		System.out.print("Category name: ");
 		String name = scan.next();
@@ -307,6 +313,77 @@ public class Driver {
 			e.printStackTrace();
 		}
 
+	}
+	
+	private static void viewAllUsers() {
+		System.out.println("Printing all users: ");
+		
+		User user = null;
+		Session ses = new Session();
+		
+		try {
+			List<User> users = new ArrayList<User>();
+			users = ses.selectAll(connPool.getConnection(), user);
+			for(User u : users) {
+				System.out.println(u.toString());
+			}
+		} catch(SQLException e) {
+			log.warn("Failure to retrieve all users from the databse.");
+			e.printStackTrace();
+		}
+	}
+	
+	private static void viewAllOrders() {
+		System.out.println("Printing all Orders: ");
+		
+		Order order = null;
+		Session ses = new Session();
+		
+		try {
+			List<Order> orders = new ArrayList<Order>();
+			orders = ses.selectAll(connPool.getConnection(), order);
+			for(Order o : orders) {
+				System.out.println(o.toString());
+			}
+		} catch(SQLException e) {
+			log.warn("Failure to retrieve all orders from the databse.");
+			e.printStackTrace();
+		}
+	}
+	
+	private static void viewAllProducts() {
+		System.out.println("Printing all Products: ");
+		
+		Product product = null;
+		Session ses = new Session();
+		
+		try {
+			List<Product> products = new ArrayList<Product>();
+			products = ses.selectAll(connPool.getConnection(), product);
+			for(Product p : products) {
+				System.out.println(p.toString());
+			}
+		} catch(SQLException e) {
+			log.warn("Failure to retrieve all products from the databse.");
+			e.printStackTrace();
+		}
+	}
+	
+	private static void viewAllCategories() {
+		System.out.println("Printing all Categories: ");
+		
+		Category category = null;
+		Session ses = new Session();
+		try {
+			List<Category> categories = new ArrayList<Category>();
+			categories = ses.selectAll(connPool.getConnection(), category);
+			for(Category c : categories) {
+				System.out.println(c.toString());
+			}
+		} catch(SQLException e) {
+			log.warn("Failure to retrieve all categories from the databse.");
+			e.printStackTrace();
+		}
 	}
 
 	private static void runCustomerFunctionality() {
