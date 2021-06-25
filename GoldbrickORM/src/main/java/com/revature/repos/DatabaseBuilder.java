@@ -93,7 +93,7 @@ public class DatabaseBuilder {
 				isCreated = ps.execute();
 
 			} catch (SQLException e) {
-				log.warn(e.getMessage());
+				log.warn("Failure in DatabaseBuilder.createTables: " + e.getMessage());
 				e.printStackTrace();
 				return false;
 			}
@@ -101,7 +101,7 @@ public class DatabaseBuilder {
 		}
 
 		conn.close();
-		return isCreated;
+		return true;
 	}
 
 	public boolean dropTables(Connection conn) throws SQLException {

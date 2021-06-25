@@ -22,6 +22,13 @@ import com.revature.repos.Transaction;
 import com.revature.util.Configuration;
 import com.revature.util.ConnectionUtil;
 
+/**
+ * This class acts as a demo for the GoldbrickORM framework
+ * 
+ * @author Mollie Morrow, Nick Gianino, Frank Aurori
+ * @version 1.0 6/23/21
+ *
+ */
 public class Driver {
 
 	public static Configuration cfg = new Configuration();
