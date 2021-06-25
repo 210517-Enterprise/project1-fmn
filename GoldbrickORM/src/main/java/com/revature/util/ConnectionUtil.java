@@ -34,7 +34,7 @@ public class ConnectionUtil {
 
 	
 
-	//now we will create the pool for connecitons
+	//now we will create the pool for connections
 	private static GenericObjectPool gPool = null;
 	
 	/**

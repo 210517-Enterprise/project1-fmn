@@ -31,7 +31,9 @@ import com.revature.util.ConnectionUtil;
  */
 public class Driver {
 
-	public static Configuration cfg = new Configuration();
+	public static Configuration cfg = new Configuration(
+			"jdbc:postgresql://nick-rdbms.cvpo3qhbh5qs.us-east-2.rds.amazonaws.com:5432/postgres?currentSchema=public",
+			"postgres", "postgres");
 	public static final DataSource connPool = setUpConnection();
 	public static Logger log = Logger.getLogger(Driver.class);
 	public static Scanner scan = new Scanner(System.in);
@@ -251,10 +253,13 @@ public class Driver {
 
 			Product p = (Product) ses.selectAllById(conn, pId, Product.class);
 
-			System.out.println("==================================================== Product =====================================================");
-			System.out.println("=Product ID=  [1]=CategoryID=  [2]=Product Name=   [3]=Product Description=  [4]=Product Price=  [5]=Product Quantity=");
-			System.out.println(p.getId() + "              " + p.getCategoryID() + "               " + p.getProductName()+ "         " + p.getProductDescription() + "            "+  p.getPrice() + "             " + p.getQuantity());
-
+			System.out.println(
+					"==================================================== Product =====================================================");
+			System.out.println(
+					"=Product ID=  [1]=CategoryID=  [2]=Product Name=   [3]=Product Description=  [4]=Product Price=  [5]=Product Quantity=");
+			System.out.println(p.getId() + "              " + p.getCategoryID() + "               " + p.getProductName()
+					+ "         " + p.getProductDescription() + "            " + p.getPrice() + "             "
+					+ p.getQuantity());
 
 			System.out.println("What would you like to update?");
 			int adminRequest = scan.nextInt();
@@ -267,12 +272,12 @@ public class Driver {
 					conn = connPool.getConnection();
 					ses.update(p, conn);
 					System.out.println("Updated category id to: " + p.getCategoryID());
-					//log.info("Successfully updated category id");
+					// log.info("Successfully updated category id");
 					break;
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
-				
+
 			case 2:
 				System.out.print("Update product name: ");
 				String pName = scan.next();
@@ -282,14 +287,14 @@ public class Driver {
 					conn = connPool.getConnection();
 					ses.update(p, conn);
 					System.out.println("Updated product name to: " + p.getProductName());
-					//log.info("Successfully updated product name");
+					// log.info("Successfully updated product name");
 					break;
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
 			case 3:
 				System.out.print("Update product description: ");
-				
+
 				String pDesc = scan.next();
 				pDesc = scan.nextLine();
 				try {
@@ -301,7 +306,7 @@ public class Driver {
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
-				
+
 			case 4:
 				System.out.print("Update product price: ");
 				double pPrice = scan.nextDouble();
@@ -314,7 +319,7 @@ public class Driver {
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
-				
+
 			case 5:
 				System.out.print("Update product quantity: ");
 				int pQuan = scan.nextInt();
@@ -326,15 +331,15 @@ public class Driver {
 						p.setQuantity(request2);
 						ses.update(p, conn);
 						System.out.println("Updated product quanity to: " + p.getQuantity());
-						//log.info("Successfully updated product quantity");
+						// log.info("Successfully updated product quantity");
 					} else {
 						p.setQuantity(pQuan);
 						ses.update(p, conn);
 						System.out.println("Updated product quantity to: " + p.getQuantity());
-						//log.info("Successfully updated product 	quantity");
+						// log.info("Successfully updated product quantity");
 						break;
 					}
-				
+
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
@@ -492,9 +497,10 @@ public class Driver {
 		try {
 			List<User> users = new ArrayList<User>();
 			users = ses.selectAll(connPool.getConnection(), user);
-			System.out.println("========================================Users========================================\n");
-			System.out.println("ID       First Name  Last Name          Email                Password "
-					+ "            Role");
+			System.out
+					.println("========================================Users========================================\n");
+			System.out.println(
+					"ID       First Name  Last Name          Email                Password " + "            Role");
 			// System.out.println("ID First Name Last Name Email Password Role");
 			for (User u : users) {
 				System.out.println(u.getId() + "        " + u.getFirstName() + "        " + u.getLastName() + "        "
@@ -508,8 +514,9 @@ public class Driver {
 
 	private static void viewAllOrders() {
 		System.out.println("========================================Orders========================================");
-		System.out.println("ID              userID              ProductID              Quantity              Order Date\n");
-		
+		System.out.println(
+				"ID              userID              ProductID              Quantity              Order Date\n");
+
 		Order order = null;
 		Session ses = new Session();
 
@@ -517,8 +524,8 @@ public class Driver {
 			List<Order> orders = new ArrayList<Order>();
 			orders = ses.selectAll(connPool.getConnection(), order);
 			for (Order o : orders) {
-				System.out.println(o.getId() + "        " + o.getUserID() + "        " + o.getProductID() + "        " 
-									+ o.getOrderDate().toString() 	+ "        " + o.gettotalPrice() + "        " + o.getQuantity());
+				System.out.println(o.getId() + "        " + o.getUserID() + "        " + o.getProductID() + "        "
+						+ o.getOrderDate().toString() + "        " + o.gettotalPrice() + "        " + o.getQuantity());
 			}
 		} catch (SQLException e) {
 			log.warn("Failure to retrieve all orders from the databse.");
@@ -528,9 +535,8 @@ public class Driver {
 
 	private static void viewAllProducts() {
 		System.out.println("========================================Products========================================");
-		System.out.println("ID      Category ID    Product Name      Price      Quantity\n"
-				+ "       Description");
-		
+		System.out.println("ID      Category ID    Product Name      Price      Quantity\n" + "       Description");
+
 		Product product = null;
 		Session ses = new Session();
 
@@ -538,8 +544,9 @@ public class Driver {
 			List<Product> products = new ArrayList<Product>();
 			products = ses.selectAll(connPool.getConnection(), product);
 			for (Product p : products) {
-				System.out.println(p.getId() + "         " + p.getCategoryID() + "         " + p.getProductName() + "        " 
-						 	+ "       " + p.getPrice() + "       " + p.getQuantity() + "        " + p.getProductDescription());
+				System.out.println(p.getId() + "         " + p.getCategoryID() + "         " + p.getProductName()
+						+ "        " + "       " + p.getPrice() + "       " + p.getQuantity() + "        "
+						+ p.getProductDescription());
 			}
 		} catch (SQLException e) {
 			log.warn("Failure to retrieve all products from the databse.");
@@ -548,9 +555,10 @@ public class Driver {
 	}
 
 	private static void viewAllCategories() {
-		System.out.println("========================================Categories========================================");
+		System.out
+				.println("========================================Categories========================================");
 		System.out.println("ID     Category Name\n");
-		
+
 		Category category = null;
 		Session ses = new Session();
 		try {
@@ -621,12 +629,11 @@ public class Driver {
 			e.printStackTrace();
 		}
 	}
-	
+
 	private static void order() {
 		System.out.println("ID of product: ");
 		int id = scan.nextInt();
-		
-		
+
 		Session ses = new Session();
 		Product toOrder;
 		try {
@@ -638,22 +645,23 @@ public class Driver {
 			e.printStackTrace();
 		}
 	}
-	
+
 	private static void viewAllCustomerOrders() {
 		Session ses = new Session();
 		try {
-			List<Order> orders = ses.selectAllByForeignKey(connPool.getConnection(), customer.getId(), new Order(), customer);
-			
-			for(Order o: orders) {
+			List<Order> orders = ses.selectAllByForeignKey(connPool.getConnection(), customer.getId(), new Order(),
+					customer);
+
+			for (Order o : orders) {
 				System.out.println(o.toString());
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 	}
-	
+
 	private static void viewCustomerInfo() {
 		Session ses = new Session();
 		try {

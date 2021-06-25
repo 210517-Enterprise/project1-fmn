@@ -179,3 +179,72 @@ otEmpty{event= } - Retrieved All Products from the Database!
 2021-06-24 15:27:29 INFO  revature.repos.GetDB:270 - 
 otEmpty{userId= } - 
 otEmpty{event= } - Retrieved all Categories from the Database!
+2021-06-25 12:22:27 WARN  com.revature.Driver:166 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Failure: The url cannot be null
+2021-06-25 12:24:31 WARN  com.revature.Driver:166 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Failure: No suitable driver found for 
+2021-06-25 12:33:32 WARN  com.revature.Driver:86 - 
+otEmpty{userId= } - 
+otEmpty{event= } - No suitable driver found for 
+2021-06-25 12:33:44 WARN  com.revature.Driver:166 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Failure: No suitable driver found for 
+2021-06-25 12:34:06 WARN  com.revature.Driver:166 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Failure: The url cannot be null
+2021-06-25 12:44:49 WARN  com.revature.Driver:166 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Failure: The url cannot be null
+2021-06-25 12:50:41 ERROR revature.util.Configuration:31 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Failure to configure connection to database\GoldbrickORMDemo\src\main\resources\connection.properties (The system cannot find the path specified)
+2021-06-25 12:50:41 WARN  com.revature.Driver:166 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Failure: The url cannot be null
+2021-06-25 12:51:33 ERROR revature.util.Configuration:31 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Failure to configure connection to database\src\main\resources\connection.properties (The system cannot find the path specified)
+2021-06-25 12:51:33 WARN  com.revature.Driver:166 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Failure: The url cannot be null
+2021-06-25 12:51:40 ERROR revature.util.Configuration:31 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Failure to configure connection to database\src\main\resources\connection.properties (The system cannot find the path specified)
+2021-06-25 12:51:40 WARN  com.revature.Driver:166 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Failure: The url cannot be null
+2021-06-25 12:54:25 ERROR revature.util.Configuration:31 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Failure to configure connection to databaseC:\Users\zer0d\Desktop\project1-fmn\GoldbrickORMDemo\src\main\resources (Access is denied)
+2021-06-25 12:54:25 WARN  com.revature.Driver:166 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Failure: The url cannot be null
+2021-06-25 12:59:58 WARN  com.revature.Driver:166 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Failure: The url cannot be null
+2021-06-25 13:00:26 WARN  com.revature.Driver:166 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Failure: The url cannot be null
+2021-06-25 13:02:22 WARN  com.revature.Driver:166 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Failure: The url cannot be null
+2021-06-25 13:03:19 INFO  revature.repos.GetDB:58 - 
+otEmpty{userId= } - 
+otEmpty{event= } - All users have been pulled from the databse
+2021-06-25 13:03:19 INFO  revature.repos.GetDB:58 - 
+otEmpty{userId= } - 
+otEmpty{event= } - All users have been pulled from the databse
+2021-06-25 13:03:19 INFO  revature.repos.GetDB:62 - 
+otEmpty{userId= } - 
+otEmpty{event= } - All Users have been pulled from the database!
+2021-06-25 13:03:23 INFO  revature.repos.GetDB:270 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Retrieved all Categories from the Database!
+2021-06-25 13:03:29 INFO  revature.repos.GetDB:330 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Retrieved All Products from the Database!
+2021-06-25 13:03:51 INFO  revature.repos.GetDB:141 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Retrieved all orders from the database!
