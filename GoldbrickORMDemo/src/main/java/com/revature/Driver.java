@@ -485,7 +485,7 @@ public class Driver {
 		try {
 			List<User> users = new ArrayList<User>();
 			users = ses.selectAll(connPool.getConnection(), user);
-			System.out.println("========================================Users========================================");
+			System.out.println("========================================Users========================================\n");
 			System.out.println("ID       First Name  Last Name          Email                Password "
 					+ "            Role");
 			// System.out.println("ID First Name Last Name Email Password Role");
@@ -501,7 +501,7 @@ public class Driver {
 
 	private static void viewAllOrders() {
 		System.out.println("========================================Orders========================================");
-		System.out.println("ID              userID              ProductID              Quantity              Order Date");
+		System.out.println("ID              userID              ProductID              Quantity              Order Date\n");
 		
 		Order order = null;
 		Session ses = new Session();
@@ -521,7 +521,7 @@ public class Driver {
 
 	private static void viewAllProducts() {
 		System.out.println("========================================Products========================================");
-		System.out.println("ID      Category ID    Product Name      Price      Quantity "
+		System.out.println("ID      Category ID    Product Name      Price      Quantity\n"
 				+ "       Description");
 		
 		Product product = null;
@@ -542,7 +542,7 @@ public class Driver {
 
 	private static void viewAllCategories() {
 		System.out.println("========================================Categories========================================");
-		System.out.println("ID     Category Name");
+		System.out.println("ID     Category Name\n");
 		
 		Category category = null;
 		Session ses = new Session();

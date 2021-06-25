@@ -55,7 +55,6 @@ public class GetDB {
 			}
 			
 			User holder = new User(id, firstName, lastName, email, pwd, role);
-			System.out.println(holder.toString());
 			log.info("All users have been pulled from the databse");
 			allUsers.add(holder);
 		}
