@@ -20,40 +20,67 @@ public class Category implements AnnotatedClass {
 	private int id;
 
 	/*
-	 * @column indicates the database column name "category_name" with not null constaints and datatype VARCHAR
+	 * @column indicates the database column name "category_name" in categories table with not null constraints 
+	 * and datatype VARCHAR
 	 */
 	@Column(columnName = "category_name", constraints = { Constraint.NOT_NULL }, dataType = "VARCHAR(50)")
 	private String categoryName;
 
+	/**
+	 * Constructor for Category object
+	 * @param categoryName
+	 */
 	public Category(String categoryName) {
 		super();
 		this.id = -1;
 		this.categoryName = categoryName;
 	}
+	/**
+	 * Constructor for category object
+	 * @param id
+	 * @param categoryName
+	 */
 
 	public Category(int id, String categoryName) {
 		super();
 		this.id = id;
 		this.categoryName = categoryName;
 	}
+	/**
+	 * default constructor for category object
+	 */
 
 	public Category() {
 	}
-
+	
+	/**
+	 * Method that returns id (primary key)
+	 */
 	@Getter(name = "id")
 	public int getId() {
 		return id;
 	}
-
+	/**
+	 * Method that sets id
+	 * @param id
+	 */
 	public void setId(int id) {
 		this.id = id;
 	}
-
+	
+	/**
+	 * Method that returns category name
+	 * @return 
+	 */
 	@Getter(name = "category_name")
 	public String getCategoryName() {
 		return categoryName;
 	}
-
+	
+	/**
+	 * method that sets the category name
+	 * @param categoryName
+	 */
 	public void setCategoryName(String categoryName) {
 		this.categoryName = categoryName;
 	}
