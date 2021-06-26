@@ -22,7 +22,7 @@ public class ColumnField implements CustomField {
 
 	/**
 	 * Constructor for a ColumnField
-	 * @param field 
+	 * @param field dynamic access to a field in a class
 	 */
 	public ColumnField(Field field) {
 		if (field.getAnnotation(Column.class) == null) {

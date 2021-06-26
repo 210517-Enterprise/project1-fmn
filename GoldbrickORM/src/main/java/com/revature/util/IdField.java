@@ -6,10 +6,23 @@ import com.revature.annotations.Id;
 import com.revature.models.Constraint;
 
 
+/**
+ * This class holds the information and functionality pertinent to the instance
+ * variables annotated with "@IdColumn" in each of the annotated model
+ * classes
+ * 
+ * @author Mollie Morrow, Nick Gianino, Frank Aurori
+ * @version 1.0 6/15/21
+ *
+ */
 public class IdField implements CustomField{
 	
 	private Field field;
 
+	/**
+	 * Constructor for a IdField
+	 * @param field dynamic access to a field in a class
+	 */
 	public IdField(Field field) {
 		//check that given field is an id field
 		if(field.getAnnotation(Id.class) == null) {

@@ -6,10 +6,24 @@ import com.revature.annotations.Id;
 import com.revature.annotations.JoinColumn;
 import com.revature.models.Constraint;
 
+
+/**
+ * This class holds the information and functionality pertinent to the instance
+ * variables annotated with "@JoinColumn" in each of the annotated model
+ * classes
+ * 
+ * @author Mollie Morrow, Nick Gianino, Frank Aurori
+ * @version 1.0 6/15/21
+ *
+ */
 public class ForeignKeyField implements CustomField{
 
 	private Field field;
 
+	/**
+	 * Constructor for a ForeignKeyField
+	 * @param field dynamic access to a field in a class
+	 */
 	public ForeignKeyField(Field field) {
 		if (field.getAnnotation(JoinColumn.class) == null) {
 			throw new IllegalStateException(field.getName() + " is not annotated with @JoinColumn");
