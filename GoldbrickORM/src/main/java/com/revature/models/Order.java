@@ -9,26 +9,49 @@ import com.revature.annotations.Getter;
 import com.revature.annotations.Id;
 import com.revature.annotations.JoinColumn;
 
+/**
+ * This class defines a Order class can be mapped to a database table called orders.
+ * @author Frank Aurori
+ *
+ */
 @Entity(tableName = "orders")
 public class Order implements AnnotatedClass {
-
+	
+	/**
+	 * @ID indicates the private field "id" is the primary key of table orders
+	 */
 	@Id(columnName = "id", constraints = { Constraint.PRIMARY_KEY }, dataType = "SERIAL")
 	private int id;
-
+	
+	/**
+	 * 
+	 */
 	@JoinColumn(columnName = "user_id", constraints = {
 			Constraint.FOREIGN_KEY }, dataType = "INT", reference = "REFERENCES users(id)")
 	private int userID;
-
+	
+	/**
+	 * 
+	 */
 	@JoinColumn(columnName = "product_id", constraints = {
 			Constraint.FOREIGN_KEY }, dataType = "INT", reference = "REFERENCES products(id)")
 	private int productID;
 
+	/**
+	 * 
+	 */
 	@Column(columnName = "order_date", constraints = { Constraint.NOT_NULL }, dataType = "DATE")
 	private Date orderDate;
 
+	/**
+	 * 
+	 */
 	@Column(columnName = "total_price", constraints = { Constraint.NOT_NULL }, dataType = "NUMERIC")
 	private double totalPrice;
 
+	/**
+	 * 
+	 */
 	@Column(columnName = "fulfilled", constraints = { Constraint.NOT_NULL }, dataType = "BOOLEAN")
 	private boolean fulfilled;
 

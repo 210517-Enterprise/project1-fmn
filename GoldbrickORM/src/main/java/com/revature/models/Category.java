@@ -5,12 +5,23 @@ import com.revature.annotations.Entity;
 import com.revature.annotations.Getter;
 import com.revature.annotations.Id;
 
+/**
+ * This class defines a Category class can be mapped to a database table called categories.
+ * @author Frank Aurori, Mollie Morrow, Nick Gianino
+ *
+ */
 @Entity(tableName = "categories")
 public class Category implements AnnotatedClass {
 
+	/**
+	 * @Id indicates the private field "id" is the primary key of table category
+	 */
 	@Id(columnName = "id", constraints = { Constraint.PRIMARY_KEY }, dataType = "SERIAL")
 	private int id;
 
+	/*
+	 * @column indicates the database column name "category_name" with not null constaints and datatype VARCHAR
+	 */
 	@Column(columnName = "category_name", constraints = { Constraint.NOT_NULL }, dataType = "VARCHAR(50)")
 	private String categoryName;
 
