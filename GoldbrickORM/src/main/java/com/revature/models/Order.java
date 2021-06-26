@@ -10,7 +10,7 @@ import com.revature.annotations.Id;
 import com.revature.annotations.JoinColumn;
 
 /**
- * This class defines a Order class can be mapped to a database table called orders.
+ * This class defines a Order class that can be mapped to a database table called orders.
  * @author Frank Aurori, Mollie Morrow, Nick Gianino
  *
  */

@@ -6,9 +6,17 @@ import com.revature.annotations.Getter;
 import com.revature.annotations.Id;
 import com.revature.annotations.JoinColumn;
 
+/**
+ * This class defines a Product class that can be mapped to a database table called products.
+ * @author Frank Aurori, Mollie Morrow, Nick Gianino
+ *
+ */
 @Entity(tableName = "products")
 public class Product implements AnnotatedClass {
-
+	
+	/**
+	 * @Id indicates the private field "id" is the primary key of table products
+	 */
 	@Id(columnName = "id", constraints = { Constraint.PRIMARY_KEY }, dataType = "SERIAL")
 	private int id;
 

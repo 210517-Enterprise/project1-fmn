@@ -6,7 +6,7 @@ import com.revature.annotations.Getter;
 import com.revature.annotations.Id;
 
 /**
- * This class defines a Category class can be mapped to a database table called categories.
+ * This class defines a Category class that can be mapped to a database table called categories.
  * @author Frank Aurori, Mollie Morrow, Nick Gianino
  *
  */
