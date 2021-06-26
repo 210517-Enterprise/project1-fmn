@@ -7,37 +7,50 @@ import com.revature.annotations.Id;
 import com.revature.annotations.JoinColumn;
 import com.revature.models.Constraint;
 
-public class ColumnField implements CustomField{
+/**
+ * This class holds the information and functionality pertinent to the instance
+ * variables annotated with "@ColumnField" in each of the annotated model
+ * classes
+ * 
+ * @author Mollie Morrow, Nick Gianino, Frank Aurori
+ * @version 1.0 6/15/21
+ *
+ */
+public class ColumnField implements CustomField {
 
 	private Field field;
 
+	/**
+	 * Constructor for a ColumnField
+	 * @param field 
+	 */
 	public ColumnField(Field field) {
 		if (field.getAnnotation(Column.class) == null) {
 			throw new IllegalStateException(field.getName() + " is not annotated by @ColumnField");
 		}
 		this.field = field;
 	}
-	
+
 	@Override
 	public String getName() {
 		return this.field.getName();
 	}
-	
+
 	@Override
-	public Class<?> getType(){
+	public Class<?> getType() {
 		return this.field.getClass();
 	}
-	
+
 	@Override
 	public String getSQLDataType() {
 		return field.getAnnotation(Column.class).dataType();
 	}
-	
+
 	@Override
 	public String getColumnName() {
 		return this.field.getAnnotation(Column.class).columnName();
 	}
-	
+
 	@Override
 	public Constraint[] getConstraints() {
 		return field.getAnnotation(Column.class).constraints();
@@ -67,9 +80,5 @@ public class ColumnField implements CustomField{
 			return false;
 		return true;
 	}
-
-
-	
-	
 
 }

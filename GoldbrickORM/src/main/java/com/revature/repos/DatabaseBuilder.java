@@ -195,122 +195,122 @@ public class DatabaseBuilder {
 		return columns;
 	}
 
-	public static void main(String[] args) {
-
-		ConnectionUtil jdbcObj = new ConnectionUtil();
-		ResultSet rs = null;
-		PreparedStatement ps = null;
-		Connection connObj = null;
-
-		try {
-			DataSource datasource = jdbcObj.setUpPool();
-			jdbcObj.printDBStatus();
-
-			System.out.println("\n");
-			connObj = datasource.getConnection();
-
-//			Configuration cfg = new Configuration();
-//			cfg.addAnnotatedClass(User.class)
-//			.addAnnotatedClass(Category.class)
-//			.addAnnotatedClass(Product.class)
-//			.addAnnotatedClass(Order.class);
+//	public static void main(String[] args) {
+//
+//		ConnectionUtil jdbcObj = new ConnectionUtil();
+//		ResultSet rs = null;
+//		PreparedStatement ps = null;
+//		Connection connObj = null;
+//
+//		try {
+//			DataSource datasource = jdbcObj.setUpPool();
+//			jdbcObj.printDBStatus();
+//
+//			System.out.println("\n");
+//			connObj = datasource.getConnection();
+//
+////			Configuration cfg = new Configuration();
+////			cfg.addAnnotatedClass(User.class)
+////			.addAnnotatedClass(Category.class)
+////			.addAnnotatedClass(Product.class)
+////			.addAnnotatedClass(Order.class);
+////			
+////			
+////			DatabaseBuilder dbb = new DatabaseBuilder(cfg);
+////			dbb.createTables(connObj); 
+////			
+//			GetDB db = new GetDB();
+//
+//			Metamodel<User> mm = new Metamodel<>(User.class);
+//			Metamodel<Order> om = new Metamodel<>(Order.class);
+//			Metamodel<Product> pm = new Metamodel<>(Product.class);
+//
+//			System.out.println("\n==================Get All Users=======================\n");
+//			db.getAllUsers(connObj, mm);
+//
+//			// =============================================================================
+//			User u = db.getByUserID(connObj, mm, 1);
+//			System.out.println(u.toString());
+//			// =============================================================================
+//			System.out.println("\n==================Order by Primary Key=======================\n");
+//
+//			ArrayList<Order> o = new ArrayList<Order>();
+//			o = db.getUserOrdersByPrimaryKey(connObj, om, 2);
+//			if (o.size() == 0) {
+//				System.out.println("No orders");
+//			}
+//			for (Order order : o) {
+//				System.out.println(order.toString());
+//			}
+//
+//			// ==============================================================================
+//			System.out.println("\n=================Get All Orders====================\n");
+//			List<Order> orders = new ArrayList<Order>();
+//			orders = db.getAllOrders(connObj, om);
+//			for (Order oo : orders) {
+//				System.out.println(oo.toString());
+//			}
+//
+//			// ==============================================================================
+//			System.out.println("\n==============Get order by user ID=========================\n");
+//			ArrayList<Order> odr = new ArrayList<Order>();
+//			odr = db.getUserOrdersByUserID(connObj, om, 2);
+//			for (Order d : odr) {
+//				System.out.println(d.toString());
+//			}
+//
+//			System.out.println("\n==============get order by product id======================\n");
+//			ArrayList<Order> oder = new ArrayList<Order>();
+//			oder = db.getUserOrdersByProductID(connObj, om, 2);
+//			for (Order e : oder) {
+//				System.out.println(e.toString());
+//			}
+//
+//			System.out.println("\n==============Get all Categories======================\n");
+//			Metamodel<Category> cm = new Metamodel<>(Category.class);
+//			ArrayList<Category> cate = new ArrayList<Category>();
+//			cate = db.getAllCategories(connObj, cm);
+//			for (Category ca : cate) {
+//				System.out.println(ca.toString());
+//			}
+//
+//			System.out.println("\n=============Categories by Primary Key======================\n");
+//			ArrayList<Category> categ = new ArrayList<Category>();
+//			categ = db.getAllCategoriesByPrimaryKey(connObj, cm, 1);
+//			for (Category caz : categ) {
+//				System.out.println(caz.toString());
+//			}
+//
+//			System.out.println("\n=============All products=====================\n");
+//			ArrayList<Product> prod = new ArrayList<Product>();
+//			prod = db.getAllProducts(connObj, pm);
+//			for (Product p : prod) {
+//				System.out.println(p.toString());
+//			}
+//
+//			System.out.println("\n============Products By Primary Key=====================\n");
+//			Product prod1 = null;
+//			prod1 = db.getAllProductsByPrimaryKey(connObj, pm, 1);
+//			
+//			System.out.println(prod1.toString());
 //			
 //			
-//			DatabaseBuilder dbb = new DatabaseBuilder(cfg);
-//			dbb.createTables(connObj); 
-//			
-			GetDB db = new GetDB();
-
-			Metamodel<User> mm = new Metamodel<>(User.class);
-			Metamodel<Order> om = new Metamodel<>(Order.class);
-			Metamodel<Product> pm = new Metamodel<>(Product.class);
-
-			System.out.println("\n==================Get All Users=======================\n");
-			db.getAllUsers(connObj, mm);
-
-			// =============================================================================
-			User u = db.getByUserID(connObj, mm, 1);
-			System.out.println(u.toString());
-			// =============================================================================
-			System.out.println("\n==================Order by Primary Key=======================\n");
-
-			ArrayList<Order> o = new ArrayList<Order>();
-			o = db.getUserOrdersByPrimaryKey(connObj, om, 2);
-			if (o.size() == 0) {
-				System.out.println("No orders");
-			}
-			for (Order order : o) {
-				System.out.println(order.toString());
-			}
-
-			// ==============================================================================
-			System.out.println("\n=================Get All Orders====================\n");
-			List<Order> orders = new ArrayList<Order>();
-			orders = db.getAllOrders(connObj, om);
-			for (Order oo : orders) {
-				System.out.println(oo.toString());
-			}
-
-			// ==============================================================================
-			System.out.println("\n==============Get order by user ID=========================\n");
-			ArrayList<Order> odr = new ArrayList<Order>();
-			odr = db.getUserOrdersByUserID(connObj, om, 2);
-			for (Order d : odr) {
-				System.out.println(d.toString());
-			}
-
-			System.out.println("\n==============get order by product id======================\n");
-			ArrayList<Order> oder = new ArrayList<Order>();
-			oder = db.getUserOrdersByProductID(connObj, om, 2);
-			for (Order e : oder) {
-				System.out.println(e.toString());
-			}
-
-			System.out.println("\n==============Get all Categories======================\n");
-			Metamodel<Category> cm = new Metamodel<>(Category.class);
-			ArrayList<Category> cate = new ArrayList<Category>();
-			cate = db.getAllCategories(connObj, cm);
-			for (Category ca : cate) {
-				System.out.println(ca.toString());
-			}
-
-			System.out.println("\n=============Categories by Primary Key======================\n");
-			ArrayList<Category> categ = new ArrayList<Category>();
-			categ = db.getAllCategoriesByPrimaryKey(connObj, cm, 1);
-			for (Category caz : categ) {
-				System.out.println(caz.toString());
-			}
-
-			System.out.println("\n=============All products=====================\n");
-			ArrayList<Product> prod = new ArrayList<Product>();
-			prod = db.getAllProducts(connObj, pm);
-			for (Product p : prod) {
-				System.out.println(p.toString());
-			}
-
-			System.out.println("\n============Products By Primary Key=====================\n");
-			Product prod1 = null;
-			prod1 = db.getAllProductsByPrimaryKey(connObj, pm, 1);
-			
-			System.out.println(prod1.toString());
-			
-			
-
-			System.out.println("\n=============Products by Foreign Key=====================\n");
-			ArrayList<Product> prod2 = new ArrayList<Product>();
-			prod2 = db.getAllProductsByForeignKey(connObj, pm, 2);
-			for (Product p : prod2) {
-				System.out.println(p.toString());
-			}
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} catch (NoSuchFieldException e) {
-			e.printStackTrace();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
-	}
+//
+//			System.out.println("\n=============Products by Foreign Key=====================\n");
+//			ArrayList<Product> prod2 = new ArrayList<Product>();
+//			prod2 = db.getAllProductsByForeignKey(connObj, pm, 2);
+//			for (Product p : prod2) {
+//				System.out.println(p.toString());
+//			}
+//
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		} catch (NoSuchFieldException e) {
+//			e.printStackTrace();
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//
+//	}
 
 }

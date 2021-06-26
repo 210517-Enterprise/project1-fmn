@@ -5,6 +5,7 @@ import com.revature.annotations.Entity;
 import com.revature.annotations.Getter;
 import com.revature.annotations.Id;
 
+
 @Entity(tableName = "users")
 public class User implements AnnotatedClass {
 

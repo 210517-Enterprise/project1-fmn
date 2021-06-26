@@ -310,3 +310,109 @@ otEmpty{event= } - Retrieved All Products from the Database!
 2021-06-25 19:25:03 INFO  revature.repos.GetDB:270 - 
 otEmpty{userId= } - 
 otEmpty{event= } - Retrieved all Categories from the Database!
+2021-06-25 19:25:30 WARN  revature.repos.DatabaseBuilder:121 - 
+otEmpty{userId= } - 
+otEmpty{event= } - ERROR: table "orders" does not exist
+2021-06-25 19:25:52 INFO  revature.repos.GetDB:58 - 
+otEmpty{userId= } - 
+otEmpty{event= } - All users have been pulled from the databse
+2021-06-25 19:25:52 INFO  revature.repos.GetDB:58 - 
+otEmpty{userId= } - 
+otEmpty{event= } - All users have been pulled from the databse
+2021-06-25 19:25:52 INFO  revature.repos.GetDB:62 - 
+otEmpty{userId= } - 
+otEmpty{event= } - All Users have been pulled from the database!
+2021-06-25 19:26:02 INFO  revature.repos.GetDB:141 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Retrieved all orders from the database!
+2021-06-25 19:26:10 INFO  revature.repos.GetDB:330 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Retrieved All Products from the Database!
+2021-06-25 19:27:26 INFO  revature.repos.GetDB:58 - 
+otEmpty{userId= } - 
+otEmpty{event= } - All users have been pulled from the databse
+2021-06-25 19:27:26 INFO  revature.repos.GetDB:58 - 
+otEmpty{userId= } - 
+otEmpty{event= } - All users have been pulled from the databse
+2021-06-25 19:27:26 INFO  revature.repos.GetDB:62 - 
+otEmpty{userId= } - 
+otEmpty{event= } - All Users have been pulled from the database!
+2021-06-25 19:27:32 INFO  revature.repos.GetDB:141 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Retrieved all orders from the database!
+2021-06-25 19:27:35 INFO  revature.repos.GetDB:330 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Retrieved All Products from the Database!
+2021-06-25 19:27:42 INFO  revature.repos.GetDB:270 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Retrieved all Categories from the Database!
+2021-06-25 19:28:04 INFO  revature.repos.GetDB:362 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Retrieved all products associated with Primary Key: 3
+2021-06-25 19:28:04 WARN  revature.repos.InsertDB:200 - 
+otEmpty{userId= } - 
+otEmpty{event= } - ERROR: syntax error at or near "2021"
+  Position: 100
+2021-06-25 19:29:19 INFO  revature.repos.GetDB:362 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Retrieved all products associated with Primary Key: 3
+2021-06-25 19:29:19 WARN  revature.repos.InsertDB:200 - 
+otEmpty{userId= } - 
+otEmpty{event= } - ERROR: syntax error at or near "2021"
+  Position: 100
+2021-06-25 19:29:50 INFO  revature.repos.GetDB:362 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Retrieved all products associated with Primary Key: 3
+2021-06-25 19:29:50 WARN  revature.repos.InsertDB:201 - 
+otEmpty{userId= } - 
+otEmpty{event= } - ERROR: syntax error at or near "2021"
+  Position: 100
+2021-06-25 19:31:12 INFO  revature.repos.GetDB:362 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Retrieved all products associated with Primary Key: 3
+2021-06-25 19:31:23 INFO  revature.repos.GetDB:208 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Retrieved 1 Orders from the server.
+2021-06-25 19:33:57 INFO  revature.repos.GetDB:362 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Retrieved all products associated with Primary Key: 4
+2021-06-25 19:34:01 INFO  revature.repos.GetDB:208 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Retrieved 1 Orders from the server.
+2021-06-25 19:34:10 INFO  revature.repos.GetDB:362 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Retrieved all products associated with Primary Key: 3
+2021-06-25 19:34:12 INFO  revature.repos.GetDB:208 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Retrieved 2 Orders from the server.
+2021-06-25 19:35:14 INFO  revature.repos.GetDB:330 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Retrieved All Products from the Database!
+2021-06-25 19:40:00 INFO  revature.repos.GetDB:330 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Retrieved All Products from the Database!
+2021-06-25 19:40:21 INFO  revature.repos.GetDB:362 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Retrieved all products associated with Primary Key: 3
+2021-06-25 19:40:23 INFO  revature.repos.GetDB:208 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Retrieved 1 Orders from the server.
+2021-06-25 19:42:53 WARN  revature.repos.InsertDB:201 - 
+otEmpty{userId= } - 
+otEmpty{event= } - ERROR: insert or update on table "orders" violates foreign key constraint "orders_product_id_fkey"
+  Detail: Key (product_id)=(0) is not present in table "products".
+2021-06-25 19:42:54 WARN  revature.repos.DatabaseUpdater:162 - 
+otEmpty{userId= } - 
+otEmpty{event= } - No rows updated for Product: 1
+2021-06-25 19:43:02 INFO  revature.repos.GetDB:326 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Retrieved All Products from the Database!
+2021-06-25 19:43:09 INFO  revature.repos.GetDB:358 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Retrieved all products associated with Primary Key: 8
+2021-06-25 19:43:13 INFO  revature.repos.GetDB:326 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Retrieved All Products from the Database!
+2021-06-25 19:43:19 INFO  revature.repos.GetDB:205 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Retrieved 1 Orders from the server.
