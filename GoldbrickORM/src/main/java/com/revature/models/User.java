@@ -6,33 +6,32 @@ import com.revature.annotations.Getter;
 import com.revature.annotations.Id;
 
 @Entity(tableName = "users")
-public class User implements AnnotatedClass{
-	
-	@Id(columnName = "id", constraints = {Constraint.PRIMARY_KEY}, dataType = "SERIAL")
+public class User implements AnnotatedClass {
+
+	@Id(columnName = "id", constraints = { Constraint.PRIMARY_KEY }, dataType = "SERIAL")
 	private int id;
-	
-	@Column(columnName = "first_name", constraints = {Constraint.NOT_NULL}, dataType = "VARCHAR(50)")
+
+	@Column(columnName = "first_name", constraints = { Constraint.NOT_NULL }, dataType = "VARCHAR(50)")
 	private String firstName;
-	
-	@Column(columnName = "last_name", constraints = {Constraint.NOT_NULL}, dataType = "VARCHAR(50)")
+
+	@Column(columnName = "last_name", constraints = { Constraint.NOT_NULL }, dataType = "VARCHAR(50)")
 	private String lastName;
-	
-	@Column(columnName = "email", constraints = {Constraint.NOT_NULL, Constraint.UNIQUE}, dataType = "VARCHAR(50)")
+
+	@Column(columnName = "email", constraints = { Constraint.NOT_NULL, Constraint.UNIQUE }, dataType = "VARCHAR(50)")
 	private String email;
-	
-	@Column(columnName = "pwd", constraints = {Constraint.NOT_NULL}, dataType = "VARCHAR(50)")
-	private String password; //encrypt this
-	
-	@Column(columnName = "user_role", constraints = {Constraint.NOT_NULL}, dataType = "VARCHAR(50)")
+
+	@Column(columnName = "pwd", constraints = { Constraint.NOT_NULL }, dataType = "VARCHAR(50)")
+	private String password; // encrypt this
+
+	@Column(columnName = "user_role", constraints = { Constraint.NOT_NULL }, dataType = "VARCHAR(50)")
 	private Role role;
-	
+
 	public User(String email, String password) {
 		super();
 		this.email = email;
 		this.password = password;
 	}
-	
-	
+
 	public User(int id, String firstName, String lastName, String email, String password, Role role) {
 		super();
 		this.id = id;
@@ -42,8 +41,8 @@ public class User implements AnnotatedClass{
 		this.password = password;
 		this.role = role;
 	}
-	
-	@Getter(name="id")
+
+	@Getter(name = "id")
 	public int getId() {
 		return id;
 	}
@@ -51,7 +50,8 @@ public class User implements AnnotatedClass{
 	public void setId(int id) {
 		this.id = id;
 	}
-	@Getter(name="first_name")
+
+	@Getter(name = "first_name")
 	public String getFirstName() {
 		return firstName;
 	}
@@ -59,7 +59,8 @@ public class User implements AnnotatedClass{
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
-	@Getter(name="last_name")
+
+	@Getter(name = "last_name")
 	public String getLastName() {
 		return lastName;
 	}
@@ -67,7 +68,8 @@ public class User implements AnnotatedClass{
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-	@Getter(name="email")
+
+	@Getter(name = "email")
 	public String getEmail() {
 		return email;
 	}
@@ -75,7 +77,8 @@ public class User implements AnnotatedClass{
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	@Getter(name="pwd")
+
+	@Getter(name = "pwd")
 	public String getPassword() {
 		return password;
 	}
@@ -83,7 +86,8 @@ public class User implements AnnotatedClass{
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	@Getter(name="user_role")
+
+	@Getter(name = "user_role")
 	public Role getRole() {
 		return role;
 	}
@@ -143,8 +147,9 @@ public class User implements AnnotatedClass{
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
-				+ ", password=" + password + ", role=" + role + "]";
+		return "----------------------------------------------------------------------------------------------\n"
+				+  id + ": " + firstName + " " + lastName + ", " + email + ", " + password + ", " + role
+				+ "\n----------------------------------------------------------------------------------------------";
 	}
 
 }

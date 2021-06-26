@@ -6,48 +6,47 @@ import com.revature.annotations.Getter;
 import com.revature.annotations.Id;
 
 @Entity(tableName = "categories")
-public class Category implements AnnotatedClass{
-	
-	@Id(columnName = "id", constraints = {Constraint.PRIMARY_KEY}, 
-			dataType = "SERIAL")
+public class Category implements AnnotatedClass {
+
+	@Id(columnName = "id", constraints = { Constraint.PRIMARY_KEY }, dataType = "SERIAL")
 	private int id;
-	
-	@Column(columnName = "category_name", constraints = {Constraint.NOT_NULL}, dataType = "VARCHAR(50)")
+
+	@Column(columnName = "category_name", constraints = { Constraint.NOT_NULL }, dataType = "VARCHAR(50)")
 	private String categoryName;
-	
+
 	public Category(String categoryName) {
 		super();
 		this.id = -1;
 		this.categoryName = categoryName;
 	}
-	
+
 	public Category(int id, String categoryName) {
 		super();
 		this.id = id;
 		this.categoryName = categoryName;
 	}
-	
+
 	public Category() {
 	}
 
-	@Getter(name="id")
+	@Getter(name = "id")
 	public int getId() {
 		return id;
 	}
-	
+
 	public void setId(int id) {
 		this.id = id;
 	}
-	
-	@Getter(name="category_name")
+
+	@Getter(name = "category_name")
 	public String getCategoryName() {
 		return categoryName;
 	}
-	
+
 	public void setCategoryName(String categoryName) {
 		this.categoryName = categoryName;
 	}
-	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -56,6 +55,7 @@ public class Category implements AnnotatedClass{
 		result = prime * result + id;
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -74,11 +74,12 @@ public class Category implements AnnotatedClass{
 			return false;
 		return true;
 	}
+
 	@Override
 	public String toString() {
-		return "Category [id=" + id + ", categoryName=" + categoryName + "]";
+		return "----------------------------------------------------------------------------------------------\n"
+				+  id + ": " + categoryName
+				+ "\n----------------------------------------------------------------------------------------------";
 	}
-	
-	
 
 }

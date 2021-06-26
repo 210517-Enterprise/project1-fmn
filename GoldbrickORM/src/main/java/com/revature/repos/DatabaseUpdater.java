@@ -233,43 +233,43 @@ public class DatabaseUpdater {
 		return true;
 	}
 
-	public static void main(String[] args) {
-		ConnectionUtil jdbcObj = new ConnectionUtil();
-		ResultSet rs = null;
-		PreparedStatement ps = null;
-		Connection connObj = null;
-
-		try {
-			DataSource datasource = jdbcObj.setUpPool();
-			jdbcObj.printDBStatus();
-			connObj = datasource.getConnection();
-
-			Category cat = new Category(1, "testupdate");
-			Metamodel<Category> mm = new Metamodel<>(Category.class);
-
-			updateCategory(mm, cat, connObj);
-
-			Order order = new Order(2, 1, 1, null, 0, false, 0);
-			Metamodel<Order> mmO = new Metamodel<>(Order.class);
-
-			updateOrder(mmO, order, connObj);
-
-			Product prod = new Product(1, 1, "test2", "test3", 0, 0, false);
-			Metamodel<Product> mmP = new Metamodel<>(Product.class);
-			updateProduct(mmP, prod, connObj);
-
-			User user = new User(2, "test", "test", "test", "test", Role.CUSTOMER);
-			Metamodel<User> mmU = new Metamodel<>(User.class);
-			updateUser(mmU, user, connObj);
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} catch (NoSuchFieldException e) {
-			e.printStackTrace();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
-	}
+//	public static void main(String[] args) {
+//		ConnectionUtil jdbcObj = new ConnectionUtil();
+//		ResultSet rs = null;
+//		PreparedStatement ps = null;
+//		Connection connObj = null;
+//
+//		try {
+//			DataSource datasource = jdbcObj.setUpPool();
+//			jdbcObj.printDBStatus();
+//			connObj = datasource.getConnection();
+//
+//			Category cat = new Category(1, "testupdate");
+//			Metamodel<Category> mm = new Metamodel<>(Category.class);
+//
+//			updateCategory(mm, cat, connObj);
+//
+//			Order order = new Order(2, 1, 1, null, 0, false, 0);
+//			Metamodel<Order> mmO = new Metamodel<>(Order.class);
+//
+//			updateOrder(mmO, order, connObj);
+//
+//			Product prod = new Product(1, 1, "test2", "test3", 0, 0, false);
+//			Metamodel<Product> mmP = new Metamodel<>(Product.class);
+//			updateProduct(mmP, prod, connObj);
+//
+//			User user = new User(2, "test", "test", "test", "test", Role.CUSTOMER);
+//			Metamodel<User> mmU = new Metamodel<>(User.class);
+//			updateUser(mmU, user, connObj);
+//
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		} catch (NoSuchFieldException e) {
+//			e.printStackTrace();
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//
+//	}
 
 }

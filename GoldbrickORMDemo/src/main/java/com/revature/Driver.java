@@ -41,6 +41,7 @@ public class Driver {
 	public static final User customer = new User(2, "Frank", "Aurori", "faurori@gmail.com", "mypass123", Role.CUSTOMER);
 
 	public static void main(String[] args) {
+		dropTables();
 		initializeStore();
 
 		// static login as an admin or a customer
@@ -93,7 +94,7 @@ public class Driver {
 		Transaction tx = ses.getTransaction();
 
 		ConnectionUtil util = new ConnectionUtil();
-		util.printDBStatus();
+		log.info(util.getDBStatus());
 
 		cfg.addAnnotatedClass(User.class);
 		cfg.addAnnotatedClass(Category.class);
@@ -107,13 +108,13 @@ public class Driver {
 			else
 				log.error("Failure to create tables for Congo");
 
-			util.printDBStatus();
+			util.getDBStatus();
 
 			// insert users
 			ses.insert(admin, connPool.getConnection());
 			ses.insert(customer, connPool.getConnection());
 
-			util.printDBStatus();
+			log.info(util.getDBStatus());
 
 			// create categories for store
 			Category healthAndBeauty = new Category("Heath & Beauty");
@@ -127,7 +128,7 @@ public class Driver {
 			int eID = ses.insert(electronics, connPool.getConnection());
 			int hagID = ses.insert(homeAndGarden, connPool.getConnection());
 
-			util.printDBStatus();
+			log.info(util.getDBStatus());
 
 			// check for errors in insert method
 			if (habID == -1 || cID == -1 || eID == -1 || hagID == -1)
@@ -159,7 +160,7 @@ public class Driver {
 			ses.insert(instaPot, connPool.getConnection());
 			ses.insert(waterfall, connPool.getConnection());
 
-			util.printDBStatus();
+			log.info(util.getDBStatus());
 
 			// tx.commitTrans(null); //figure out later
 		} catch (SQLException e) {
@@ -498,13 +499,9 @@ public class Driver {
 			List<User> users = new ArrayList<User>();
 			users = ses.selectAll(connPool.getConnection(), user);
 			System.out
-					.println("========================================Users========================================\n");
-			System.out.println(
-					"ID       First Name  Last Name          Email                Password " + "            Role");
-			// System.out.println("ID First Name Last Name Email Password Role");
+					.println("=============================================Users=============================================\n");
 			for (User u : users) {
-				System.out.println(u.getId() + "        " + u.getFirstName() + "        " + u.getLastName() + "        "
-						+ u.getEmail() + "        " + u.getPassword() + "        " + u.getRole().toString() + "\n");
+				System.out.println(u.toString());
 			}
 		} catch (SQLException e) {
 			log.warn("Failure to retrieve all users from the databse.");
@@ -514,9 +511,7 @@ public class Driver {
 
 	private static void viewAllOrders() {
 		System.out.println("========================================Orders========================================");
-		System.out.println(
-				"ID              userID              ProductID              Quantity              Order Date\n");
-
+	
 		Order order = null;
 		Session ses = new Session();
 
@@ -524,8 +519,7 @@ public class Driver {
 			List<Order> orders = new ArrayList<Order>();
 			orders = ses.selectAll(connPool.getConnection(), order);
 			for (Order o : orders) {
-				System.out.println(o.getId() + "        " + o.getUserID() + "        " + o.getProductID() + "        "
-						+ o.getOrderDate().toString() + "        " + o.gettotalPrice() + "        " + o.getQuantity());
+				System.out.println(o.toString());
 			}
 		} catch (SQLException e) {
 			log.warn("Failure to retrieve all orders from the databse.");
@@ -535,7 +529,6 @@ public class Driver {
 
 	private static void viewAllProducts() {
 		System.out.println("========================================Products========================================");
-		System.out.println("ID      Category ID    Product Name      Price      Quantity\n" + "       Description");
 
 		Product product = null;
 		Session ses = new Session();
@@ -544,9 +537,7 @@ public class Driver {
 			List<Product> products = new ArrayList<Product>();
 			products = ses.selectAll(connPool.getConnection(), product);
 			for (Product p : products) {
-				System.out.println(p.getId() + "         " + p.getCategoryID() + "         " + p.getProductName()
-						+ "        " + "       " + p.getPrice() + "       " + p.getQuantity() + "        "
-						+ p.getProductDescription());
+				System.out.println(p.toString());
 			}
 		} catch (SQLException e) {
 			log.warn("Failure to retrieve all products from the databse.");
@@ -557,7 +548,6 @@ public class Driver {
 	private static void viewAllCategories() {
 		System.out
 				.println("========================================Categories========================================");
-		System.out.println("ID     Category Name\n");
 
 		Category category = null;
 		Session ses = new Session();
@@ -565,7 +555,7 @@ public class Driver {
 			List<Category> categories = new ArrayList<Category>();
 			categories = ses.selectAll(connPool.getConnection(), category);
 			for (Category c : categories) {
-				System.out.println(c.getId() + "     " + c.getCategoryName());
+				System.out.println(c.toString());
 			}
 		} catch (SQLException e) {
 			log.warn("Failure to retrieve all categories from the databse.");
@@ -638,8 +628,11 @@ public class Driver {
 		Product toOrder;
 		try {
 			toOrder = (Product) ses.selectAllById(connPool.getConnection(), id, Product.class);
-			Order order = new Order(customer.getId(), id, Date.valueOf(LocalDate.now()), toOrder.getPrice(), false, id);
+			Order order = new Order(customer.getId(), id, Date.valueOf(LocalDate.now()), toOrder.getPrice(), false);
 			ses.insert(order, connPool.getConnection());
+			
+			toOrder.setQuantity(toOrder.getQuantity()-1);
+			ses.update(toOrder, connPool.getConnection());
 		} catch (SQLException e) {
 			log.warn(e.getMessage());
 			e.printStackTrace();

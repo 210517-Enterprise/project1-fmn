@@ -248,3 +248,65 @@ otEmpty{event= } - Retrieved All Products from the Database!
 2021-06-25 13:03:51 INFO  revature.repos.GetDB:141 - 
 otEmpty{userId= } - 
 otEmpty{event= } - Retrieved all orders from the database!
+2021-06-25 19:14:23 INFO  revature.repos.GetDB:58 - 
+otEmpty{userId= } - 
+otEmpty{event= } - All users have been pulled from the databse
+2021-06-25 19:14:23 INFO  revature.repos.GetDB:58 - 
+otEmpty{userId= } - 
+otEmpty{event= } - All users have been pulled from the databse
+2021-06-25 19:14:23 INFO  revature.repos.GetDB:62 - 
+otEmpty{userId= } - 
+otEmpty{event= } - All Users have been pulled from the database!
+2021-06-25 19:15:13 INFO  revature.repos.GetDB:58 - 
+otEmpty{userId= } - 
+otEmpty{event= } - All users have been pulled from the databse
+2021-06-25 19:15:13 INFO  revature.repos.GetDB:58 - 
+otEmpty{userId= } - 
+otEmpty{event= } - All users have been pulled from the databse
+2021-06-25 19:15:13 INFO  revature.repos.GetDB:62 - 
+otEmpty{userId= } - 
+otEmpty{event= } - All Users have been pulled from the database!
+2021-06-25 19:15:59 INFO  revature.repos.GetDB:58 - 
+otEmpty{userId= } - 
+otEmpty{event= } - All users have been pulled from the databse
+2021-06-25 19:15:59 INFO  revature.repos.GetDB:58 - 
+otEmpty{userId= } - 
+otEmpty{event= } - All users have been pulled from the databse
+2021-06-25 19:15:59 INFO  revature.repos.GetDB:62 - 
+otEmpty{userId= } - 
+otEmpty{event= } - All Users have been pulled from the database!
+2021-06-25 19:24:12 WARN  revature.repos.DatabaseBuilder:121 - 
+otEmpty{userId= } - 
+otEmpty{event= } - An I/O error occurred while sending to the backend.
+2021-06-25 19:24:17 WARN  revature.repos.DatabaseBuilder:96 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Failure in DatabaseBuilder.createTables: ERROR: relation "users" already exists
+2021-06-25 19:24:17 ERROR com.revature.Driver:108 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Failure to create tables for Congo
+2021-06-25 19:24:17 WARN  revature.repos.InsertDB:87 - 
+otEmpty{userId= } - 
+otEmpty{event= } - ERROR: duplicate key value violates unique constraint "users_email_key"
+  Detail: Key (email)=(admin@theshop.com) already exists.
+2021-06-25 19:24:18 WARN  revature.repos.InsertDB:87 - 
+otEmpty{userId= } - 
+otEmpty{event= } - ERROR: duplicate key value violates unique constraint "users_email_key"
+  Detail: Key (email)=(faurori@gmail.com) already exists.
+2021-06-25 19:24:52 INFO  revature.repos.GetDB:58 - 
+otEmpty{userId= } - 
+otEmpty{event= } - All users have been pulled from the databse
+2021-06-25 19:24:52 INFO  revature.repos.GetDB:58 - 
+otEmpty{userId= } - 
+otEmpty{event= } - All users have been pulled from the databse
+2021-06-25 19:24:52 INFO  revature.repos.GetDB:62 - 
+otEmpty{userId= } - 
+otEmpty{event= } - All Users have been pulled from the database!
+2021-06-25 19:24:55 INFO  revature.repos.GetDB:141 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Retrieved all orders from the database!
+2021-06-25 19:24:58 INFO  revature.repos.GetDB:330 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Retrieved All Products from the Database!
+2021-06-25 19:25:03 INFO  revature.repos.GetDB:270 - 
+otEmpty{userId= } - 
+otEmpty{event= } - Retrieved all Categories from the Database!

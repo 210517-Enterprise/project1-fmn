@@ -179,9 +179,9 @@ public class InsertDB {
 		for (String columnName : getters.keySet()) {
 			if (!columnName.equals(pk.getColumnName())) {
 				if (getters.get(columnName).getReturnType() == String.class)
-					sql += "\'" + getters.get(columnName).invoke(order, null) + "\',";
+					sql += "\'" + getters.get(columnName).invoke(order, null) + "\', ";
 				else if (getters.get(columnName).getReturnType() == Date.class)
-					sql += "DATE " + getters.get(columnName).invoke(order, null) + ",";
+					sql += "DATE \'" + getters.get(columnName).invoke(order, null) + "\', ";
 				else
 					sql += getters.get(columnName).invoke(order, null) + ", ";
 
@@ -191,6 +191,7 @@ public class InsertDB {
 		sql = sql.substring(0, sql.lastIndexOf(","));
 		sql += ")";
 		
+		System.out.println(sql);
 		
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);

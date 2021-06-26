@@ -7,29 +7,30 @@ import com.revature.annotations.Id;
 import com.revature.annotations.JoinColumn;
 
 @Entity(tableName = "products")
-public class Product implements AnnotatedClass{
-	
-	@Id(columnName = "id", constraints = {Constraint.PRIMARY_KEY}, dataType = "SERIAL")
+public class Product implements AnnotatedClass {
+
+	@Id(columnName = "id", constraints = { Constraint.PRIMARY_KEY }, dataType = "SERIAL")
 	private int id;
-	
-	@JoinColumn(columnName = "category_id", constraints = {Constraint.FOREIGN_KEY}, dataType = "INT", reference = "REFERENCES categories(id)")
+
+	@JoinColumn(columnName = "category_id", constraints = {
+			Constraint.FOREIGN_KEY }, dataType = "INT", reference = "REFERENCES categories(id)")
 	private int categoryID;
-	
-	@Column(columnName = "product_name", constraints = {Constraint.NOT_NULL}, dataType = "VARCHAR(50)")
+
+	@Column(columnName = "product_name", constraints = { Constraint.NOT_NULL }, dataType = "VARCHAR(50)")
 	private String productName;
-	
-	@Column(columnName = "product_description", constraints = {Constraint.NOT_NULL}, dataType = "VARCHAR(150)")
+
+	@Column(columnName = "product_description", constraints = { Constraint.NOT_NULL }, dataType = "VARCHAR(150)")
 	private String productDescription;
-	
-	@Column(columnName = "price", constraints = {Constraint.NOT_NULL}, dataType = "NUMERIC")	
+
+	@Column(columnName = "price", constraints = { Constraint.NOT_NULL }, dataType = "NUMERIC")
 	private double price;
-	
-	@Column(columnName = "quantity", constraints = {Constraint.NOT_NULL}, dataType = "INT")
+
+	@Column(columnName = "quantity", constraints = { Constraint.NOT_NULL }, dataType = "INT")
 	private int quantity;
-	
-	@Column(columnName = "in_stock", constraints = {Constraint.NOT_NULL}, dataType = "BOOLEAN")
+
+	@Column(columnName = "in_stock", constraints = { Constraint.NOT_NULL }, dataType = "BOOLEAN")
 	private boolean inStock;
-	
+
 	public Product(int catId, String productName, String productDescription, double price, int quantity) {
 		super();
 		this.categoryID = catId;
@@ -38,8 +39,9 @@ public class Product implements AnnotatedClass{
 		this.price = price;
 		this.quantity = quantity;
 	}
-	
-	public Product(int id, int catId, String productName, String productDescription, double price, int quantity, boolean inStock) {
+
+	public Product(int id, int catId, String productName, String productDescription, double price, int quantity,
+			boolean inStock) {
 		super();
 		this.id = id;
 		this.categoryID = catId;
@@ -49,7 +51,7 @@ public class Product implements AnnotatedClass{
 		this.quantity = quantity;
 		this.inStock = inStock;
 	}
-	
+
 	public Product(String productName, String productDescription, double price, int quantity) {
 		super();
 		this.productName = productName;
@@ -117,7 +119,7 @@ public class Product implements AnnotatedClass{
 
 	@Getter(name = "in_stock")
 	public boolean isInStock() {
-		if(this.getQuantity() > 0)
+		if (this.getQuantity() > 0)
 			return true;
 		else
 			return false;
@@ -170,8 +172,10 @@ public class Product implements AnnotatedClass{
 
 	@Override
 	public String toString() {
-		return "Product [id=" + id + ", productName=" + productName + ", productDescription=" + productDescription
-				+ ", price=" + price + ", quantity=" + quantity + ", inStock=" + inStock + "]";
+		return "----------------------------------------------------------------------------------------------\n"
+				+ id + ": " + productName + ", \'" + productDescription + "\', $" + price + ", "
+				+ quantity + " in stock"
+				+ "\n----------------------------------------------------------------------------------------------";
 	}
 
 }

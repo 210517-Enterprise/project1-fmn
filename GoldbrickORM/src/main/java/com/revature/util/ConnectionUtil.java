@@ -96,39 +96,39 @@ public class ConnectionUtil {
 	/**
 	 * Method aims to print the current status of the Database(isConnected/!isConnected)
 	 */
-	public void printDBStatus() {
+	public String getDBStatus() {
 		
-		System.out.println("Max: " + getConnectionPool().getMaxActive() + "; active: " + getConnectionPool().getNumActive() 
-				+ "; Idle: " + getConnectionPool().getNumIdle());
+		return "Max: " + getConnectionPool().getMaxActive() + "; active: " + getConnectionPool().getNumActive() 
+				+ "; Idle: " + getConnectionPool().getNumIdle();
 	}
 
 	
-	public static void main(String[] args) throws Exception {
-		ConnectionUtil jdbcObj = new ConnectionUtil();
-		ResultSet rs = null;
-		PreparedStatement ps = null;
-		Connection connObj = null;
-		
-		try {
-			DataSource datasource = jdbcObj.setUpPool();
-			jdbcObj.printDBStatus();
-			
-			System.out.println("weeeeeee");
-			connObj = datasource.getConnection();
-			
-			ps = connObj.prepareStatement("SELECT * FROM heroes");
-			rs = ps.executeQuery();
-			
-			while(rs.next()) {
-				System.out.println("Hero name is: " + rs.getString("hero_name"));
-			}
-			
-			
-		} catch(SQLException e) {
-			//log.error("Could not retrieve");
-			e.printStackTrace();
-		}
-		
-	
- }
+//	public static void main(String[] args) throws Exception {
+//		ConnectionUtil jdbcObj = new ConnectionUtil();
+//		ResultSet rs = null;
+//		PreparedStatement ps = null;
+//		Connection connObj = null;
+//		
+//		try {
+//			DataSource datasource = jdbcObj.setUpPool();
+//			log.info(this.getDBStatus());
+//			
+//			System.out.println("weeeeeee");
+//			connObj = datasource.getConnection();
+//			
+//			ps = connObj.prepareStatement("SELECT * FROM heroes");
+//			rs = ps.executeQuery();
+//			
+//			while(rs.next()) {
+//				System.out.println("Hero name is: " + rs.getString("hero_name"));
+//			}
+//			
+//			
+//		} catch(SQLException e) {
+//			//log.error("Could not retrieve");
+//			e.printStackTrace();
+//		}
+//		
+//	
+// }
 }

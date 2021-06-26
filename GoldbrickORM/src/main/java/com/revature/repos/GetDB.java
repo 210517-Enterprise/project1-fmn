@@ -133,9 +133,8 @@ public class GetDB {
 			Date date = rs.getDate(4);
 			int priceTotal = rs.getInt(5);
 			boolean isFulfilled = rs.getBoolean(6);
-			int quantity = rs.getInt(7);
 			
-			Order o = new Order(id, userID, productID, date, priceTotal, isFulfilled, quantity);
+			Order o = new Order(id, userID, productID, date, priceTotal, isFulfilled);
 			orders.add(o);
 		}
 		log.info("Retrieved all orders from the database!");
@@ -167,9 +166,8 @@ public class GetDB {
 			Date date = rs.getDate(4);
 			int priceTotal = rs.getInt(5);
 			boolean isFulfilled = rs.getBoolean(6);
-			int quantity = rs.getInt(7);
 			
-			Order order = new Order(id, uID, productID, date, priceTotal, isFulfilled, quantity);
+			Order order = new Order(id, uID, productID, date, priceTotal, isFulfilled);
 			o.add(order);
 		}	
 		log.info("Retrieved " + o.size() + " orders from orderID: " + orderID);
@@ -200,9 +198,8 @@ public class GetDB {
 			Date date = rs.getDate(4);
 			int priceTotal = rs.getInt(5);
 			boolean isFulfilled = rs.getBoolean(6);
-			int quantity = rs.getInt(7);
 			
-			Order order = new Order(id, uID, productID, date, priceTotal, isFulfilled, quantity);
+			Order order = new Order(id, uID, productID, date, priceTotal, isFulfilled);
 			o.add(order);
 		}	
 		log.info("Retrieved " + o.size() + " Orders from the server.");
@@ -234,9 +231,8 @@ public class GetDB {
 			Date date = rs.getDate(4);
 			int priceTotal = rs.getInt(5);
 			boolean isFulfilled = rs.getBoolean(6);
-			int quantity = rs.getInt(7);
 			
-			Order order = new Order(id, uID, productID, date, priceTotal, isFulfilled, quantity);
+			Order order = new Order(id, uID, productID, date, priceTotal, isFulfilled);
 			o.add(order);
 		}	
 		log.info("Retrieved Orders associated with userID: " + userID);

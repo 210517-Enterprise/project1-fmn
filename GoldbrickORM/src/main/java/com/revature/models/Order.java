@@ -15,10 +15,12 @@ public class Order implements AnnotatedClass {
 	@Id(columnName = "id", constraints = { Constraint.PRIMARY_KEY }, dataType = "SERIAL")
 	private int id;
 
-	@JoinColumn(columnName = "user_id", constraints = { Constraint.FOREIGN_KEY }, dataType = "INT", reference = "REFERENCES users(id)")
+	@JoinColumn(columnName = "user_id", constraints = {
+			Constraint.FOREIGN_KEY }, dataType = "INT", reference = "REFERENCES users(id)")
 	private int userID;
 
-	@JoinColumn(columnName = "product_id", constraints = { Constraint.FOREIGN_KEY }, dataType = "INT", reference = "REFERENCES products(id)")
+	@JoinColumn(columnName = "product_id", constraints = {
+			Constraint.FOREIGN_KEY }, dataType = "INT", reference = "REFERENCES products(id)")
 	private int productID;
 
 	@Column(columnName = "order_date", constraints = { Constraint.NOT_NULL }, dataType = "DATE")
@@ -30,26 +32,21 @@ public class Order implements AnnotatedClass {
 	@Column(columnName = "fulfilled", constraints = { Constraint.NOT_NULL }, dataType = "BOOLEAN")
 	private boolean fulfilled;
 
-	@Column(columnName = "quantity", constraints = { Constraint.NOT_NULL }, dataType = "INT")
-	private int quantity;
-
 	public Order() {
-		
+
 	}
+
 	
-	public Order(int userID, int productID, Date orderDate, double totalPrice, boolean fulfilled,
-			int quantity) {
+	public Order(int userID, int productID, Date orderDate, double totalPrice, boolean fulfilled) {
 		super();
 		this.userID = userID;
 		this.productID = productID;
 		this.orderDate = orderDate;
 		this.totalPrice = totalPrice;
 		this.fulfilled = fulfilled;
-		this.quantity = quantity;
 	}
-	
-	public Order(int id, int userID, int productID, Date orderDate, double totalPrice, boolean fulfilled,
-			int quantity) {
+
+	public Order(int id, int userID, int productID, Date orderDate, double totalPrice, boolean fulfilled) {
 		super();
 		this.id = id;
 		this.userID = userID;
@@ -57,11 +54,9 @@ public class Order implements AnnotatedClass {
 		this.orderDate = orderDate;
 		this.totalPrice = totalPrice;
 		this.fulfilled = fulfilled;
-		this.quantity = quantity;
 	}
 
-
-	@Getter(name="id")
+	@Getter(name = "id")
 	public int getId() {
 		return id;
 	}
@@ -70,7 +65,7 @@ public class Order implements AnnotatedClass {
 		this.id = id;
 	}
 
-	@Getter(name="user_id")
+	@Getter(name = "user_id")
 	public int getUserID() {
 		return userID;
 	}
@@ -79,7 +74,7 @@ public class Order implements AnnotatedClass {
 		this.userID = userID;
 	}
 
-	@Getter(name="product_id")
+	@Getter(name = "product_id")
 	public int getProductID() {
 		return productID;
 	}
@@ -88,7 +83,7 @@ public class Order implements AnnotatedClass {
 		this.productID = productID;
 	}
 
-	@Getter(name="order_date")
+	@Getter(name = "order_date")
 	public Date getOrderDate() {
 		return orderDate;
 	}
@@ -97,7 +92,7 @@ public class Order implements AnnotatedClass {
 		this.orderDate = orderDate;
 	}
 
-	@Getter(name="total_price")
+	@Getter(name = "total_price")
 	public double gettotalPrice() {
 		return totalPrice;
 	}
@@ -106,7 +101,7 @@ public class Order implements AnnotatedClass {
 		this.totalPrice = totalPrice;
 	}
 
-	@Getter(name="fulfilled")
+	@Getter(name = "fulfilled")
 	public boolean isFulfilled() {
 		return fulfilled;
 	}
@@ -115,14 +110,6 @@ public class Order implements AnnotatedClass {
 		this.fulfilled = fulfilled;
 	}
 
-	@Getter(name="quantity")
-	public int getQuantity() {
-		return quantity;
-	}
-
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
-	}
 
 	@Override
 	public int hashCode() {
@@ -135,7 +122,6 @@ public class Order implements AnnotatedClass {
 		result = prime * result + id;
 		result = prime * result + ((orderDate == null) ? 0 : orderDate.hashCode());
 		result = prime * result + productID;
-		result = prime * result + quantity;
 		result = prime * result + userID;
 		return result;
 	}
@@ -162,8 +148,6 @@ public class Order implements AnnotatedClass {
 			return false;
 		if (productID != other.productID)
 			return false;
-		if (quantity != other.quantity)
-			return false;
 		if (userID != other.userID)
 			return false;
 		return true;
@@ -171,8 +155,10 @@ public class Order implements AnnotatedClass {
 
 	@Override
 	public String toString() {
-		return "Order [id=" + id + ", userID=" + userID + ", productID=" + productID + ", orderDate=" + orderDate
-				+ ", totalPrice=" + totalPrice + ", fulfilled=" + fulfilled + ", quantity=" + quantity + "]";
+		return "----------------------------------------------------------------------------------------------\n"
+				+ id + ": placed by user #" + userID + ", containing product #" + productID + ", "
+				+ orderDate + ", $" + totalPrice + ", " + (fulfilled ? "fulfilled" : "pending")
+				+ "\n----------------------------------------------------------------------------------------------";
 	}
 
 }
