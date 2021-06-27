@@ -5,10 +5,17 @@ import com.revature.annotations.Entity;
 import com.revature.annotations.Getter;
 import com.revature.annotations.Id;
 
-
+/**
+ * This class defines a User class that can be mapped to a database table called users.
+ * @author Frank Aurori, Mollie Morrow, Nick Gianino
+ *
+ */
 @Entity(tableName = "users")
 public class User implements AnnotatedClass {
-
+	
+	/**
+	 * @Id indicates the private field "id" is the primary key of table User
+	 */
 	@Id(columnName = "id", constraints = { Constraint.PRIMARY_KEY }, dataType = "SERIAL")
 	private int id;
 
