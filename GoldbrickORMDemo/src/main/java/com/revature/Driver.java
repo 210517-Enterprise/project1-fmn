@@ -297,7 +297,7 @@ public class Driver {
 				System.out.print("Update product description: ");
 
 				String pDesc = scan.next();
-				pDesc = scan.nextLine();
+				pDesc += scan.nextLine();
 				try {
 					conn = connPool.getConnection();
 					p.setProductDescription(pDesc);
@@ -453,13 +453,15 @@ public class Driver {
 	private static void insertProduct() {
 		System.out.print("Product name: ");
 		String name = scan.next();
+		name += scan.nextLine();
 		System.out.print("Product description: ");
 		String desc = scan.next();
+		desc += scan.nextLine();
 		System.out.print("Price: ");
 		double price = scan.nextDouble();
 		System.out.println("How many do you have in stock?");
 		int quantity = scan.nextInt();
-		System.out.println("at is the ID of the category this product belongs in?");
+		System.out.println("What is the ID of the category this product belongs in?");
 		int catID = scan.nextInt();
 
 		Product product = new Product(catID, name, desc, price, quantity);

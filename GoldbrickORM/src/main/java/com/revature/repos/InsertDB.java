@@ -191,7 +191,6 @@ public class InsertDB {
 		sql = sql.substring(0, sql.lastIndexOf(","));
 		sql += ")";
 		
-		System.out.println(sql);
 		
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);

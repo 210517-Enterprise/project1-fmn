@@ -1,11 +1,6 @@
 package com.revature.util;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.Properties;
 import javax.sql.DataSource;
 import org.apache.commons.dbcp.ConnectionFactory;
@@ -94,7 +89,8 @@ public class ConnectionUtil {
 	}
 	
 	/**
-	 * Method aims to print the current status of the Database(isConnected/!isConnected)
+	 * Method returns the current amount of threads that are occupied
+	 * @return
 	 */
 	public String getDBStatus() {
 		
@@ -103,32 +99,4 @@ public class ConnectionUtil {
 	}
 
 	
-//	public static void main(String[] args) throws Exception {
-//		ConnectionUtil jdbcObj = new ConnectionUtil();
-//		ResultSet rs = null;
-//		PreparedStatement ps = null;
-//		Connection connObj = null;
-//		
-//		try {
-//			DataSource datasource = jdbcObj.setUpPool();
-//			log.info(this.getDBStatus());
-//			
-//			System.out.println("weeeeeee");
-//			connObj = datasource.getConnection();
-//			
-//			ps = connObj.prepareStatement("SELECT * FROM heroes");
-//			rs = ps.executeQuery();
-//			
-//			while(rs.next()) {
-//				System.out.println("Hero name is: " + rs.getString("hero_name"));
-//			}
-//			
-//			
-//		} catch(SQLException e) {
-//			//log.error("Could not retrieve");
-//			e.printStackTrace();
-//		}
-//		
-//	
-// }
 }

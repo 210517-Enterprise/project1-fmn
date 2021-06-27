@@ -118,7 +118,7 @@ public class DatabaseBuilder {
 
 		} catch (SQLException e) {
 			log.warn(e.getMessage());
-			e.printStackTrace();
+			//e.printStackTrace();
 			return false;
 		}
 

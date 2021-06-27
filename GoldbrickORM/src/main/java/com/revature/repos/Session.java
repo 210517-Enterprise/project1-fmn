@@ -208,6 +208,7 @@ public class Session {
 		try {
 			cacheObject.put(order);
 			InsertDB.insertOrder(Metamodel.of(Order.class), order, conn);
+			System.out.println("Order Sucessfully Placed for product number: #" + order.getProductID() + "\n");
 		} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
 			log.warn("Failure in Session.insert  (Order): " + e.getMessage());
 		}
