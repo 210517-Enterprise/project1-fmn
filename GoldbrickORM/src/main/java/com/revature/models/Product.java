@@ -20,25 +20,57 @@ public class Product implements AnnotatedClass {
 	@Id(columnName = "id", constraints = { Constraint.PRIMARY_KEY }, dataType = "SERIAL")
 	private int id;
 
+	/**
+	 * Product has a column name category_id that stores the categoryID value and has a foreign key to the Categories entity, 
+	 * has a data type of integer
+	 */
 	@JoinColumn(columnName = "category_id", constraints = {
 			Constraint.FOREIGN_KEY }, dataType = "INT", reference = "REFERENCES categories(id)")
 	private int categoryID;
 
+	/**
+	 * @column indicates the database column name "product_name" in products table with not null constraints 
+	 * and datatype VARCHAR
+	 */
 	@Column(columnName = "product_name", constraints = { Constraint.NOT_NULL }, dataType = "VARCHAR(50)")
 	private String productName;
 
+	/**
+	 * @column indicates the database column name "product_description" in products table with not null constraints 
+	 * and datatype VARCHAR
+	 */
 	@Column(columnName = "product_description", constraints = { Constraint.NOT_NULL }, dataType = "VARCHAR(150)")
 	private String productDescription;
 
+	/**
+	 * @column indicates the database column name "price" in products table with not null constraints 
+	 * and datatype NUMERIC
+	 */
 	@Column(columnName = "price", constraints = { Constraint.NOT_NULL }, dataType = "NUMERIC")
 	private double price;
 
+	/**
+	 * @column indicates the database column name "quantity" in products table with not null constraints 
+	 * and datatype integer
+	 */
 	@Column(columnName = "quantity", constraints = { Constraint.NOT_NULL }, dataType = "INT")
 	private int quantity;
 
+	/**
+	 * @column indicates the database column name "in_stock" in products table with not null constraints 
+	 * and datatype boolean
+	 */
 	@Column(columnName = "in_stock", constraints = { Constraint.NOT_NULL }, dataType = "BOOLEAN")
 	private boolean inStock;
 
+	/**
+	 * Constructor for product object
+	 * @param catId
+	 * @param productName
+	 * @param productDescription
+	 * @param price
+	 * @param quantity
+	 */
 	public Product(int catId, String productName, String productDescription, double price, int quantity) {
 		super();
 		this.categoryID = catId;
@@ -47,7 +79,17 @@ public class Product implements AnnotatedClass {
 		this.price = price;
 		this.quantity = quantity;
 	}
-
+	
+	/**
+	 * Constructor for product object
+	 * @param id
+	 * @param catId
+	 * @param productName
+	 * @param productDescription
+	 * @param price
+	 * @param quantity
+	 * @param inStock
+	 */
 	public Product(int id, int catId, String productName, String productDescription, double price, int quantity,
 			boolean inStock) {
 		super();
@@ -60,6 +102,13 @@ public class Product implements AnnotatedClass {
 		this.inStock = inStock;
 	}
 
+	/**
+	 * constructor for product object
+	 * @param productName
+	 * @param productDescription
+	 * @param price
+	 * @param quantity
+	 */
 	public Product(String productName, String productDescription, double price, int quantity) {
 		super();
 		this.productName = productName;
@@ -68,63 +117,117 @@ public class Product implements AnnotatedClass {
 		this.quantity = quantity;
 	}
 
+	/**
+	 * constructor for product object
+	 */
 	public Product() {
 	}
 
+	/**
+	 * Method that returns id (primary key)
+	 */
 	@Getter(name = "id")
 	public int getId() {
 		return id;
 	}
 
+	/**
+	 * Method that sets the primary key Id
+	 * @param id
+	 */
 	public void setId(int id) {
 		this.id = id;
 	}
 
+	/**
+	 * Method that returns category_id (foreign key)
+	 * @return
+	 */
 	@Getter(name = "category_id")
 	public int getCategoryID() {
 		return categoryID;
 	}
 
+	/**
+	 * Method that sets cateogry_id (foreign key) 
+	 * @param categoryID
+	 */
 	public void setCategoryID(int categoryID) {
 		this.categoryID = categoryID;
 	}
 
+	/**
+	 * Method that returns product name
+	 * @return
+	 */
 	@Getter(name = "product_name")
 	public String getProductName() {
 		return productName;
 	}
-
+	
+	/**
+	 * Method that sets the product name
+	 * @param productName
+	 */
 	public void setProductName(String productName) {
 		this.productName = productName;
 	}
-
+	
+	/**
+	 * Method that returns the product description
+	 * @return
+	 */
 	@Getter(name = "product_description")
 	public String getProductDescription() {
 		return productDescription;
 	}
-
+	
+	/**
+	 * Method that sets the product description
+	 * @param productDescription
+	 */
 	public void setProductDescription(String productDescription) {
 		this.productDescription = productDescription;
 	}
-
+	
+	/**
+	 * Method that returns the product price
+	 * @return
+	 */
 	@Getter(name = "price")
 	public double getPrice() {
 		return price;
 	}
-
+	
+	/**
+	 * Method that sets the product price
+	 * @param price
+	 */
 	public void setPrice(double price) {
 		this.price = price;
 	}
 
+	/**
+	 * Method that returns the product quantity
+	 * @return
+	 */
 	@Getter(name = "quantity")
 	public int getQuantity() {
 		return quantity;
 	}
-
+	
+	/**
+	 * Method that sets the product quantity
+	 * @param quantity
+	 */
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
-
+	
+	/**
+	 * Method that returns true if the product is in_stock
+	 * @return
+	 */
 	@Getter(name = "in_stock")
 	public boolean isInStock() {
 		if (this.getQuantity() > 0)
