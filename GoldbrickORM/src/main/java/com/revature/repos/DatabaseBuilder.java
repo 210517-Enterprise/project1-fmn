@@ -62,7 +62,6 @@ public class DatabaseBuilder {
 	 */
 	public boolean createTables(Connection conn) throws NoSuchFieldException, SQLException {
 		// check if tables exist in db
-		boolean isCreated = false;
 		for (Metamodel<Class<?>> mm : this.config.getMetamodels()) {
 
 			IdField pk = mm.getPrimaryKey();
@@ -90,7 +89,7 @@ public class DatabaseBuilder {
 			try {
 				PreparedStatement ps = conn.prepareStatement(str.toString());
 
-				isCreated = ps.execute();
+				ps.execute();
 
 			} catch (SQLException e) {
 				log.warn("Failure in DatabaseBuilder.createTables: " + e.getMessage());
