@@ -1,5 +1,10 @@
 package com.revature.models;
 
+/**
+ * This enum class defines constraints for each attribute in the database
+ * @author Frank Aurori, Mollie Morrow, Nick Gianino
+ *
+ */
 public enum Constraint {
 	PRIMARY_KEY, FOREIGN_KEY, SERIAL, NOT_NULL, DEFAULT, UNIQUE, CHECK;
 	

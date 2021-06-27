@@ -7,10 +7,12 @@ import java.util.HashMap;
 
 import org.apache.log4j.Logger;
 
-/*
- * Transaction Management :  (begin, commit, savepoint, rollback)
- */
 
+/**
+ * Class that defines SQL transaction management (commit, savepoint, rollback)
+ * @author Frank Aurori, Mollie Morrow, Nick Gianino
+ *
+ */
 public class Transaction {
 	
 	private static Transaction transaction = new Transaction();
@@ -27,6 +29,10 @@ public class Transaction {
 		return transaction;
 	}
 	
+	/**
+	 * Turns on auto commit for specified connection
+	 * @param conn
+	 */
 	public void enableAutoCommit(Connection conn) {
 		
 		try {
@@ -38,6 +44,10 @@ public class Transaction {
 		
 	}
 	
+	/**
+	 * Commit all uncommitted transactions for specified connection
+	 * @param conn
+	 */
 	public void commitTrans(Connection conn) {
 		try {
 			conn.commit();
@@ -47,6 +57,10 @@ public class Transaction {
 		}
 	}
 	
+	/**
+	 * Rollback all uncommitted transactions for specified conenction
+	 * @param conn
+	 */
 	public void rollbackTrans(Connection conn) {
 		
 		try {
@@ -57,6 +71,12 @@ public class Transaction {
 		}
 	}
 	
+	/**
+	 * Rollback to a prevous transaction, given the name of 
+	 * the savepoint and specified connection
+	 * @param name 
+	 * @param conn
+	 */
 	public void rollbackTrans(String name, Connection conn) {
 		
 		try {
@@ -71,6 +91,12 @@ public class Transaction {
 		}
 	}
 	
+	
+	/**
+	 * Method that sets the saved savepoint 
+	 * @param name
+	 * @param conn
+	 */
 	public void setSavepoint(String name, Connection conn) {
 		
 		try {
@@ -82,6 +108,11 @@ public class Transaction {
 		}
 	}
 	
+	/**
+	 * Method that releases a previously saved savedpoint
+	 * @param name
+	 * @param conn
+	 */
 	public void releaseSavepoint(String name, Connection conn) {
 		
 		try {
@@ -96,6 +127,10 @@ public class Transaction {
 		}
 	}
 	
+	/**
+	 * Method that sets a transaction
+	 * @param conn
+	 */
 	public void setTransaction(Connection conn) {
 		
 		try {

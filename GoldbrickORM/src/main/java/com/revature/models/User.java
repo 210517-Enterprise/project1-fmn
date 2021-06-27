@@ -18,28 +18,62 @@ public class User implements AnnotatedClass {
 	 */
 	@Id(columnName = "id", constraints = { Constraint.PRIMARY_KEY }, dataType = "SERIAL")
 	private int id;
-
+	
+	/**
+	 * @column indicates the database column name "first_name" in user table with not null constraints 
+	 * and datatype VARCHAR
+	 */
 	@Column(columnName = "first_name", constraints = { Constraint.NOT_NULL }, dataType = "VARCHAR(50)")
 	private String firstName;
-
+	
+	/**
+	 * @column indicates the database column name "last_name" in user table with not null constraints 
+	 * and datatype VARCHAR
+	 */
 	@Column(columnName = "last_name", constraints = { Constraint.NOT_NULL }, dataType = "VARCHAR(50)")
 	private String lastName;
 
+	/**
+	 * @column indicates the database column name "email" in user table with not null and unique constraints 
+	 * and datatype VARCHAR
+	 */
 	@Column(columnName = "email", constraints = { Constraint.NOT_NULL, Constraint.UNIQUE }, dataType = "VARCHAR(50)")
 	private String email;
-
+	
+	/**
+	 * @column indicates the database column name "pwd (password)" in user table with not null constraints 
+	 * and datatype VARCHAR
+	 */
 	@Column(columnName = "pwd", constraints = { Constraint.NOT_NULL }, dataType = "VARCHAR(50)")
 	private String password; // encrypt this
-
+	
+	/**
+	 * @column indicates the database column name "user_role" in user table with not null constraints 
+	 * and datatype VARCHAR
+	 */
 	@Column(columnName = "user_role", constraints = { Constraint.NOT_NULL }, dataType = "VARCHAR(50)")
 	private Role role;
-
+	
+	/**
+	 * Constructor for user object
+	 * @param email
+	 * @param password
+	 */
 	public User(String email, String password) {
 		super();
 		this.email = email;
 		this.password = password;
 	}
-
+	
+	/**
+	 * Constructor for user object
+	 * @param id
+	 * @param firstName
+	 * @param lastName
+	 * @param email
+	 * @param password
+	 * @param role
+	 */
 	public User(int id, String firstName, String lastName, String email, String password, Role role) {
 		super();
 		this.id = id;
@@ -49,57 +83,104 @@ public class User implements AnnotatedClass {
 		this.password = password;
 		this.role = role;
 	}
-
+	
+	/**
+	 * Method that returns the user id (primary key)
+	 */
 	@Getter(name = "id")
 	public int getId() {
 		return id;
 	}
-
+	
+	/**
+	 * Method that sets the user id
+	 * @param id
+	 */
 	public void setId(int id) {
 		this.id = id;
 	}
 
+	/**
+	 * Method that returns the users first_name
+	 * @return
+	 */
 	@Getter(name = "first_name")
 	public String getFirstName() {
 		return firstName;
 	}
-
+	
+	/**
+	 * Method that sets the users first_name
+	 * @param firstName
+	 */
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
-
+	
+	/**
+	 * Method that returns the users last_name
+	 * @return
+	 */
 	@Getter(name = "last_name")
 	public String getLastName() {
 		return lastName;
 	}
-
+	
+	/**
+	 * Method that sets the users last_name
+	 * @param lastName
+	 */
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-
+	
+	/**
+	 * Method that returns the users email 
+	 * @return
+	 */
 	@Getter(name = "email")
 	public String getEmail() {
 		return email;
 	}
-
+	
+	/**
+	 * method that sets the users email
+	 * @param email
+	 */
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
+	
+	/**
+	 * Method that returns the users password (pwd)
+	 * @return
+	 */
 	@Getter(name = "pwd")
 	public String getPassword() {
 		return password;
 	}
-
+	
+	/**
+	 * Method that sets the users password
+	 * @param password
+	 */
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
+	
+	/**
+	 * Method returns the user_role (enum of type Role)
+	 * @return
+	 */
 	@Getter(name = "user_role")
 	public Role getRole() {
 		return role;
 	}
-
+	
+	/**
+	 * Method that sets the user role (either admin or customer)
+	 * @param role
+	 */
 	public void setRole(Role role) {
 		this.role = role;
 	}
