@@ -29,7 +29,7 @@ Goldbrick allows users to:
 * Annotated Classes -> Custom Field Classes -> Metamodel -> Session -> Database
 
 # Dependency
-
+* TO USE GOLDBRICK ORM PLEASE COPY THIS DEPENCENCY!
 * dependency
 *	groupId>com.revature</groupId
 *	artifactId>GoldbrickORM</artifactId
