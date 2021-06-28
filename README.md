@@ -10,6 +10,7 @@ databse utilizing a singleton design pattern.
 * Git/GitHub
 * Java DataBase Connectivity (JDBC)
 * Reflection
+* JPA
 
 # Features
 Goldbrick allows users to:
