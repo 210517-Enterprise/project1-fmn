@@ -29,8 +29,8 @@ Goldbrick allows users to:
 
 # Dependency
 
-dependency
-	groupId>com.revature</groupId
-	artifactId>GoldbrickORM</artifactId
-	version>0.0.1-SNAPSHOT</version
-/dependency
+*dependency
+*	groupId>com.revature</groupId
+*	artifactId>GoldbrickORM</artifactId
+*	version>0.0.1-SNAPSHOT</version
+*/dependency
