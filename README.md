@@ -22,5 +22,7 @@ Goldbrick allows users to:
 * Check if entries persist wihin a databse with same primary key
  
 # Uses
+* Creation of an Ecommerce store that requires a database
 
 # Framework Design
+* Annotated Classes -> Custom Field Classes -> Metamodel -> Session -> Database
