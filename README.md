@@ -1,5 +1,5 @@
 # goldbrick-orm
-To Goldbrick: Fiding a way around doing work
+To Goldbrick: Fiding a way around doing work -- Created by Frank Aurori, Mollie Morrow, Nicholas Gianino
 # Project Description
 A Java based ORM that aims to simplify connectivity to and from a PostgreSQL
 databse utilizing a singleton design pattern.
