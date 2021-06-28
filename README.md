@@ -26,3 +26,10 @@ Goldbrick allows users to:
 
 # Framework Design
 * Annotated Classes -> Custom Field Classes -> Metamodel -> Session -> Database
+
+# Dependency
+<dependency>
+			<groupId>com.revature</groupId>
+			<artifactId>GoldbrickORM</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
